@@ -18,32 +18,35 @@
             <div class="encadrer">
                 <h1> TROUVEZ LE COACH QUI VOUS CONVIENT ! </h1>
             </div>
-            <form>
+            <form action="inscription.php" method="POST">
                 <div class="encadrer">
                     <h1 align="center"> INSCRIPTION </h1>
                     <div class="search-container">
-                        <input type="text" placeholder="NOM"/>
+                        <input type="text" name="nom" placeholder="NOM"/>
                     </div>
                     <div class="search-container">
-                        <input type="text" placeholder="PRENOM"/>
+                        <input type="text" name="prenom" placeholder="PRENOM"/>
                     </div>
                     <div class="search-container">
-                        <input type="text" placeholder="IDENTIFIANT"/>
+                        <input type="text" name="identifiant" placeholder="IDENTIFIANT"/>
                     </div>
                     <div class="search-container">
-                        <input type="text" placeholder="ADRESSE"/>
+                        <input type="text" name="adresse" placeholder="ADRESSE"/>
                     </div>
                     <div class="search-container">
-                        <input type="text" placeholder="NUMERO DE TELEPHONE"/>
+                        <input type="text" name="numero_telephone" placeholder="NUMERO DE TELEPHONE"/>
                     </div>
                     <div class="search-container">
-                        <input type="text" placeholder="EMAIL"/>
+                        <input type="text" name="adresse_mail" placeholder="ADRESSE MAIL"/>
                     </div>
                     <div class="search-container">
-                        <input type="password" placeholder="MOT DE PASSE"/>
+                        <input type="password" name="mot_de_passe" placeholder="MOT DE PASSE"/>
                     </div>
                     <div class="search-container">
-                        <input type="password" placeholder="CONFIRMER LE MOT DE PASSE"/>
+                        <input type="password" name="confirmer_mot_de_passe" placeholder="CONFIRMER LE MOT DE PASSE"/>
+                    </div>
+                    <div class="search-container">
+                        <input type="submit" value="S'inscrire"/>
                     </div>
                     <div class="rectangle">
                         <div class="cercle"> 
