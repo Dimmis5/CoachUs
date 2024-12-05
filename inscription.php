@@ -10,11 +10,3 @@ if ($_SERVER="REQUEST_METHOD"] == "POST") {
     $stmt = $conn->prepare("INSERT INTO coach (nom,prenom,identifiant,adresse,numero_de_telephone,adresse_mail,mot_de_passe) VALUES (?,?,?,?,?,?,?)");
     $stmt->bind_param("sssssss", $nom, $prenom, $identifiant, $adresse, $numero_telephone, $adresse_mail, $mot_de_passe);
 }
-
-if ($stmt->execute()) {
-    echo "Nouvel enregistrement créé avec succès";
-    // Vous pouvez aussi rediriger l'utilisateur vers une autre page
-    // header("Location: page_bienvenue.php");
-} else {
-    echo "Erreur lors de l'exécution de la requête : " . $stmt->error;
-}
