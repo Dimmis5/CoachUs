@@ -106,3 +106,9 @@ input[type="password"] {
     width: 300px;
     padding-right: 100px;
 }
+button a {
+    text-decoration: none;
+}
+p a {
+    text-decoration: none;
+}
