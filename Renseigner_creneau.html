@@ -28,7 +28,15 @@
                     <label for ="location"> Lieu : </label>
                     <select id="location" required>
                         <option value="" disabled selected> Choisissez un lieu </option>
-                        <option value="Salle de sport Issy les Moulineaux"> Salle de sport Issy les Moulineaux </option> 
+                        <?php
+                        if ($result->num_rows>0) {
+                            while($row=$result->fetch_assoc()) {
+                                echo "<option value='" .$row['id_lieu']."'> ". $row['nom']."</option>"
+                            }
+                        } else {
+                            echo "<option value=''> Aucun lieu disponible </option>"
+                        }
+                        ?>
                     </select>
                         <button type="submit"> Ajouter le créneau </button>
                 </form>

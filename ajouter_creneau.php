@@ -13,4 +13,8 @@ $location = $_POST['location'];
 
 $query = "SELECT id_lieu FROM lieu WHERE nom = ?"
 
-$sql = "INSERT INTO disponibilite (date, heure_debut, heure_fin, id_lieu) VALUES ('date','start-time','end_time,'location')
+$sql = "INSERT INTO disponibilite (date,heure_debut,heure_fin,id_lieu) VALUES($date,$start_time,$end_time,$location)";
+
+
+$query = "SELECT id_lieu FROM lieu";
+
