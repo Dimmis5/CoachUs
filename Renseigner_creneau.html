@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>  
+    <head>
+        <title> Renseigner un créneau </title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <div class="header-container">
+            <h1 align="left"> COACHUS </h1>
+            <div align="right" class="button-container">
+                <button> <a href="FAQ.html"> ? </a> </button>
+                <button> <a href="connexionsportif.html"> JE VEUX UN COACH </a> </button>
+                <button> <a href="connexioncoach.html"> JE SUIS COACH </a> </button>
+                <button> <a href="accueil.html"> ACCUEIL </a> </button>
+            </div>
+        </div>
+        <div>
+            <h1> Réservation d'un créneau </h1>
+            <div>
+                <h2> Renseignez vos créneaux disponibles : </h2>
+                <form>
+                    <label for ="date"> Date : </label>
+                    <input type="date" id="date" required>
+                    <label for ="start-time"> Heure de début : </label>
+                    <input type="time" id="start-time" required>
+                    <label for ="end-time"> Heure de fin : </label>
+                    <input type="time" id="end-time" required>
+                    <label for ="location"> Lieu : </label>
+                    <input type="text" id="location" placeholder="Entrez le lieu" required>
+                    <button type="submit"> Ajouter le créneau </button>
+                </form>
+            </div>
+        </div>
+    </body>
+</html>
