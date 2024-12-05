@@ -112,6 +112,10 @@ button a {
 p a {
     text-decoration: none;
 }
+
+
+/* A partir d'ici le CSS pour l'accueil */
+
 body {
     display: flex;
     flex-direction: column;
@@ -327,3 +331,6 @@ input[type="text"] {
     margin-left: -20px;
     background-color: rgb(216, 177, 47);
 }
+
+
+/* CSS Pour le profil du coach */
