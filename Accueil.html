@@ -2,170 +2,8 @@
 <html>
     <head>
         <title>CoachUs</title>
+        <link rel="stylesheet" href="style.css">
         <style>
-            body {
-                display: flex;
-                flex-direction: column;
-                align-items: stretch;
-                padding: 10px;
-                font-family: Arial, sans-serif;
-            }
-            .header-container {
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-                margin-bottom: 20px;
-            }
-            button {
-                border-radius: 12px;
-                padding: 10px 20px;
-                border: none;
-                margin-left: 10px;
-            }
-            .text-container {
-                padding: 5px;
-                width: 200px;
-                margin-left: 150px;
-                border-radius: 30%;
-            }
-            .search-container {
-                position: relative;
-                display: flex;
-                justify-content: left;
-                margin-top: 20px;
-                padding-left: 50px;
-            }
-            input[type="text"] {
-                border-radius: 20px;
-                padding: 10px;
-                width: 300px;
-                padding-right: 100px;
-            }
-            .search-button {
-                position: absolute;
-                right: 1021px;
-                top: 50%;
-                transform: translateY(-50%);
-                border-radius: 20px;
-                padding: 10px 20px;
-                border: none;
-                background-color: orange;
-                color: white;
-            }
-            .sport-button {
-                display: flex;
-                flex-direction: column;
-                align-items: left;
-                justify-content: left;
-                padding: 20px;
-                margin-top: 20px;
-                border-radius: 500px;
-                border: 1px solid #ddd;
-                width: 500px;
-                background-color: #f9f9f9;
-                box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
-            }
-            .sport-logo {
-                width: 30px;
-                height: 20px;
-                margin-right: 25px;
-            }
-            .personnage {
-                position: absolute;
-                right: 0;
-                bottom: 0;
-                margin: 250px;
-            }
-            .Coach {
-                display: flex;
-                justify-content: left;
-                padding: 20px;
-            }
-            .Coach p {
-                margin: 25px;
-                padding-right: 200px;
-            }
-            .profil, .profil2 {
-                display: flex;
-                justify-content: left;
-                padding: 0px;
-                margin: 0px;
-                width: 90px;
-                height: 150px;
-                gap: 155px;
-            }
-            .avis, .avis2 {
-                display: flex;
-                padding-left: 80px;
-                gap: 300px;
-            }
-            .tarif, .tarif2 {
-                display: flex;
-                gap: 320px;
-            }
-            .temps, .temps2 {
-                display: flex;
-                gap: 220px;
-            }
-            .contact-créneaux, .contact-créneaux2 {
-                display: flex;
-                justify-content: left;
-                gap: 92px;
-            }
-            .contact, .créneaux, .contact2, .créneaux2 {
-                padding: 10px;
-                margin: 0px;
-                border-radius: 500px;
-                border: 1px solid #ddd;
-                width: 80px;
-                background-color: orange;
-                color: white;
-                text-align: center;
-            }
-            .payage {
-                display: flex;
-                justify-content: left;
-                width: 0px;
-                height: 400px;
-                padding-left: 220px;
-            }
-
-            .overlay-container {
-                position: relative;
-                display: inline-block;
-            }
-            .overlay-text {
-                position: absolute;
-                top: 100%;
-                left: 70%;
-                transform: translate(-50%, -50%);
-                color: white;
-                font-size: 25px;
-                font-weight: bold;
-                text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
-            }
-            .ville-c{
-                padding-left: 200px;
-                display: flex;
-                justify-content: left;
-                gap :220px;
-            }
-            .ville, .ville1, .ville2 {
-                font-size: 30px;
-                width: 150px;
-            }
-            .CGU{
-                width: 1100px;
-                height: 150px;
-                background-color: rgb(141, 201, 235);
-                margin-left: 100px;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-            }
-            .CGU-T{
-               font-size: 50px;
-            }
         </style>
     </head>
 
@@ -175,9 +13,9 @@
         <div class="header-container">
             <img class="logo" src="CoachUs Text.png" alt="logo" width="250" height="75" />
             <div align="right" class="button-container">
-                <button> ? </button>
-                <button> JE VEUX UN COACH </button>
-                <button> JE SUIS COACH </button>
+                <button> <a href="FAQ.html"> ?</a>  </button>
+                <button> <a href="connexionsportif.html">JE VEUX UN COACH </a> </button>
+                <button> <a href="connexioncoach.html">JE SUIS COACH  </a></button>
             </div>
         </div>
 
@@ -314,8 +152,42 @@
             <button class ="ville2"> Ville <br><br> Ville <br><br> Ville </button>
         </div>
         <br><br><br><br><br>
-        <div class="CGU">
+        <div>
             <p class="CGU-T">CGU</p>
+        </div>
+        <div class ="Bas">
+        <div class ="pied">
+            <br><br>
+            <p><b>Service & information</b></p>
+            <p><b>A propos de CoachUs</b></p>
+            <p><b>Salle de sport</b></p>
+        </div>
+        <div class ="barre">
+            <hr>
+        </div>
+        <div class="barre1">
+            <hr>
+        </div>
+        <div class="barre2">
+            <hr>
+        </div>
+        <br>
+        <div class="client">
+            <a href="connexioncoach.html"> Service clientèle</a> <br><br> <!-- Faudra juste changer les liens -->
+            <a href="connexioncoach.html">Réglement intérieur</a><br><br>
+            <a href="connexioncoach.html">Heure d'ouverture</a> <br><br>
+            <a href="connexioncoach.html">Day pass</a> <br><br>
+            <a href="connexioncoach.html">Partenaire</a>
+        </div>
+        <div class="client1">
+            <a href="connexioncoach.html">A propos de CoachUs</a><br><br>
+            <a href="connexioncoach.html">aez</a>
+        </div>
+        <div class="client2">
+            <a href="connexioncoach.html">Paris</a><br><br>
+            <a href="connexioncoach.html">Issy les moulineaux</a>
+        </div>
         </div>
     </body>
 </html>
+ <!-- Faudra juste changer les liens --> <!-- Faudra juste changer les liens --> <!-- Faudra juste changer les liens --> <!-- Faudra juste changer les liens -->
