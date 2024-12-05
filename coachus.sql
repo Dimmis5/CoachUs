@@ -61,8 +61,8 @@ CREATE TABLE `coach` (
 CREATE TABLE `disponibilite` (
   `id_disponibilite` int(11) NOT NULL,
   `date` date NOT NULL,
-  `heure` time NOT NULL,
-  `duree` float NOT NULL,
+  `heure_debut` time NOT NULL,
+  `heure_fin` time NOT NULL,
   `id_coach` int(11) NOT NULL,
   `id_lieu` int(11) NOT NULL,
   `id_reservation` int(11) NOT NULL
