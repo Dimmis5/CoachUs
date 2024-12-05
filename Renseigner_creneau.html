@@ -18,7 +18,7 @@
             <h1> Réservation d'un créneau </h1>
             <div>
                 <h2> Renseignez vos créneaux disponibles : </h2>
-                <form>
+                <form action="ajouter_creneau.php" method="POST">
                     <label for ="date"> Date : </label>
                     <input type="date" id="date" required>
                     <label for ="start-time"> Heure de début : </label>
@@ -26,8 +26,11 @@
                     <label for ="end-time"> Heure de fin : </label>
                     <input type="time" id="end-time" required>
                     <label for ="location"> Lieu : </label>
-                    <input type="text" id="location" placeholder="Entrez le lieu" required>
-                    <button type="submit"> Ajouter le créneau </button>
+                    <select id="location" required>
+                        <option value="" disabled selected> Choisissez un lieu </option>
+                        <option value="Salle de sport Issy les Moulineaux"> Salle de sport Issy les Moulineaux </option> 
+                    </select>
+                        <button type="submit"> Ajouter le créneau </button>
                 </form>
             </div>
         </div>
