@@ -100,6 +100,7 @@ CREATE TABLE `faq_sportif` (
 
 CREATE TABLE `lieu` (
   `id_lieu` int(11) NOT NULL,
+  `nom` varchar(500) NOT NULL,
   `adresse` varchar(500) NOT NULL,
   `nombre_places_disponibles` int(11) DEFAULT NULL,
   `id_coach` int(11) NOT NULL
