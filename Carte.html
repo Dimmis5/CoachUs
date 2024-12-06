@@ -1,92 +1,95 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sports Sessions Map</title>
-    <!-- Leaflet CSS -->
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <title>Carte Interactive - CoachUs</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Lien vers la feuille de style de Leaflet -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-        }
-        .header-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background-color: #282c34;
-            padding: 10px 20px;
-            color: white;
-        }
-        .header-container h1 {
-            margin: 0;
-        }
-        .map-container {
-            height: 90vh; /* Occupy most of the viewport height */
+        #map {
+            height: 500px;
             width: 100%;
         }
-        .info-panel {
-            position: absolute;
-            top: 10px;
-            left: 10px;
-            background: white;
-            padding: 10px;
-            border-radius: 5px;
-            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
-        }
-        .info-panel h2 {
-            margin: 0 0 10px 0;
-        }
     </style>
-    <!-- Leaflet JS -->
-    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 </head>
 <body>
-    <!-- Header Section -->
     <div class="header-container">
-        <h1>Coach Us</h1>
-        <nav>
-            <a href="Accueil.html" style="color: white; text-decoration: none; margin-right: 10px;">Home</a>
-            <a href="CGU.html" style="color: white; text-decoration: none;">CGU</a>
-        </nav>
+        <h1 align="left">COACHUS</h1>
+        <div align="right" class="button-container">
+            <button> <a href="FAQ.html"> ? </a> </button>
+            <button> <a href="connexionsportif.html"> JE VEUX UN COACH </a> </button>
+            <button> <a href="connexioncoach.html"> JE SUIS COACH </a> </button>
+            <button> <a href="Accueil.html"> ACCUEIL </a> </button>
+        </div>
     </div>
 
-    <!-- Map Section -->
-    <div class="map-container" id="map"></div>
-
-    <!-- Info Panel -->
-    <div class="info-panel">
-        <h2>Find a Sports Session Near You</h2>
-        <p>Click on the markers to see session details!</p>
+    <div class="container">
+        <div class="encadrer">
+            <h1>Carte des Séances de Sport</h1>
+            <p>Sur cette carte, vous pouvez visualiser les lieux où se déroulent nos séances de sport. Cliquez sur un marqueur pour en savoir plus sur chaque emplacement.</p>
+            
+            <!-- Carte interactive -->
+            <div id="map"></div>
+        </div>
     </div>
 
+    <!-- Intégration de Leaflet.js pour la carte interactive -->
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
     <script>
-        // Initialize the map
-        const map = L.map('map').setView([48.8566, 2.3522], 12); // Centered on Paris
+        // Initialisation de la carte
+        var map = L.map('map').setView([48.8566, 2.3522], 12); // Coordonnées pour Paris
 
-        // Add a tile layer (Map background)
+        // Ajout du fond de carte OpenStreetMap
         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
             attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         }).addTo(map);
 
-        // Sample locations for sports sessions
-        const sessions = [
-            { lat: 48.8566, lng: 2.3522, title: "Yoga in the Park", time: "10:00 AM", location: "Luxembourg Gardens" },
-            { lat: 48.864716, lng: 2.349014, title: "Basketball Match", time: "2:00 PM", location: "Châtelet" },
-            { lat: 48.866667, lng: 2.333333, title: "Tennis Practice", time: "5:00 PM", location: "Eiffel Tower Courts" },
+        // Marqueurs pour les lieux de séances de sport
+        var locations = [
+            {lat: 48.8566, lon: 2.3522, title: "Séance 1 - Paris Centre", description: "Séance de sport à 10h"},
+            {lat: 48.8708, lon: 2.3099, title: "Séance 2 - Paris Ouest", description: "Séance de sport à 14h"},
+            {lat: 48.8738, lon: 2.2950, title: "Séance 3 - Paris Est", description: "Séance de sport à 18h"}
         ];
 
-        // Add markers for each session
-        sessions.forEach(session => {
-            const marker = L.marker([session.lat, session.lng]).addTo(map);
-            marker.bindPopup(`
-                <strong>${session.title}</strong><br>
-                Time: ${session.time}<br>
-                Location: ${session.location}
-            `);
+        // Ajout des marqueurs à la carte
+        locations.forEach(function(location) {
+            L.marker([location.lat, location.lon])
+                .addTo(map)
+                .bindPopup("<b>" + location.title + "</b><br>" + location.description);
         });
     </script>
+
+    <!-- Bas de page -->
+    <div class="Bas">
+        <div class="pied">
+            <br><br>
+            <p><b>Service & information</b></p>
+            <p><b>A propos de CoachUs</b></p>
+            <p><b>Salle de sport</b></p>
+        </div>
+        <div class="barre">
+            <hr>
+        </div>
+        <div class="barre1">
+            <hr>
+        </div>
+        <div class="barre2">
+            <hr>
+        </div>
+        <br>
+        <div class="client">
+            <a href="connexioncoach.html"> Service clientèle</a> <br><br>
+            <a href="connexioncoach.html">Réglement intérieur</a><br><br>
+            <a href="connexioncoach.html">Heure d'ouverture</a> <br><br>
+            <a href="connexioncoach.html">Day pass</a> <br><br>
+            <a href="connexioncoach.html">Partenaire</a>
+        </div>
+        <div class="client1">
+            <a href="connexioncoach.html">A propos de CoachUs</a><br><br>
+            <a href="connexioncoach.html">Mentions légales</a>
+        </div>
+    </div>
 </body>
 </html>
