@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sports Sessions Map</title>
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #282c34;
+            padding: 10px 20px;
+            color: white;
+        }
+        .header-container h1 {
+            margin: 0;
+        }
+        .map-container {
+            height: 90vh; /* Occupy most of the viewport height */
+            width: 100%;
+        }
+        .info-panel {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background: white;
+            padding: 10px;
+            border-radius: 5px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+        }
+        .info-panel h2 {
+            margin: 0 0 10px 0;
+        }
+    </style>
+    <!-- Leaflet JS -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+</head>
+<body>
+    <!-- Header Section -->
+    <div class="header-container">
+        <h1>Coach Us</h1>
+        <nav>
+            <a href="Accueil.html" style="color: white; text-decoration: none; margin-right: 10px;">Home</a>
+            <a href="CGU.html" style="color: white; text-decoration: none;">CGU</a>
+        </nav>
+    </div>
+
+    <!-- Map Section -->
+    <div class="map-container" id="map"></div>
+
+    <!-- Info Panel -->
+    <div class="info-panel">
+        <h2>Find a Sports Session Near You</h2>
+        <p>Click on the markers to see session details!</p>
+    </div>
+
+    <script>
+        // Initialize the map
+        const map = L.map('map').setView([48.8566, 2.3522], 12); // Centered on Paris
+
+        // Add a tile layer (Map background)
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        // Sample locations for sports sessions
+        const sessions = [
+            { lat: 48.8566, lng: 2.3522, title: "Yoga in the Park", time: "10:00 AM", location: "Luxembourg Gardens" },
+            { lat: 48.864716, lng: 2.349014, title: "Basketball Match", time: "2:00 PM", location: "Châtelet" },
+            { lat: 48.866667, lng: 2.333333, title: "Tennis Practice", time: "5:00 PM", location: "Eiffel Tower Courts" },
+        ];
+
+        // Add markers for each session
+        sessions.forEach(session => {
+            const marker = L.marker([session.lat, session.lng]).addTo(map);
+            marker.bindPopup(`
+                <strong>${session.title}</strong><br>
+                Time: ${session.time}<br>
+                Location: ${session.location}
+            `);
+        });
+    </script>
+</body>
+</html>
