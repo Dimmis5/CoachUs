@@ -11,8 +11,8 @@
 
 <?php
 
-require("modele/connexion.php");
-require("modele/fonctions.php");
+require("modele/connexioncoach.php");
+require("modele/fonctionscoah.php");
 
 if(isset($_GET["action"]) && $_GET["action"]=="save") {
 	if(isset($_GET["id"]) &&  $_GET["id"]!=null) {
