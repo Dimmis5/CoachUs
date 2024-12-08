@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le : mer. 04 déc. 2024 à 11:25
+-- Généré le : dim. 08 déc. 2024 à 18:23
 -- Version du serveur : 10.4.32-MariaDB
 -- Version de PHP : 8.2.12
 
@@ -64,8 +64,7 @@ CREATE TABLE `disponibilite` (
   `heure` time NOT NULL,
   `duree` float NOT NULL,
   `id_coach` int(11) NOT NULL,
-  `id_lieu` int(11) NOT NULL,
-  `id_reservation` int(11) NOT NULL
+  `id_lieu` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -101,8 +100,7 @@ CREATE TABLE `faq_sportif` (
 CREATE TABLE `lieu` (
   `id_lieu` int(11) NOT NULL,
   `adresse` varchar(500) NOT NULL,
-  `nombre_places_disponibles` int(11) DEFAULT NULL,
-  `id_coach` int(11) NOT NULL
+  `nombre_places_disponibles` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -145,7 +143,7 @@ CREATE TABLE `reservation` (
   `id_reservation` int(11) NOT NULL,
   `note` int(11) NOT NULL,
   `commentaire` varchar(1000) NOT NULL,
-  `disponibilite` int(11) NOT NULL,
+  `id_disponibilite` int(11) NOT NULL,
   `id_sport` int(11) NOT NULL,
   `id_sportif` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -178,10 +176,7 @@ CREATE TABLE `sportif` (
   `adresse` varchar(500) NOT NULL,
   `adresse_mail` varchar(100) NOT NULL,
   `distance_max` float NOT NULL,
-  `id_message_recue` int(11) NOT NULL,
-  `id_message_envoye` int(11) NOT NULL,
-  `id_sport` int(11) NOT NULL,
-  `id_reservation` int(11) NOT NULL
+  `id_sport` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -204,10 +199,7 @@ ALTER TABLE `coach`
 -- Index pour la table `disponibilite`
 --
 ALTER TABLE `disponibilite`
-  ADD PRIMARY KEY (`id_disponibilite`),
-  ADD KEY `id_coach` (`id_coach`),
-  ADD KEY `id_lieu` (`id_lieu`),
-  ADD KEY `id_reservation` (`id_reservation`);
+  ADD PRIMARY KEY (`id_disponibilite`);
 
 --
 -- Index pour la table `faq_coach`
@@ -225,40 +217,31 @@ ALTER TABLE `faq_sportif`
 -- Index pour la table `lieu`
 --
 ALTER TABLE `lieu`
-  ADD PRIMARY KEY (`id_lieu`),
-  ADD KEY `FOREIGN KEY` (`id_coach`);
+  ADD PRIMARY KEY (`id_lieu`);
 
 --
 -- Index pour la table `messagerie1`
 --
 ALTER TABLE `messagerie1`
-  ADD PRIMARY KEY (`id_message`),
-  ADD KEY `id_sportif` (`id_sportif`),
-  ADD KEY `id_coach` (`id_coach`);
+  ADD PRIMARY KEY (`id_message`);
 
 --
 -- Index pour la table `messagerie2`
 --
 ALTER TABLE `messagerie2`
-  ADD PRIMARY KEY (`id_message`),
-  ADD KEY `id_sportif` (`id_sportif`),
-  ADD KEY `id_coach` (`id_coach`);
+  ADD PRIMARY KEY (`id_message`);
 
 --
 -- Index pour la table `reservation`
 --
 ALTER TABLE `reservation`
-  ADD PRIMARY KEY (`id_reservation`),
-  ADD KEY `id_sport` (`id_sport`),
-  ADD KEY `id_sportif` (`id_sportif`);
+  ADD PRIMARY KEY (`id_reservation`);
 
 --
 -- Index pour la table `sport`
 --
 ALTER TABLE `sport`
-  ADD PRIMARY KEY (`id_sport`),
-  ADD KEY `id_lieu` (`id_lieu`),
-  ADD KEY `id_sportif` (`id_sportif`);
+  ADD PRIMARY KEY (`id_sport`);
 
 --
 -- Index pour la table `sportif`
@@ -335,52 +318,6 @@ ALTER TABLE `sport`
 --
 ALTER TABLE `sportif`
   MODIFY `id_sportif` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- Contraintes pour les tables déchargées
---
-
---
--- Contraintes pour la table `disponibilite`
---
-ALTER TABLE `disponibilite`
-  ADD CONSTRAINT `disponibilite_ibfk_1` FOREIGN KEY (`id_coach`) REFERENCES `coach` (`id_coach`) ON DELETE CASCADE,
-  ADD CONSTRAINT `disponibilite_ibfk_2` FOREIGN KEY (`id_lieu`) REFERENCES `lieu` (`id_lieu`) ON DELETE CASCADE,
-  ADD CONSTRAINT `disponibilite_ibfk_3` FOREIGN KEY (`id_reservation`) REFERENCES `reservation` (`id_reservation`) ON DELETE CASCADE;
-
---
--- Contraintes pour la table `lieu`
---
-ALTER TABLE `lieu`
-  ADD CONSTRAINT `FOREIGN KEY` FOREIGN KEY (`id_coach`) REFERENCES `coach` (`id_coach`) ON DELETE CASCADE;
-
---
--- Contraintes pour la table `messagerie1`
---
-ALTER TABLE `messagerie1`
-  ADD CONSTRAINT `messagerie1_ibfk_1` FOREIGN KEY (`id_sportif`) REFERENCES `sportif` (`id_sportif`) ON DELETE CASCADE,
-  ADD CONSTRAINT `messagerie1_ibfk_2` FOREIGN KEY (`id_coach`) REFERENCES `coach` (`id_coach`) ON DELETE CASCADE;
-
---
--- Contraintes pour la table `messagerie2`
---
-ALTER TABLE `messagerie2`
-  ADD CONSTRAINT `messagerie2_ibfk_1` FOREIGN KEY (`id_sportif`) REFERENCES `sportif` (`id_sportif`) ON DELETE CASCADE,
-  ADD CONSTRAINT `messagerie2_ibfk_2` FOREIGN KEY (`id_coach`) REFERENCES `coach` (`id_coach`) ON DELETE CASCADE;
-
---
--- Contraintes pour la table `reservation`
---
-ALTER TABLE `reservation`
-  ADD CONSTRAINT `reservation_ibfk_1` FOREIGN KEY (`id_sport`) REFERENCES `sport` (`id_sport`) ON DELETE CASCADE,
-  ADD CONSTRAINT `reservation_ibfk_2` FOREIGN KEY (`id_sportif`) REFERENCES `sportif` (`id_sportif`) ON DELETE CASCADE;
-
---
--- Contraintes pour la table `sport`
---
-ALTER TABLE `sport`
-  ADD CONSTRAINT `sport_ibfk_1` FOREIGN KEY (`id_lieu`) REFERENCES `lieu` (`id_lieu`) ON DELETE CASCADE,
-  ADD CONSTRAINT `sport_ibfk_2` FOREIGN KEY (`id_sportif`) REFERENCES `sportif` (`id_sportif`) ON DELETE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
