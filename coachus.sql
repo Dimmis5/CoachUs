@@ -61,8 +61,8 @@ CREATE TABLE `coach` (
 CREATE TABLE `disponibilite` (
   `id_disponibilite` int(11) NOT NULL,
   `date` date NOT NULL,
-  `heure` time NOT NULL,
-  `duree` float NOT NULL,
+  `heure_debut` time NOT NULL,
+  `heure_fin` float NOT NULL,
   `id_coach` int(11) NOT NULL,
   `id_lieu` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -99,6 +99,7 @@ CREATE TABLE `faq_sportif` (
 
 CREATE TABLE `lieu` (
   `id_lieu` int(11) NOT NULL,
+  `nom` varchar(100) NOT NULL,
   `adresse` varchar(500) NOT NULL,
   `nombre_places_disponibles` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
