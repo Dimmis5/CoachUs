@@ -34,14 +34,14 @@ input[type="text"] {
     padding-right: 100px;
 }
 .search-button {
-    position: absolute;
+    position: flex;
     right: 320px;
     top: 50%;
     transform: translateY(-50%);
     border-radius: 20px;
     padding: 10px 20px;
     border: none;
-    background-color: orange;
+    background-color: #b9d5e1;
     color: white;
 }
 .sport-button {
@@ -92,7 +92,7 @@ input[type="text"] {
 .cercle {
     width: 30px;
     height: 30px;
-    background-color: orange;
+    background-color: #529DBE;
     border-radius: 50%;
     position: absolute;
     display: flex;
@@ -152,18 +152,18 @@ input[type="text"] {
 }
 .search-button {
     position: absolute;
-    right: 1021px;
+    right: 782px;
     top: 50%;
     transform: translateY(-50%);
     border-radius: 20px;
     padding: 10px 20px;
     border: none;
-    background-color: orange;
+    background-color: #529DBE;
     color: white;
 }
 .sport-button {
     display: flex;
-    flex-direction: column;
+    flex-direction: column; 
     align-items: left;
     justify-content: left;
     padding: 20px;
@@ -181,9 +181,10 @@ input[type="text"] {
 }
 .personnage {
     position: absolute;
-    right: 0;
+    margin-right: 1px;
+    margin-left: 800px;
     bottom: 0;
-    margin: 250px;
+    margin-bottom: 100px;
 }
 .Coach {
     display: flex;
@@ -227,7 +228,7 @@ input[type="text"] {
     border-radius: 500px;
     border: 1px solid #ddd;
     width: 80px;
-    background-color: orange;
+    background-color: #529DBE;
     color: white;
     text-align: center;
 }
@@ -325,7 +326,7 @@ input[type="text"] {
     width: 1520px;
     height: 340px;
     margin-left: -20px;
-    background-color: rgb(216, 177, 47);
+    background-color: #529DBE;
 }
 
 /* CSS Pour le profil du coach */
