@@ -44,6 +44,7 @@ CREATE TABLE `administrateur` (
 CREATE TABLE `coach` (
   `id_coach` int(11) NOT NULL,
   `identifiant` varchar(100) NOT NULL,
+  `identifiant` varchar(100) NOT NULL,
   `mot_de_passe` varchar(100) NOT NULL,
   `nom` varchar(100) NOT NULL,
   `prenom` varchar(100) NOT NULL,
@@ -170,11 +171,7 @@ CREATE TABLE `sport` (
 
 CREATE TABLE `sportif` (
   `id_sportif` int(11) NOT NULL,
-<<<<<<< HEAD
-  `identifiant` varchar(100) NOT NULL,
-=======
-  `identidiant` varchar(100) NOT NULL,
->>>>>>> a1f9ebeb9e5485491c1696cceb76167a45714e69
+  `login` varchar(100) NOT NULL,
   `mot_de_passe` varchar(100) NOT NULL,
   `nom` varchar(100) NOT NULL,
   `prenom` varchar(100) NOT NULL,
