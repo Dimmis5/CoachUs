@@ -31,7 +31,7 @@
         <div class="encadrer">
             <h1> TROUVEZ LE COACH QUI VOUS CONVIENT ! </h1>
         </div>
-        <form method="POST" action="inscriptioncoach.php">
+        <form method="POST" action="Inscription du sportif.php">
             <div class="encadrer">
                 <h1 align="center"> INSCRIPTION </h1>
 
@@ -48,10 +48,6 @@
                 </div>
                 
                 <div class="search-container">
-                    <input type="text" name="numero_de_telephone" placeholder="NUMERO DE TELEPHONE"/>
-                </div>
-        
-                <div class="search-container">
                     <input type="text" name="adresse_mail" placeholder="ADRESSE MAIL"/>
                 </div>
                 
@@ -62,7 +58,9 @@
                 <div class="search-container">
                     <input type="password" name="mot_de_passe" placeholder="MOT DE PASSE"/>
                 </div>
-
+                <div class="search-container">
+                    <input type="text" name="distance_max" placeholder="DISTANCE MAX"/>
+                </div>
                 <button type="submit">S'inscrire</button>
             </div>
         </form>
