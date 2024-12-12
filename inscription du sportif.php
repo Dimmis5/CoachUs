@@ -1,6 +1,6 @@
 <?php
 
-include('C:/xampp/htdocs/CoachUsphp/connexion.php'); 
+include('connexion.php'); 
 
 $erreurs = [];
 
