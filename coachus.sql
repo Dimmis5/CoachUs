@@ -44,7 +44,6 @@ CREATE TABLE `administrateur` (
 CREATE TABLE `coach` (
   `id_coach` int(11) NOT NULL,
   `identifiant` varchar(100) NOT NULL,
-  `identifiant` varchar(100) NOT NULL,
   `mot_de_passe` varchar(100) NOT NULL,
   `nom` varchar(100) NOT NULL,
   `prenom` varchar(100) NOT NULL,
