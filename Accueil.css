@@ -1,0 +1,215 @@
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    padding: 10px;
+    font-family: Arial, sans-serif;
+}
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+button {
+    border-radius: 12px;
+    padding: 10px 20px;
+    border: none;
+    margin-left: 10px;
+}
+.text-container {
+    padding: 5px;
+    width: 200px;
+    margin-left: 150px;
+    border-radius: 30%;
+}
+.search-container {
+    position: relative;
+    display: flex;
+    justify-content: left;
+    margin-top: 20px;
+    padding-left: 50px;
+}
+input[type="text"] {
+    border-radius: 20px;
+    padding: 10px;
+    width: 300px;
+    padding-right: 100px;
+}
+.search-button {
+    position: absolute;
+    right: 1021px;
+    top: 50%;
+    transform: translateY(-50%);
+    border-radius: 20px;
+    padding: 10px 20px;
+    border: none;
+    background-color: orange;
+    color: white;
+}
+.sport-button {
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    justify-content: left;
+    padding: 20px;
+    margin-top: 20px;
+    border-radius: 500px;
+    border: 1px solid #ddd;
+    width: 500px;
+    background-color: #f9f9f9;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+}
+.sport-logo {
+    width: 30px;
+    height: 20px;
+    margin-right: 25px;
+}
+.personnage {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    margin: 250px;
+}
+.Coach {
+    display: flex;
+    justify-content: left;
+    padding: 20px;
+}
+.Coach p {
+    margin: 25px;
+    padding-right: 200px;
+}
+.profil, .profil2 {
+    display: flex;
+    justify-content: left;
+    padding: 0px;
+    margin: 0px;
+    width: 90px;
+    height: 150px;
+    gap: 155px;
+}
+.avis, .avis2 {
+    display: flex;
+    padding-left: 80px;
+    gap: 300px;
+}
+.tarif, .tarif2 {
+    display: flex;
+    gap: 320px;
+}
+.temps, .temps2 {
+    display: flex;
+    gap: 220px;
+}
+.contact-créneaux, .contact-créneaux2 {
+    display: flex;
+    justify-content: left;
+    gap: 92px;
+}
+.contact, .créneaux, .contact2, .créneaux2 {
+    padding: 10px;
+    margin: 0px;
+    border-radius: 500px;
+    border: 1px solid #ddd;
+    width: 80px;
+    background-color: orange;
+    color: white;
+    text-align: center;
+}
+.payage {
+    display: flex;
+    justify-content: left;
+    width: 0px;
+    height: 400px;
+    padding-left: 220px;
+}
+
+.overlay-container {
+    position: relative;
+    display: inline-block;
+}
+.overlay-text {
+    position: absolute;
+    top: 100%;
+    left: 70%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-size: 25px;
+    font-weight: bold;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+}
+.ville-c{
+    padding-left: 200px;
+    display: flex;
+    justify-content: left;
+    gap :220px;
+}
+.ville, .ville1, .ville2 {
+    font-size: 30px;
+    width: 150px;
+}
+
+.CGU-T{
+   font-size: 50px;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+}
+.pied{
+    padding-top: 40px;
+    display: inline-block;
+    position: absolute;
+    display: flex;
+    gap: 250px;
+}
+.barre hr {
+    border: none;
+    border-top: 1px solid black; 
+    width: 2%; 
+    margin-left: 250px;  
+    display: flex;
+    margin-top: 80px;
+
+}
+.barre1 hr {
+    border: none;
+    border-top: 1px solid black; 
+    width: 2%; 
+    margin-left: 665px;  
+    display: flex;
+    margin-top: -8px;
+
+}
+.barre2 hr {
+    border: none;
+    border-top: 1px solid black; 
+    width: 2%; 
+    margin-left: 1083px;  
+    display: flex;
+    margin-top: -8px;
+
+}
+.client{
+    font-size: 13px;
+    margin-left: 250px;
+}
+.client1{
+    font-size: 13px ;
+    margin-left: 665px;
+    position: relative;
+    margin-top: -140px;
+}
+.client2{
+    font-size: 13px ;
+    margin-left: 1083px;
+    position: relative;
+    margin-top: -45px;
+}
+.Bas{
+    margin-top: 1px;
+    width: 1520px;
+    height: 340px;
+    margin-left: -20px;
+    background-color: rgb(216, 177, 47);
+}
