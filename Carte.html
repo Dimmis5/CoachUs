@@ -10,7 +10,28 @@
     <style>
         #map {
             height: 500px;
-            width: 100%;
+            width: 60%;
+            display: inline-block;
+        }
+        #locations {
+            height: 500px;
+            width: 35%;
+            display: inline-block;
+            vertical-align: top;
+            overflow-y: auto;
+            padding: 10px;
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+        }
+        .location-item {
+            margin-bottom: 20px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .location-item:hover {
+            background-color: #f1f1f1;
         }
     </style>
 </head>
@@ -18,20 +39,21 @@
     <div class="header-container">
         <h1 align="left">COACHUS</h1>
         <div align="right" class="button-container">
-            <button> <a href="FAQ.html"> ? </a> </button>
-            <button> <a href="connexionsportif.html"> JE VEUX UN COACH </a> </button>
-            <button> <a href="connexioncoach.html"> JE SUIS COACH </a> </button>
-            <button> <a href="Accueil.html"> ACCUEIL </a> </button>
+            <button><a href="FAQ.html"> ? </a></button>
+            <button><a href="connexionsportif.html"> JE VEUX UN COACH </a></button>
+            <button><a href="connexioncoach.html"> JE SUIS COACH </a></button>
+            <button><a href="Accueil.html"> ACCUEIL </a></button>
         </div>
     </div>
 
     <div class="container">
         <div class="encadrer">
             <h1>Carte des Séances de Sport</h1>
-            <p>Sur cette carte, vous pouvez visualiser les lieux où se déroulent nos séances de sport. Cliquez sur un marqueur pour en savoir plus sur chaque emplacement.</p>
+            <p>Sur cette carte, vous pouvez visualiser les lieux où se déroulent nos séances de sport. Cliquez sur un marqueur ou une adresse pour en savoir plus.</p>
             
-            <!-- Carte interactive -->
+            <!-- Carte interactive et liste des emplacements -->
             <div id="map"></div>
+            <div id="locations"></div>
         </div>
     </div>
 
@@ -46,18 +68,29 @@
             attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         }).addTo(map);
 
-        // Marqueurs pour les lieux de séances de sport
+        // Données des lieux
         var locations = [
-            {lat: 48.8566, lon: 2.3522, title: "Séance 1 - Paris Centre", description: "Séance de sport à 10h"},
-            {lat: 48.8708, lon: 2.3099, title: "Séance 2 - Paris Ouest", description: "Séance de sport à 14h"},
-            {lat: 48.8738, lon: 2.2950, title: "Séance 3 - Paris Est", description: "Séance de sport à 18h"}
+            {lat: 48.8566, lon: 2.3522, title: "Séance 1 - Paris Centre", description: "Séance de sport à 10h", address: "Place de l'Hôtel de Ville, 75004 Paris"},
+            {lat: 48.8708, lon: 2.3099, title: "Séance 2 - Paris Ouest", description: "Séance de sport à 14h", address: "Avenue des Champs-Élysées, 75008 Paris"},
+            {lat: 48.8738, lon: 2.2950, title: "Séance 3 - Paris Est", description: "Séance de sport à 18h", address: "Rue de Rivoli, 75001 Paris"}
         ];
 
-        // Ajout des marqueurs à la carte
-        locations.forEach(function(location) {
-            L.marker([location.lat, location.lon])
-                .addTo(map)
+        // Ajouter les marqueurs et la liste
+        var locationsContainer = document.getElementById('locations');
+        locations.forEach(function(location, index) {
+            // Ajouter un marqueur sur la carte
+            var marker = L.marker([location.lat, location.lon]).addTo(map)
                 .bindPopup("<b>" + location.title + "</b><br>" + location.description);
+
+            // Ajouter un élément dans la liste des emplacements
+            var locationDiv = document.createElement('div');
+            locationDiv.className = 'location-item';
+            locationDiv.innerHTML = `<b>${location.title}</b><br>${location.address}<br>${location.description}`;
+            locationDiv.onclick = function() {
+                map.setView([location.lat, location.lon], 14);
+                marker.openPopup();
+            };
+            locationsContainer.appendChild(locationDiv);
         });
     </script>
 
