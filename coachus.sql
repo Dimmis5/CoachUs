@@ -170,14 +170,12 @@ CREATE TABLE `sport` (
 
 CREATE TABLE `sportif` (
   `id_sportif` int(11) NOT NULL,
-  `identidiant` varchar(100) NOT NULL,
+  `login` varchar(100) NOT NULL,
   `mot_de_passe` varchar(100) NOT NULL,
   `nom` varchar(100) NOT NULL,
   `prenom` varchar(100) NOT NULL,
   `adresse` varchar(500) NOT NULL,
-  `adresse_mail` varchar(100) NOT NULL,
-  `distance_max` float NOT NULL,
-  `id_sport` int(11) NOT NULL
+  `adresse_mail` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
