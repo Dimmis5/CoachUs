@@ -40,7 +40,7 @@
                     </div>
                     <p class="encadrer-connexion"> CONNEXION AVEC GOOGLE </p>
                     <p class="encadrer-connexion"> CONNEXION AVEC FACEBOOK </p>
-                    <a href="C:/xampp/htdocs/CoachUsphp/inscriptions.php" class="encadrer-connexion">INSCRIPTION  </a>
+                    <a href="inscriptioncoach.php" class="encadrer-connexion">INSCRIPTION  </a>
                 </div>
             </form>
         </div>

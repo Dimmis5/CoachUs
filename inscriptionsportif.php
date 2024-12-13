@@ -58,9 +58,6 @@
                 <div class="search-container">
                     <input type="password" name="mot_de_passe" placeholder="MOT DE PASSE"/>
                 </div>
-                <div class="search-container">
-                    <input type="text" name="distance_max" placeholder="DISTANCE MAX"/>
-                </div>
                 <button type="submit">S'inscrire</button>
             </div>
         </form>

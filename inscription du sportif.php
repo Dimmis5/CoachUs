@@ -11,7 +11,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $adresse_mail = trim($_POST['adresse_mail']);
     $identifiant = trim($_POST['identifiant']);
     $mot_de_passe = trim($_POST['mot_de_passe']);
-    $distance_max = trim($_POST['distance_max']);
     
     if (empty($nom)) {
         $erreurs[] = "Le nom est requis.";
@@ -39,9 +38,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (empty($erreurs)) {
         $mot_de_passe_hash = password_hash($mot_de_passe, PASSWORD_DEFAULT);
 
-        $stmt = $conn->prepare("INSERT INTO sportif (nom, prenom, adresse, adresse_mail, identifiant, mot_de_passe, distance_max) VALUES (?, ?, ?, ?, ?, ?, ?)");
+        $stmt = $conn->prepare("INSERT INTO sportif (nom, prenom, adresse, adresse_mail, identifiant, mot_de_passe) VALUES (?, ?, ?, ?, ?, ?)");
 
-        $stmt->bind_param("sssssss", $nom, $prenom, $adresse, $adresse_mail, $identifiant, $mot_de_passe_hash, $distance_max);
+        $stmt->bind_param("sssssss", $nom, $prenom, $adresse, $adresse_mail, $identifiant, $mot_de_passe_hash);
 
         if ($stmt->execute()) {
             echo "Inscription réussie !";
