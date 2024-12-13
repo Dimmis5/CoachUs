@@ -28,11 +28,12 @@
                 <div class="encadrer">
                     <h1 align="center"> CONNEXION </h1>
                     <div class="search-container">
-                        <input type="text" placeholder="EMAIL"/>
+                        <input type="text" placeholder="IDENTIFIANT"/>
                     </div>
                     <div class="search-container">
                         <input type="password" placeholder="MOT DE PASSE"/>
-                    </div>
+                    </div><br>
+                    <button><a> Connecter </a></button>
                     <div class="rectangle">
                         <div class="cercle"> 
                             <span> OU </span>
@@ -40,7 +41,7 @@
                     </div>
                     <p class="encadrer-connexion"> CONNEXION AVEC GOOGLE </p>
                     <p class="encadrer-connexion"> CONNEXION AVEC FACEBOOK </p>
-                    <a href="inscriptioncoach.php" class="encadrer-connexion">INSCRIPTION  </a>
+                    <button><a href="inscriptions.php">INSCRIPTION  </a> </button>
                 </div>
             </form>
         </div>
