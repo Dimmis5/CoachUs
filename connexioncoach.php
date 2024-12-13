@@ -41,7 +41,7 @@
                     </div>
                     <p class="encadrer-connexion"> CONNEXION AVEC GOOGLE </p>
                     <p class="encadrer-connexion"> CONNEXION AVEC FACEBOOK </p>
-                    <button><a href="inscriptions.php">INSCRIPTION  </a> </button>
+                    <button><a href="inscriptioncoach.php">INSCRIPTION  </a> </button>
                 </div>
             </form>
         </div>
