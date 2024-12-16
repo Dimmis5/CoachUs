@@ -66,6 +66,84 @@ CREATE TABLE `lieu` (
   `nombre_places_disponibles` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+<<<<<<< Updated upstream
+=======
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `messagerie1`
+--
+
+CREATE TABLE `messagerie1` (
+  `id_message` int(11) NOT NULL,
+  `date` date NOT NULL,
+  `heure` time NOT NULL,
+  `contenu` varchar(10000) DEFAULT NULL,
+  `id_sportif` int(11) NOT NULL,
+  `id_coach` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `messagerie2`
+--
+
+CREATE TABLE `messagerie2` (
+  `id_message` int(11) NOT NULL,
+  `date` date NOT NULL,
+  `heure` time NOT NULL,
+  `contenu` varchar(10000) DEFAULT NULL,
+  `id_sportif` int(11) NOT NULL,
+  `id_coach` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `reservation`
+--
+
+CREATE TABLE `reservation` (
+  `id_reservation` int(11) NOT NULL,
+  `note` int(11) NOT NULL,
+  `commentaire` varchar(1000) NOT NULL,
+  `id_disponibilite` int(11) NOT NULL,
+  `id_sport` int(11) NOT NULL,
+  `id_sportif` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `sport`
+--
+
+CREATE TABLE `sport` (
+  `id_sport` int(11) NOT NULL,
+  `nom` varchar(100) NOT NULL,
+  `id_lieu` int(11) NOT NULL,
+  `id_sportif` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `sportif`
+--
+
+CREATE TABLE `sportif` (
+  `id_sportif` int(11) NOT NULL,
+  `identifiant` varchar(100) NOT NULL,
+  `mot_de_passe` varchar(100) NOT NULL,
+  `nom` varchar(100) NOT NULL,
+  `prenom` varchar(100) NOT NULL,
+  `adresse` varchar(500) NOT NULL,
+  `adresse_mail` varchar(100) NOT NULL,
+  `numero_de_telephone` varchar(10) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+>>>>>>> Stashed changes
 --
 -- Index pour les tables déchargées
 --
