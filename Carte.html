@@ -3,59 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Carte Interactive - Lieux de Sport en Île-de-France</title>
+    <title> Carte Interactive - Lieux de Sport en Île-de-France </title>
     <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-        }
-        #map {
-            height: 500px;
-            width: 60%;
-            display: inline-block;
-        }
-        #locations {
-            height: 500px;
-            width: 35%;
-            display: inline-block;
-            vertical-align: top;
-            overflow-y: auto;
-            padding: 10px;
-            background-color: #f9f9f9;
-            border: 1px solid #ddd;
-        }
-        .location-item {
-            margin-bottom: 20px;
-            padding: 10px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-        .location-item:hover {
-            background-color: #f1f1f1;
-        }
-    </style>
+    <link rel="stylesheet" href="carte.css" />
 </head>
 <body>
-    <h1>Carte des Lieux de Sport en Île-de-France</h1>
-    <p>Explorez les lieux où vous pouvez faire du sport en Île-de-France et découvrez le nombre de places disponibles.</p>
+    <div class="logo"></div>
+
+    <div class="header-container">
+        <img class="logo" src="CoachUs Text.png" alt="logo" width="250" height="75" />
+        <div align="right" class="button-container">
+            <button> <a href="FAQ.html"> ?</a>  </button>
+            <button> <a href="connexionsportif.html"> JE VEUX UN COACH </a> </button>
+            <button> <a href="connexioncoach.html"> JE SUIS COACH  </a></button>
+            <button> <a href="Accueil.html"> ACCUEIL </a></button>
+        </div>
+    </div>
+    <h1> CARTES DES LIEUX A VOTRE DISPOSITION </h1>
     
-    <!-- Carte interactive et liste des lieux -->
     <div id="map"></div>
     <div id="locations"></div>
 
-    <!-- Intégration de Leaflet.js pour la carte interactive -->
     <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
     <script>
-        // Initialisation de la carte
-        var map = L.map('map').setView([48.8566, 2.3522], 10); // Coordonnées pour Île-de-France
+        var map = L.map('map').setView([48.8566, 2.3522], 10);
 
-        // Ajout du fond de carte OpenStreetMap
         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
             attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         }).addTo(map);
 
-        // Liste des lieux réels en Île-de-France
         var locations = [
             { lat: 48.8566, lon: 2.3522, title: "Gymnase Jean Bouin", description: "Salle de sport moderne.", address: "Place de l'Hôtel de Ville, 75004 Paris", places: 50 },
             { lat: 48.8014, lon: 2.1301, title: "Piscine Montbauron", description: "Piscine et gymnase.", address: "Rue des Réservoirs, 78000 Versailles", places: 40 },
@@ -74,16 +50,12 @@
             { lat: 48.9085, lon: 2.4653, title: "Piscine Rosa Parks", description: "Piscine publique moderne.", address: "Rue Gaston Tessier, 75019 Paris", places: 50 }
         ];
 
-        // Conteneur pour afficher les lieux
         var locationsContainer = document.getElementById('locations');
 
-        // Ajouter les lieux à la carte et à la liste
         locations.forEach(function(location) {
-            // Ajouter un marqueur sur la carte
             var marker = L.marker([location.lat, location.lon]).addTo(map)
                 .bindPopup(`<b>${location.title}</b><br>${location.description}<br>Adresse: ${location.address}<br>Places disponibles: ${location.places}`);
 
-            // Ajouter un élément dans la liste
             var locationDiv = document.createElement('div');
             locationDiv.className = 'location-item';
             locationDiv.innerHTML = `
@@ -99,5 +71,50 @@
             locationsContainer.appendChild(locationDiv);
         });
     </script>
+    <footer>
+        <div class="footer-container">
+            <div class="footer-column">
+                <h3>Nos Services</h3>
+                <ul>
+                    <li><a href="#"> Service clientèle </a></li>
+                    <li><a href="#"> Réglement intérieur </a></li>
+                    <li><a href="#"> Heure d'ouverture </a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>À propos</h3>
+                <ul>
+                    <li><a href="#"> Notre Histoire </a></li>
+                    <li><a href="#"> Mentions Légales </a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Nos Lieux</h3>
+                <ul>
+                    <li><a href="Carte.html"> Aubervilliers </a></li>
+                    <li><a href="Carte.html"> Boulogne-Billancourt </a></li>
+                    <li><a href="Carte.html"> Châtillon </a></li>
+                    <li><a href="Carte.html"> Colombes </a></li>
+                    <li><a href="Carte.html"> Courbevoie </a></li>
+                    <li><a href="Carte.html"> Créteil </a></li>
+                    <li><a href="Carte.html"> Issy-les-Moulineaux </a></li>
+                    <li><a href="Carte.html"> Massy </a></li>
+                    <li><a href="Carte.html"> Meudon </a></li>
+                    <li><a href="Carte.html"> Paris </a></li>
+                    <li><a href="Carte.html"> Versailles </a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Nous Contacter</h3>
+                <ul>
+                    <li> support@coachus.com </li>
+                    <li><a href="FAQ.html"> FAQ </a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 COACHUS. Tous droits réservés.</p>
+        </div>
+    </footer>
 </body>
 </html>

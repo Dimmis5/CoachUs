@@ -150,66 +150,91 @@ input[type="text"] {
     width: 150px;
 }
 
-.CGU-T{
-   font-size: 50px;
-   display: flex;
-   justify-content: center;
-   align-items: center;
+footer {
+    background-color: #333;
+    color: #fff;
+    padding: 30px 0;
+    font-family: 'Arial', sans-serif;
 }
-.pied{
-    padding-top: 40px;
-    display: inline-block;
-    position: absolute;
-    display: flex;
-    gap: 250px;
-}
-.barre hr {
-    border: none;
-    border-top: 1px solid black; 
-    width: 2%; 
-    margin-left: 250px;  
-    display: flex;
-    margin-top: 80px;
 
+.footer-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); 
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
 }
-.barre1 hr {
-    border: none;
-    border-top: 1px solid black; 
-    width: 2%; 
-    margin-left: 665px;  
-    display: flex;
-    margin-top: -8px;
 
-}
-.barre2 hr {
-    border: none;
-    border-top: 1px solid black; 
-    width: 2%; 
-    margin-left: 1083px;  
-    display: flex;
-    margin-top: -8px;
 
+.footer-column h3 {
+    font-size: 18px;
+    margin-bottom: 10px;
+    color: #f39c12;
+    border-bottom: 2px solid #f39c12;
+    padding-bottom: 5px;
 }
-.client{
-    font-size: 13px;
-    margin-left: 250px;
+
+.footer-column ul {
+    list-style: none;
+    padding: 0;
 }
-.client1{
-    font-size: 13px ;
-    margin-left: 665px;
-    position: relative;
-    margin-top: -140px;
+
+.footer-column:nth-child(3) ul {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
 }
-.client2{
-    font-size: 13px ;
-    margin-left: 1083px;
-    position: relative;
-    margin-top: -45px;
+
+.footer-column a {
+    text-decoration: none;
+    color: #fff;
+    font-size: 16px;
+    display: block;
+    margin-bottom: 10px;
+    transition: color 0.3s;
 }
-.Bas{
-    margin-top: 1px;
-    width: 1520px;
-    height: 340px;
-    margin-left: -20px;
-    background-color: rgb(216, 177, 47);
+
+.footer-column a:hover {
+    color: #f39c12;
+}
+
+.footer-bottom {
+    text-align: center;
+    margin-top: 40px;
+    font-size: 14px;
+}
+
+.footer-links {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.footer-links a {
+    text-decoration: none;
+    color: #fff;
+    font-size: 14px;
+    transition: color 0.3s;
+}
+
+.footer-links a:hover {
+    color: #f39c12;
+}
+
+@media (max-width: 768px) {
+    .footer-container {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+
+    .footer-column {
+        margin-bottom: 20px;
+    }
+
+    .footer-column ul {
+        grid-template-columns: 1fr;
+    }
 }

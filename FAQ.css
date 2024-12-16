@@ -57,32 +57,6 @@ button:hover {
     background-color: #ff6347;
 }
 
-input[type="text"], input[type="password"], input[type="date"], input[type="time"], select {
-    border-radius: 12px;
-    padding: 12px;
-    width: 400px;
-    margin-bottom: 20px;
-    border: 1px solid #dcdcdc;
-    font-size: 1rem;
-    font-family: 'Poppins', sans-serif;
-    background-color: #fff8f0;
-    color: #333;
-    box-sizing: border-box;
-    transition: all 0.3s;
-}
-
-select {
-    background-color: #fff;
-    background-position: right 10px center;
-    padding-right: 40px;
-}
-
-input[type="text"]:focus, input[type="password"]:focus, input[type="date"]:focus, input[type="time"]:focus,
-select:focus {
-    border-color: #ff7f50;
-    outline: none;
-}
-
 footer {
     background-color: #333;
     color: #fff;
