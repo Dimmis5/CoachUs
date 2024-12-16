@@ -63,9 +63,13 @@ button:hover {
 }
 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 input[type="text"], input[type="password"], input[type="date"], input[type="time"], select {
 =======
 input[type="text"], input[type="password"]{
+>>>>>>> Stashed changes
+=======
+input[type="text"], input[type="password"] {
 >>>>>>> Stashed changes
     border-radius: 12px;
     padding: 12px;
