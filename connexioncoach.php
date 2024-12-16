@@ -4,6 +4,16 @@
         <title> Connexion du coach </title>
         <link rel="stylesheet" href="connexion.css">
     </head>
+
+    <?php
+    if (!empty($erreurs)) {
+        echo "<ul>";
+        foreach ($erreurs as $erreur) {
+            echo "<li>" . $erreur . "</li>";
+        }
+        echo "</ul>";
+    }
+?>
     <body>
         <div class="header-container">
             <h1 align="left"> COACHUS </h1>
@@ -24,23 +34,21 @@
                 <p> Vous êtes étudiant, professionnel, passionné ou diplômé ? Inscrivez-vous dès maintenant et commencez à coacher sur notre plateforme ! </p>
                 <p> </p>
             </div>
-            <form>
+            <form method="POST" action="requete_connexioncoach.php">
                 <div class="encadrer">
                     <h1 align="center"> CONNEXION </h1>
                     <div class="search-container">
-                        <input type="text" placeholder="IDENTIFIANT"/>
+                        <input type="text" name="identifiant" placeholder="IDENTIFIANT"/>
                     </div>
                     <div class="search-container">
-                        <input type="password" placeholder="MOT DE PASSE"/>
+                        <input type="password" name="mot_de_passe" placeholder="MOT DE PASSE"/>
                     </div><br>
-                    <button><a> Connecter </a></button>
+                    <button> CONNEXION </button>
                     <div class="rectangle">
                         <div class="cercle"> 
                             <span> OU </span>
                         </div>
                     </div>
-                    <p class="encadrer-connexion"> CONNEXION AVEC GOOGLE </p>
-                    <p class="encadrer-connexion"> CONNEXION AVEC FACEBOOK </p>
                     <button><a href="inscriptioncoach.php">INSCRIPTION  </a> </button>
                 </div>
             </form>

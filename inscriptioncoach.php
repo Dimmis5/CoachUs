@@ -43,7 +43,7 @@
         <p>Rejoignez-nous dès aujourd'hui et faites grandir votre activité de coach !</p>
 
         </div>
-        <form method="POST" action="requete_inscription.php">
+        <form method="POST" action="requete_inscriptioncoach.php">
             <div class="encadrer">
                 <h1 align="center"> INSCRIPTION </h1>
 

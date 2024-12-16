@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title> INSCRIPTION </title>
     <link rel="stylesheet" href="inscription.css">
+
 </head>
 
 <?php
@@ -24,14 +25,17 @@
             <button> <a href="FAQ.html"> ? </a> </button>
             <button> <a href="connexionsportif.html"> JE VEUX UN COACH </a> </button>
             <button> <a href="connexioncoach.html"> JE SUIS COACH </a> </button>
+            <button> <a href="accueil.html"> ACCUEIL </a> </button>
         </div>
     </div>
     <p> </p>
-    <div class='container'>
+    <div class='containerinscription'>
         <div class="encadrer">
-            <h1> TROUVEZ LE COACH QUI VOUS CONVIENT ! </h1>
+        <h1> Salut ! je suis le deuxieme caca ! </h1>
+
+
         </div>
-        <form method="POST" action="Inscription du sportif.php">
+        <form method="POST" action="requete_inscriptionsportif.php">
             <div class="encadrer">
                 <h1 align="center"> INSCRIPTION </h1>
 
@@ -48,6 +52,10 @@
                 </div>
                 
                 <div class="search-container">
+                    <input type="text" name="numero_de_telephone" placeholder="NUMERO DE TELEPHONE"/>
+                </div>
+        
+                <div class="search-container">
                     <input type="text" name="adresse_mail" placeholder="ADRESSE MAIL"/>
                 </div>
                 
@@ -58,7 +66,8 @@
                 <div class="search-container">
                     <input type="password" name="mot_de_passe" placeholder="MOT DE PASSE"/>
                 </div>
-                <button type="submit">S'inscrire</button>
+
+                <button type="submit"> S'INSCRIRE </button>
             </div>
         </form>
     </div>

@@ -1,9 +1,19 @@
 <!DOCTYPE html>
 <html>  
     <head>
-        <title> Connexion du sportif</title>
-        <link rel="stylesheet" href="style.css">
+        <title> Connexion du coach </title>
+        <link rel="stylesheet" href="connexion.css">
     </head>
+
+    <?php
+    if (!empty($erreurs)) {
+        echo "<ul>";
+        foreach ($erreurs as $erreur) {
+            echo "<li>" . $erreur . "</li>";
+        }
+        echo "</ul>";
+    }
+?>
     <body>
         <div class="header-container">
             <h1 align="left"> COACHUS </h1>
@@ -11,35 +21,30 @@
                 <button> <a href="FAQ.html"> ? </a> </button>
                 <button> <a href="connexionsportif.html"> JE VEUX UN COACH </a> </button>
                 <button> <a href="connexioncoach.html"> JE SUIS COACH </a> </button>
-                <button> <a href="Accueil.html"> ACCEUIL </a></button>
             </div>
         </div>
         <p> </p>
         <div class='container'>
             <div class="encadrer">
-                <h1> TROUVEZ LE COACH QUI VOUS CONVIENT ! </h1>
-                <p> Que vous soyez débutant, intermédiare ou expert, Inscrivez-vous dès maintenant ! </p>
-                <p> Plannifier vous-même votre séance de sport</p>
-                <p> Progresse avec un coach qui vous correspond </p>
-                <p> Suivez votre propre progresse au fil du temps </p> 
-                <p> </p>
+               <h1>Salut : je suis un caca</h1>
+                
             </div>
-            <form>
+            <form method="POST" action="requete_connexionsportif.php">
                 <div class="encadrer">
                     <h1 align="center"> CONNEXION </h1>
                     <div class="search-container">
-                        <input type="text" placeholder="Nom d'utilisateur"/>
+                        <input type="text" name="identifiant" placeholder="IDENTIFIANT"/>
                     </div>
                     <div class="search-container">
-                        <input type="password" placeholder="MOT DE PASSE"/>
-                    </div>
+                        <input type="password" name="mot_de_passe" placeholder="MOT DE PASSE"/>
+                    </div><br>
+                    <button><a> CONNEXION </a></button>
                     <div class="rectangle">
                         <div class="cercle"> 
                             <span> OU </span>
                         </div>
                     </div>
-                    <p class="encadrer-connexion"> CONNEXION AVEC GOOGLE </p>
-                    <p class="encadrer-connexion"> CONNEXION AVEC FACEBOOK </p>
+                    <button><a href="inscriptionsportif.php">INSCRIPTION  </a> </button>
                 </div>
             </form>
         </div>

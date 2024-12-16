@@ -2,7 +2,7 @@
 <html>
 <head>
     <title>Profil du coach</title>
-    <link rel="stylesheet" href="profilducoach.css">
+    <link rel="stylesheet" href="style.css">
     <style>
         
         .horaires-container {
