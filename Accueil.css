@@ -1,154 +1,133 @@
 body {
     display: flex;
     flex-direction: column;
-    align-items: stretch;
     padding: 10px;
-    font-family: Arial, sans-serif;
+    font-family: 'Poppins', sans-serif;
+    color: #333;
+    margin: 0;
 }
+
 .header-container {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 20px;
-}
-button {
-    border-radius: 12px;
-    padding: 10px 20px;
+    margin-bottom: 10px;
     border: none;
-    margin-left: 10px;
 }
-.text-container {
-    padding: 5px;
-    width: 200px;
-    margin-left: 150px;
-    border-radius: 30%;
+
+button {
+    border-radius: 25px;
+    padding: 8px 15px;
+    border: none;
+    background-color: #ff7f50;
+    color: white;
+    font-size: 1rem;
+    font-family: 'Poppins', sans-serif;
+    transition: background-color 0.3s;
+}
+
+button a {
+    text-decoration: none;
+    color: white;
+}
+
+button:hover {
+    background-color: #ff6347;
+}
+h1{
+    font-family: 'Poppins',sans-serif;
+    color: black;
+    text-align: center;
+    margin-bottom: 20px;   
+    font-size: 70px;
 }
 .search-container {
     position: relative;
     display: flex;
-    justify-content: left;
+    justify-content: center;
     margin-top: 20px;
-    padding-left: 50px;
 }
 input[type="text"] {
-    border-radius: 20px;
-    padding: 10px;
-    width: 300px;
+    border-radius: 70px;
+    padding: 17px;
+    width: 480px;
     padding-right: 100px;
 }
 .search-button {
     position: absolute;
-    right: 1021px;
+    right: 470px;
     top: 50%;
     transform: translateY(-50%);
     border-radius: 20px;
     padding: 10px 20px;
     border: none;
-    background-color: orange;
-    color: white;
-}
-.sport-button {
-    display: flex;
-    flex-direction: column;
-    align-items: left;
-    justify-content: left;
-    padding: 20px;
-    margin-top: 20px;
-    border-radius: 500px;
-    border: 1px solid #ddd;
-    width: 500px;
-    background-color: #f9f9f9;
-    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
-}
-.sport-logo {
-    width: 30px;
-    height: 20px;
-    margin-right: 25px;
-}
-.personnage {
-    position: absolute;
-    right: 0;
-    bottom: 0;
-    margin: 250px;
-}
-.Coach {
-    display: flex;
-    justify-content: left;
-    padding: 20px;
-}
-.Coach p {
-    margin: 25px;
-    padding-right: 200px;
-}
-.profil, .profil2 {
-    display: flex;
-    justify-content: left;
-    padding: 0px;
-    margin: 0px;
-    width: 90px;
-    height: 150px;
-    gap: 155px;
-}
-.avis, .avis2 {
-    display: flex;
-    padding-left: 80px;
-    gap: 300px;
-}
-.tarif, .tarif2 {
-    display: flex;
-    gap: 320px;
-}
-.temps, .temps2 {
-    display: flex;
-    gap: 220px;
-}
-.contact-créneaux, .contact-créneaux2 {
-    display: flex;
-    justify-content: left;
-    gap: 92px;
-}
-.contact, .créneaux, .contact2, .créneaux2 {
-    padding: 10px;
-    margin: 0px;
-    border-radius: 500px;
-    border: 1px solid #ddd;
-    width: 80px;
-    background-color: orange;
-    color: white;
-    text-align: center;
-}
-.payage {
-    display: flex;
-    justify-content: left;
-    width: 0px;
-    height: 400px;
-    padding-left: 220px;
+    background-color: f0e7d1;
+    color: white ;
+
 }
 
-.overlay-container {
-    position: relative;
-    display: inline-block;
-}
-.overlay-text {
-    position: absolute;
-    top: 100%;
-    left: 70%;
-    transform: translate(-50%, -50%);
-    color: white;
-    font-size: 25px;
-    font-weight: bold;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
-}
-.ville-c{
-    padding-left: 200px;
+.sport-button {
     display: flex;
-    justify-content: left;
-    gap :220px;
+    justify-content: center;
+    align-items: center;
+    margin: auto ;
+    padding: 20px;
+    border: 1px solid #ddd;
+    width: 500px;
+    background-color: #08989a;
+    border-radius: 500px;
+    
+
 }
-.ville, .ville1, .ville2 {
-    font-size: 30px;
-    width: 150px;
+
+body, html {
+    margin: 0;
+    padding: 0;
+    width: 100%;
 }
+.top-section {
+    background: linear-gradient(to bottom, #B8C5D6, #FFDFA7);
+    height: 65vh;
+    width: 100%;
+    border-bottom-left-radius: 50px;
+    border-bottom-right-radius: 50px;
+    
+}
+
+.personnage {
+    display: flex;
+    justify-content: center;
+    gap: 155px;
+}
+
+.prénom{
+    display: flex;
+    margin-left: 380px;
+    gap: 210px;
+}
+.avis{
+    display: flex;
+    margin-left: 380px;
+    gap: 270px;
+}
+
+.tarif{
+    display: flex;
+    margin-left: 380px;
+    gap: 265px;
+}
+.temps{
+    display: flex;
+    margin-left: 380px;
+    gap : 165px;
+}
+
+.créneaux-contact{
+    display: flex;
+    margin-left: 380px;
+    gap: 50px;
+}
+
 
 footer {
     background-color: #333;
