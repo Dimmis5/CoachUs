@@ -66,7 +66,7 @@
     <div class="container">
         <h1>Réservation de Créneaux</h1>
 
-        <!-- Mardi 1 Octobre -->
+        
         <div class="day-section">
             <h2>Mardi 1 Octobre</h2>
             <?php
@@ -81,7 +81,7 @@
             ?>
         </div>
 
-        <!-- Mercredi 2 Octobre -->
+
         <div class="day-section">
             <h2>Mercredi 2 Octobre</h2>
             <?php
