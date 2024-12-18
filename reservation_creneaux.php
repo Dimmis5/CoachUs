@@ -10,108 +10,141 @@ if ($conn->connect_error) {
     die("Erreur de connexion : " . $conn->connect_error);
 }
 
-// Récupérer les créneaux réservés depuis la base de données
+// Récupérer les créneaux réservés
 $reserved_slots = [];
 $result = $conn->query("SELECT creneau FROM reservations_new");
 if ($result && $result->num_rows > 0) {
     while ($row = $result->fetch_assoc()) {
-        $reserved_slots[] = $row['creneau']; // Ajouter les créneaux réservés dans un tableau
+        $reserved_slots[] = $row['creneau'];
     }
 }
 
-// Définition des créneaux disponibles
-$creneaux_mardi = ['07:30', '10:00', '14:00', '15:00', '16:00', '18:00'];
-$creneaux_mercredi = ['07:30', '10:00', '14:00', '15:00', '16:00', '18:00'];
+// Créneaux disponibles
+$creneaux = ['07:30', '10:00', '14:00', '15:00', '16:00', '18:00'];
 ?>
 
 <!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Réservation de Créneaux</title>
+    <title>COACHUS</title>
     <style>
         body {
+            font-family: Arial, sans-serif;
             margin: 0;
-            font-family: 'Arial', sans-serif;
             background: linear-gradient(to bottom, #B8C5D6, #FFDFA7);
             display: flex;
             justify-content: center;
             align-items: center;
             min-height: 100vh;
-            text-align: center;
-            color: #333;
         }
 
         .container {
-            width: 90%;
-            max-width: 800px;
-            background-color: #ffffff;
+            background-color: #FFF;
             border-radius: 20px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             padding: 20px;
+            text-align: center;
+            max-width: 900px;
+            width: 90%;
         }
 
-        h1, h2 {
-            margin: 20px 0;
+        h1 {
+            font-size: 2.5em;
+            font-weight: bold;
+            color: #F4A940;
+        }
+
+        h1 span {
+            color: #3C4858;
+        }
+
+        h2 {
+            margin-bottom: 20px;
             color: #333;
         }
 
         .day-section {
             background-color: #FFF7E5;
-            padding: 20px;
             border-radius: 15px;
-            margin-bottom: 20px;
+            padding: 20px;
+            margin: 20px 0;
         }
 
         .slot-form {
             display: inline-block;
             margin: 5px;
+            position: relative;
         }
 
         .slot {
             background-color: #FFEDC1;
+            padding: 15px 30px;
             border: none;
-            padding: 10px 20px;
             border-radius: 10px;
-            font-size: 1.2em;
+            font-size: 1em;
             font-weight: bold;
+            color: #333;
             cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s ease-in-out;
         }
 
         .slot:hover {
-            background-color: #FFD480;
             transform: scale(1.05);
         }
 
         .slot.reserved {
-            background-color: #D3D3D3; /* Gris clair pour les créneaux réservés */
+            background-color: #D3D3D3;
             color: #A0A0A0;
             cursor: not-allowed;
-            box-shadow: none; /* Retirer l'ombre pour les créneaux grisés */
+        }
+
+        .cancel-button {
+            display: none;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #FF6B6B;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .slot-form:hover .cancel-button {
+            display: block;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1 style="font-size: 2.5em; font-weight: bold; color: #F4A940;">COACH<span style="color: #3C4858;">US</span> </h1>
+        <h1>COACH<span>US</span></h1>
 
         <!-- Mardi 1 Octobre -->
         <div class="day-section">
             <h2>Mardi 1 Octobre</h2>
             <?php
-            foreach ($creneaux_mardi as $heure) {
+            foreach ($creneaux as $heure) {
                 $full_slot = "Mardi 1 Octobre - $heure";
-                $is_reserved = in_array($full_slot, $reserved_slots) ? 'reserved' : '';
-                echo '
-                    <form action="reservation.php" method="POST" class="slot-form">
-                        <input type="hidden" name="creneau" value="' . $full_slot . '">
-                        <button type="submit" class="slot ' . $is_reserved . '" ' . ($is_reserved ? 'disabled' : '') . '>
-                            ' . $heure . '
-                        </button>
-                    </form>';
+                if (in_array($full_slot, $reserved_slots)) {
+                    echo '
+                        <form method="POST" action="reservation.php" class="slot-form">
+                            <input type="hidden" name="action" value="cancel">
+                            <input type="hidden" name="creneau" value="' . $full_slot . '">
+                            <button type="button" class="slot reserved" disabled>' . $heure . '</button>
+                            <button type="submit" class="cancel-button">Annuler</button>
+                        </form>';
+                } else {
+                    echo '
+                        <form method="POST" action="reservation.php" class="slot-form">
+                            <input type="hidden" name="action" value="reserve">
+                            <input type="hidden" name="creneau" value="' . $full_slot . '">
+                            <button type="submit" class="slot">' . $heure . '</button>
+                        </form>';
+                }
             }
             ?>
         </div>
@@ -120,16 +153,24 @@ $creneaux_mercredi = ['07:30', '10:00', '14:00', '15:00', '16:00', '18:00'];
         <div class="day-section">
             <h2>Mercredi 2 Octobre</h2>
             <?php
-            foreach ($creneaux_mercredi as $heure) {
+            foreach ($creneaux as $heure) {
                 $full_slot = "Mercredi 2 Octobre - $heure";
-                $is_reserved = in_array($full_slot, $reserved_slots) ? 'reserved' : '';
-                echo '
-                    <form action="reservation.php" method="POST" class="slot-form">
-                        <input type="hidden" name="creneau" value="' . $full_slot . '">
-                        <button type="submit" class="slot ' . $is_reserved . '" ' . ($is_reserved ? 'disabled' : '') . '>
-                            ' . $heure . '
-                        </button>
-                    </form>';
+                if (in_array($full_slot, $reserved_slots)) {
+                    echo '
+                        <form method="POST" action="reservation.php" class="slot-form">
+                            <input type="hidden" name="action" value="cancel">
+                            <input type="hidden" name="creneau" value="' . $full_slot . '">
+                            <button type="button" class="slot reserved" disabled>' . $heure . '</button>
+                            <button type="submit" class="cancel-button">Annuler</button>
+                        </form>';
+                } else {
+                    echo '
+                        <form method="POST" action="reservation.php" class="slot-form">
+                            <input type="hidden" name="action" value="reserve">
+                            <input type="hidden" name="creneau" value="' . $full_slot . '">
+                            <button type="submit" class="slot">' . $heure . '</button>
+                        </form>';
+                }
             }
             ?>
         </div>
