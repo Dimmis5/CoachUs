@@ -64,7 +64,8 @@ CREATE TABLE `disponibilite` (
   `heure_debut` time NOT NULL,
   `heure_fin` float NOT NULL,
   `id_coach` int(11) NOT NULL,
-  `id_lieu` int(11) NOT NULL
+  `id_lieu` int(11) NOT NULL,
+  `id_sport` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
