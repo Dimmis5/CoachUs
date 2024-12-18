@@ -3,27 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aide pour les utilisateurs</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Poppins', sans-serif;
             line-height: 1.6;
             margin: 0;
             padding: 0;
-            background-color: #f8f9fa;
+            background: linear-gradient(to bottom, #a0baf4, #F2CDAC, white);
             color: #333;
+            height: 100vh;
+            width: 100%;
         }
+        
         .container {
             max-width: 800px;
             margin: 30px auto;
             padding: 20px;
             background: #fff;
             border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
-        h1 {
-            text-align: center;
-            color: #007bff;
+            box-shadow: 0 4px 6px rgba(17, 37, 152, 0.1);
         }
         .faq {
             margin: 20px 0;
@@ -48,12 +46,28 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 10px 20px;
-            background-color: #007bff;
-            color: white;
+            padding: 15px 20px;
         }
         header img {
             height: 40px;
+        }
+        .top-links {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .top-links button {
+            background-color: white;
+            border: 2px solid white;
+            border-radius: 20px;
+            padding: 10px 20px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .top-links button:hover {
+            background-color: #007bff;
+            color: white;
         }
         .tabs {
             display: flex;
@@ -87,19 +101,51 @@
             align-items: center;
             gap: 10px;
         }
-        .top-links button {
-            padding: 10px 15px;
-            background-color: white;
-            color: #007bff;
-            border: 1px solid #007bff;
-            border-radius: 25px;
+        .toggle-btns {
+            display: flex;
+            justify-content: center;
+            background: #f9f9f9;
+            border-radius: 50px;
+            overflow: hidden;
+            margin-bottom: 20px;
+        }
+        .toggle-btn {
+            flex: 1;
+            padding: 10px 20px;
+            text-align: center;
             font-weight: bold;
+            border: none;
             cursor: pointer;
+            background-color: white;
+            color: #333;
             transition: background-color 0.3s, color 0.3s;
         }
-        .top-links button:hover {
+        .toggle-btn.active {
             background-color: #007bff;
             color: white;
+        }
+        .search-bar {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 20px 0;
+        }
+        .search-bar input {
+            padding: 10px;
+            width: 50%;
+            max-width: 500px;
+            border: 2px solid #ccc;
+            border-radius: 20px 0 0 20px;
+            outline: none;
+        }
+        .search-bar button {
+            padding: 10px 20px;
+            border: none;
+            background-color: #a0baf4;
+            color: #333;
+            border-radius: 0 20px 20px 0;
+            font-weight: bold;
+            cursor: pointer;
         }
         .question-icon {
             width: 35px;
@@ -131,9 +177,9 @@
     <script>
         document.addEventListener("DOMContentLoaded", function() {
             const questions = document.querySelectorAll(".question");
-            const tabs = document.querySelectorAll(".tab");
+            const toggleBtns = document.querySelectorAll(".toggle-btn");
             const faqSections = document.querySelectorAll(".faq-section");
-
+ 
         
             questions.forEach(question => {
                 question.addEventListener("click", () => {
@@ -142,18 +188,18 @@
                     answer.style.display = isVisible ? "none" : "block";
                 });
             });
-
+ 
         
-            tabs.forEach((tab, index) => {
+            toggleBtns.forEach((tab, index) => {
                 tab.addEventListener("click", () => {
-                    tabs.forEach(t => t.classList.remove("active"));
+                    toggleBtns.forEach(t => t.classList.remove("active"));
                     faqSections.forEach(section => section.classList.remove("active"));
-
+ 
                     tab.classList.add("active");
                     faqSections[index].classList.add("active");
                 });
             });
-
+ 
           
             const activeTab = document.querySelector(".tab.active");
             if (activeTab) {
@@ -165,24 +211,28 @@
 </head>
 <body>
     <header>
-        <img src="logo.png" alt="Logo">
-        <h1>Aide pour les utilisateurs</h1>
+        <img src="CoachUs Text.png" alt="Logo">
         <div class="top-links">
             <div class="question-icon">?</div>
-            <button>JE SUIS COACH</button>
-            <button>JE VEUX UN COACH</button>
+            <button><a href="connexioncoach.html">JE SUIS COACH</button></a>
+            <button><a href="connexionsportif.html">JE VEUX UN COACH</button></a>
         </div>
     </header>
-
+ 
     <div class="intro-text">
         De quelle manière pouvons-nous vous accompagner ?
     </div>
+    <div class="search-bar">
+        <input type="text" placeholder="Rechercher">
+        <button>Rechercher</button>
+    </div>
+</div>
     <div class="container">
-        <div class="tabs">
-            <div class="tab active">Sportifs</div>
-            <div class="tab">Coachs</div>
+        <div class="toggle-btns">
+            <button class="toggle-btn active">Sportifs</button>
+            <button class="toggle-btn">Coachs</button>
         </div>
-
+ 
         <div class="faq-section active">
             <h2>Sportifs</h2>
             <div class="faq">
@@ -198,7 +248,7 @@
                 <div class="answer">Vous pouvez annuler ou modifier votre réservation via votre compte, dans la section "Mes Réservations". Assurez-vous d'informer le coach en cas de modification importante.</div>
             </div>
         </div>
-
+ 
         <div class="faq-section">
             <h2>Coachs</h2>
             <div class="faq">
@@ -217,6 +267,3 @@
     </div>
 </body>
 </html>
-<?php
-include('connexion.php')
-?>
