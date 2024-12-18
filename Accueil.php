@@ -2,7 +2,7 @@
 <html>
     <head>
         <title>CoachUs</title>
-        <link rel="stylesheet" href="Accueil.css">
+        <link rel="stylesheet" href="Accueil2.css">
         <style>
         </style>
     </head>
@@ -30,6 +30,42 @@
                 <button class="search-button"> Rechercher </button>
         </div>
         <div class="sport-button">
+            <div class="sport">
+                <img src="Basket.png" width="20" height="35"/>
+                <img src="Golf.png" width="20" height="35"/>
+                <img src="Badd.png" width="20" height="35" />
+                <img src="Muscu.png" width="20" height="35"/>
+                <img src="cycli.png" width="20" height="35"/>
+                <img src="Baseball.png" width="20" height="35"/>
+                <img src="ping.png" width="20" height="35"/>
+                <img src="FOOTBALL.png" width="20" height="35"/>
+            </div>
+            <div class="stext">
+                <p>
+                    Basket
+                </p>
+                <p>
+                    Golf<span style="visibility: hidden;">Ad</span>  
+                </p>
+                <p>
+                    Bad <span style="visibility: hidden;">A</span> 
+                </p>
+                <p>
+                    Muscu<span style="visibility: hidden;"></span> 
+                </p>
+                <p >
+                    Cyclisme
+                </p>
+                <p>
+                    Baseball
+                </p>
+                <p>
+                    PingPong
+                </p>
+                <p>
+                    FootBall
+                </p>
+            </div>
         </div>
     </div>
     <br><br><br><br>
@@ -108,9 +144,9 @@
         </p>
     </div>
     <div class="personnage">
-        <a href="Profil du coach.php"><img src="Moi.jpg" width="150" height="200" /></a>
-        <a href="Profil du coach.php"><img src="Moi.jpg" width="150" height="200" /></a>
-        <a href="Profil du coach.php"><img src="Moi.jpg" width="150" height="200" /></a>
+        <a href="Profil du coach.php"><img src="Moi.jpg" width="200" height="300" /></a>
+        <a href="Profil du coach.php"><img src="Moi.jpg" width="200" height="300" /></a>
+        <a href="Profil du coach.php"><img src="Moi.jpg" width="200" height="300" /></a>
     </div>
 
     <div class="avis">
@@ -212,9 +248,9 @@
         </p>
     </div>
     <div class="personnage">
-        <a href="Profil du coach.php"><img src="Moi.jpg" width="150" height="200" /></a>
-        <a href="Profil du coach.php"><img src="Moi.jpg" width="150" height="200" /></a>
-        <a href="Profil du coach.php"><img src="Moi.jpg" width="150" height="200" /></a>
+        <a href="Profil du coach.php"><img src="Moi.jpg" width="200" height="300" /></a>
+        <a href="Profil du coach.php"><img src="Moi.jpg" width="200" height="300" /></a>
+        <a href="Profil du coach.php"><img src="Moi.jpg" width="200" height="300" /></a>
     </div>
 
     <div class="avis">
