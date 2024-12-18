@@ -2,7 +2,6 @@ body {
     flex-direction: column;
     padding: 10px;
     font-family: 'Poppins', sans-serif;
-    background-color: #f0e7d1;
     color: #333;
     margin: 0;
 }
@@ -36,7 +35,6 @@ button:hover {
 
 h1 {
     font-family: 'Poppins', sans-serif;
-    color: #ff7f50;
     text-align: center;
     margin-bottom: 20px;
     padding: 20px;
@@ -49,6 +47,7 @@ h1 {
     font-family: 'Poppins', sans-serif;
     padding: 20px;
 }
+
 .encadrer {
     border: 2px solid #000;
     border-radius: 20px;
@@ -56,6 +55,39 @@ h1 {
     margin: 20px;
     background-color: #f9f9f9;
     font-family: 'Poppins', sans-serif;
+}
+
+.rectangle {
+    height: 5px;
+    margin: 40px;
+    width: 350px;
+    background-color:#000;
+    border: 2px solid #000;
+    border-radius: 20px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.cercle {
+    width: 30px;
+    height: 30px;
+    background-color: #ff7f50;
+    border-radius: 50%;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: black;
+}
+
+input[type="text"],input[type="password"] {
+    border-radius: 20px;
+    padding: 10px;
+    width: 300px;
+    margin: 5px;
+    padding-right: 100px;
 }
 
 footer {

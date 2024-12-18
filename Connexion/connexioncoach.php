@@ -2,7 +2,7 @@
 <html>  
     <head>
         <title> Connexion du coach </title>
-        <link rel="stylesheet" href="connexion.css">
+        <link rel="stylesheet" href="../Connexion/connexion.css">
     </head>
 
     <?php
@@ -15,16 +15,20 @@
     }
 ?>
     <body>
-        <div class="logo"></div>
-        <div class="header-container">
-            <img class="logo" src="CoachUs Text.png" alt="logo" width="250" height="75" />
-            <div align="right" class="button-container">
-                <button> <a href="FAQ.html"> ?</a>  </button>
-                <button> <a href="connexionsportif.html"> JE VEUX UN COACH </a> </button>
-                <button> <a href="connexioncoach.html"> JE SUIS COACH  </a></button>
-                <button> <a href="Accueil.html"> ACCUEIL </a></button>
-            </div>
+    <div class="logo"></div>
+    <div class="header-container">
+        <div align="left">
+            <img src="../LOGO/LOGO.png" alt="logo" width="50" height="75" />
+            <a href="../Accueil/Accueil.html">
+                <img class="logo" src="../LOGO/CoachUs.png" alt="logo" width="250" height="75" />
+            </a>
         </div>
+        <div align="right" class="button-container">
+            <button> <a href="../FAQ/FAQ.html"> ?</a>  </button>
+            <button> <a href="../Connexion/connexionsportif.php"> JE VEUX UN COACH </a> </button>
+            <button> <a href="../Connexion/connexioncoach.php"> JE SUIS COACH  </a></button>
+        </div>
+    </div>
         <p> </p>
         <div class='container'>
             <div class="encadrer">
@@ -36,7 +40,7 @@
                 <p> Vous êtes étudiant, professionnel, passionné ou diplômé ? Inscrivez-vous dès maintenant et commencez à coacher sur notre plateforme ! </p>
                 <p> </p>
             </div>
-            <form method="POST" action="requete_connexioncoach.php">
+            <form method="POST" action="../Connexion/requete_connexioncoach.php">
                 <div class="encadrer">
                     <h1 align="center"> CONNEXION </h1>
                     <div class="search-container">
@@ -69,30 +73,30 @@
                 <h3>À propos</h3>
                 <ul>
                   <li><a href="#"> Notre Histoire </a></li>
-                  <li><a href="#"> Mentions Légales </a></li>
+                  <li><a href="../Mentionslégales/MentionsLégales.html"> Mentions Légales </a></li>
                 </ul>
               </div>
               <div class="footer-column">
                 <h3>Nos Lieux</h3>
                 <ul>
-                    <li><a href="Carte.html"> Aubervilliers </a></li>
-                    <li><a href="Carte.html"> Boulogne-Billancourt </a></li>
-                    <li><a href="Carte.html"> Châtillon </a></li>
-                    <li><a href="Carte.html"> Colombes </a></li>
-                    <li><a href="Carte.html"> Courbevoie </a></li>
-                    <li><a href="Carte.html"> Créteil </a></li>
-                    <li><a href="Carte.html"> Issy-les-Moulineaux </a></li>
-                    <li><a href="Carte.html"> Massy </a></li>
-                    <li><a href="Carte.html"> Meudon </a></li>
-                    <li><a href="Carte.html"> Paris </a></li>
-                    <li><a href="Carte.html"> Versailles </a></li>
+                    <li><a href="../Carte/Carte.html"> Aubervilliers </a></li>
+                    <li><a href="../Carte/Carte.html"> Boulogne-Billancourt </a></li>
+                    <li><a href="../Carte/Carte.html"> Châtillon </a></li>
+                    <li><a href="../Carte/Carte.html"> Colombes </a></li>
+                    <li><a href="../Carte/Carte.html"> Courbevoie </a></li>
+                    <li><a href="../Carte/Carte.html"> Créteil </a></li>
+                    <li><a href="../Carte/Carte.html"> Issy-les-Moulineaux </a></li>
+                    <li><a href="../Carte/Carte.html"> Massy </a></li>
+                    <li><a href="../Carte/Carte.html"> Meudon </a></li>
+                    <li><a href="../Carte/Carte.html"> Paris </a></li>
+                    <li><a href="../Carte/Carte.html"> Versailles </a></li>
                 </ul>
               </div>
               <div class="footer-column">
                 <h3>Nous Contacter</h3>
                 <ul>
                   <li> support@coachus.com </li>
-                  <li><a href="FAQ.html"> FAQ </a></li>
+                  <li><a href="../FAQ/FAQ.html"> FAQ </a></li>
                 </ul>
               </div>
             </div>

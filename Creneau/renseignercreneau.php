@@ -4,12 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title> RENSEIGNER UN CRENEAU </title>
-    <link rel="stylesheet" href="creneau.css">
+    <link rel="stylesheet" href="../Creneau/creneau.css">
 </head>
 
 <?php
 
-include('connexion.php');
+include('../BDD/connexion.php');
 
 $sql = "SELECT id_lieu, nom FROM lieu";
 $result = $conn->query($sql);
@@ -23,19 +23,25 @@ if (!$result) {
 ?>
 
 <body>
+<div class="logo"></div>
     <div class="header-container">
-        <h1 align="left"> COACHUS </h1>
+        <div align="left">
+            <img src="../LOGO/LOGO.png" alt="logo" width="50" height="75" />
+            <a href="../Accueil/Accueil.html">
+                <img class="logo" src="../LOGO/CoachUs.png" alt="logo" width="250" height="75" />
+            </a>
+        </div>
         <div align="right" class="button-container">
-            <button> <a href="FAQ.html"> ? </a> </button>
-            <button> <a href="connexionsportif.html"> JE VEUX UN COACH </a> </button>
-            <button> <a href="connexioncoach.html"> JE SUIS COACH </a> </button>
+            <button> <a href="../FAQ/FAQ.html"> ?</a>  </button>
+            <button> <a href="../Connexion/connexionsportif.php"> JE VEUX UN COACH </a> </button>
+            <button> <a href="../Connexion/connexioncoach.php"> JE SUIS COACH  </a></button>
         </div>
     </div>
 
     <div class='container'>
         <div class="encadrer">
             <h1> RENSEIGNER VOS DISPONIBILITES </h1>
-            <form method="post" action="requete_renseignercreneau.php">
+            <form method="post" action="../Creneau/requete_renseignercreneau.php">
                 <label for="id_coach"> id_coach :</label>
                 <input type="text" id="id_coach" name="id_coach" required>
                 <p> </p>
@@ -92,30 +98,30 @@ if (!$result) {
                 <h3>À propos</h3>
                 <ul>
                   <li><a href="#"> Notre Histoire </a></li>
-                  <li><a href="#"> Mentions Légales </a></li>
+                  <li><a href="../Mentionslégales/MentionsLégales.html"> Mentions Légales </a></li>
                 </ul>
               </div>
               <div class="footer-column">
                 <h3>Nos Lieux</h3>
                 <ul>
-                    <li><a href="Carte.html"> Aubervilliers </a></li>
-                    <li><a href="Carte.html"> Boulogne-Billancourt </a></li>
-                    <li><a href="Carte.html"> Châtillon </a></li>
-                    <li><a href="Carte.html"> Colombes </a></li>
-                    <li><a href="Carte.html"> Courbevoie </a></li>
-                    <li><a href="Carte.html"> Créteil </a></li>
-                    <li><a href="Carte.html"> Issy-les-Moulineaux </a></li>
-                    <li><a href="Carte.html"> Massy </a></li>
-                    <li><a href="Carte.html"> Meudon </a></li>
-                    <li><a href="Carte.html"> Paris </a></li>
-                    <li><a href="Carte.html"> Versailles </a></li>
+                    <li><a href="../Carte/Carte.html"> Aubervilliers </a></li>
+                    <li><a href="../Carte/Carte.html"> Boulogne-Billancourt </a></li>
+                    <li><a href="../Carte/Carte.html"> Châtillon </a></li>
+                    <li><a href="../Carte/Carte.html"> Colombes </a></li>
+                    <li><a href="../Carte/Carte.html"> Courbevoie </a></li>
+                    <li><a href="../Carte/Carte.html"> Créteil </a></li>
+                    <li><a href="../Carte/Carte.html"> Issy-les-Moulineaux </a></li>
+                    <li><a href="../Carte/Carte.html"> Massy </a></li>
+                    <li><a href="../Carte/Carte.html"> Meudon </a></li>
+                    <li><a href="../Carte/Carte.html"> Paris </a></li>
+                    <li><a href="../Carte/Carte.html"> Versailles </a></li>
                 </ul>
               </div>
               <div class="footer-column">
                 <h3>Nous Contacter</h3>
                 <ul>
                   <li> support@coachus.com </li>
-                  <li><a href="FAQ.html"> FAQ </a></li>
+                  <li><a href="../FAQ/FAQ.html"> FAQ </a></li>
                 </ul>
               </div>
             </div>
@@ -124,8 +130,9 @@ if (!$result) {
               <p>&copy; 2024 COACHUS. Tous droits réservés.</p>
             </div>
         </footer>
-</body>
+    </body>
 </html>
+
 
 <?php
 $conn->close();
