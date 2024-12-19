@@ -10,7 +10,7 @@
 
 <?php
 
-include('modeles/connexion.php'); 
+include('../BDD/connexion.php');
 
 $erreurs = [];
 
