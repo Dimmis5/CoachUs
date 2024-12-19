@@ -32,14 +32,14 @@
         </div>
         <div class="sport-button">
             <div class="sport">
-                <img src="Basket.png" width="20" height="35"/>
-                <img src="Golf.png" width="20" height="35"/>
-                <img src="Badd.png" width="20" height="35" />
-                <img src="Muscu.png" width="20" height="35"/>
-                <img src="cycli.png" width="20" height="35"/>
-                <img src="Baseball.png" width="20" height="35"/>
-                <img src="ping.png" width="20" height="35"/>
-                <img src="FOOTBALL.png" width="20" height="35"/>
+                <img src="../Images/Basket.png" width="20" height="35"/>
+                <img src="../Images/Golf.png" width="20" height="35"/>
+                <img src="../Images/Badd.png" width="20" height="35" />
+                <img src="../Images/Muscu.png" width="20" height="35"/>
+                <img src="../Images/cycli.png" width="20" height="35"/>
+                <img src="../Images/Baseball.png" width="20" height="35"/>
+                <img src="../Images/ping.png" width="20" height="35"/>
+                <img src="../Images/foot.png" width="20" height="35"/>
             </div>
             <div class="stext">
                 <p>
@@ -145,9 +145,9 @@
         </p>
     </div>
     <div class="personnage">
-        <a href="../Prodilducoach/Profilcoach.php"><img src="Moi.jpg" width="200" height="300" /></a>
-        <a href="../Profilducoach/Profilcoach.php"><img src="Moi.jpg" width="200" height="300" /></a>
-        <a href="../Profilducoach/Profilcoach.php"><img src="Moi.jpg" width="200" height="300" /></a>
+        <a href="../Prodilducoach/Profilcoach.php"><img src="../Images/Didier desdeschamps.jpg" width="200" height="300" /></a>
+        <a href="../Profilducoach/Profilcoach.php"><img src="../Images/Carlos.jpg" width="200" height="300" /></a>
+        <a href="../Profilducoach/Profilcoach.php"><img src="../Images/Natha.jpg" width="200" height="300" /></a>
     </div>
  
     <div class="avis">
@@ -249,9 +249,9 @@
         </p>
     </div>
     <div class="personnage">
-        <a href="../Profilducoach/Profilcoach.php"><img src="Moi.jpg" width="200" height="300" /></a>
-        <a href="../Profilducoach/Profilcoach.php"><img src="Moi.jpg" width="200" height="300" /></a>
-        <a href="../Profilducoach/Profilcoach.php"><img src="Moi.jpg" width="200" height="300" /></a>
+        <a href="../Profilducoach/Profilcoach.php"><img src="../Images/Darvin.jpg" width="200" height="300" /></a>
+        <a href="../Profilducoach/Profilcoach.php"><img src="../Images/Bob.jpg" width="200" height="300" /></a>
+        <a href="../Profilducoach/Profilcoach.php"><img src="../Images/Laurent.jpg" width="200" height="300" /></a>
     </div>
  
     <div class="avis">

@@ -167,3 +167,26 @@ footer {
         grid-template-columns: 1fr;
     }
 }
+
+.horaires-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); 
+    gap: 10px; 
+    margin-top: 20px;
+}
+
+.horaires-container button {
+    background-color:rgb(241, 145, 110);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    margin-left: 75px;
+    padding: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    width: 50%; 
+}
+
+.horaires-container button:hover {
+    background-color:rgb(235, 122, 102);
+}
