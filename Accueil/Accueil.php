@@ -34,19 +34,11 @@
                 <img src="../Images/Basket.png" width="20" height="35"/>
                 <img src="../Images/Golf.png" width="20" height="35"/>
                 <img src="../Images/Badd.png" width="20" height="35" />
-<<<<<<< HEAD
                 <img src="../Images/Muscu.png" width="20" height="35"/>
                 <img src="../Images/cycli.png" width="20" height="35"/>
                 <img src="../Images/Baseball.png" width="20" height="35"/>
                 <img src="../Images/ping.png" width="20" height="35"/>
                 <img src="../Images/foot.png" width="20" height="35"/>
-=======
-                <img src="../Muscu.png" width="20" height="35"/>
-                <img src="../Images/cycli.png" width="20" height="35"/>
-                <img src="../Images/Baseball.png" width="20" height="35"/>
-                <img src="../Images/ping.png" width="20" height="35"/>
-                <img src="../Images/FOOTBALL.png" width="20" height="35"/>
->>>>>>> d7d51c6bbecf9b858a5993371d3799625e98648c
             </div>
             <div class="stext">
                 <p>
@@ -152,15 +144,9 @@
         </p>
     </div>
     <div class="personnage">
-<<<<<<< HEAD
         <a href="../Prodilducoach/Profilcoach.php"><img src="../Images/Didier desdeschamps.jpg" width="200" height="300" /></a>
         <a href="../Profilducoach/Profilcoach.php"><img src="../Images/Carlos.jpg" width="200" height="300" /></a>
         <a href="../Profilducoach/Profilcoach.php"><img src="../Images/Natha.jpg" width="200" height="300" /></a>
-=======
-        <a href="../Profilducoach/Profilcoach.php"><img src="Moi.jpg" width="200" height="300" /></a>
-        <a href="../Profilducoach/Profilcoach.php"><img src="Moi.jpg" width="200" height="300" /></a>
-        <a href="../Profilducoach/Profilcoach.php"><img src="Moi.jpg" width="200" height="300" /></a>
->>>>>>> d7d51c6bbecf9b858a5993371d3799625e98648c
     </div>
 
     <div class="avis">
