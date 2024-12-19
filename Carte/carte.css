@@ -2,7 +2,7 @@ body {
     flex-direction: column;
     padding: 10px;
     font-family: 'Poppins', sans-serif;
-    background-color: #fff;
+    background: linear-gradient(to bottom, #E6E6E8, #EE8C3D);
     color: #333;
     margin: 0;
 }
