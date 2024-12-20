@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Carte Interactive - Lieux de Sport en Île-de-France </title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <link rel="stylesheet" href="../Carte/carte.css" />
+</head>
+<body>
+    <div class="logo"></div>
+    <div class="header-container">
+        <div align="left">
+            <img src="../LOGO/LOGO.png" alt="logo" width="50" height="75" />
+            <a href="../Accueil/Accueil.html">
+                <img class="logo" src="../LOGO/CoachUs.png" alt="logo" width="250" height="75" />
+            </a>
+        </div>
+        <div align="right" class="button-container">
+            <button> <a href="../FAQ/FAQ.html"> ?</a>  </button>
+            <button> <a href="../Connexion/connexionsportif.php"> JE VEUX UN COACH </a> </button>
+            <button> <a href="../Connexion/connexioncoach.php"> JE SUIS COACH  </a></button>
+        </div>
+    </div>
+    
+    <h1> CARTES DES LIEUX A VOTRE DISPOSITION </h1>
+    
+    <div id="map"></div>
+    <div id="locations"></div>
+
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script>
+        var map = L.map('map').setView([48.8566, 2.3522], 10);
+
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        var locations = [
+            { lat: 48.8566, lon: 2.3522, title: "Gymnase Jean Bouin", description: "Salle de sport moderne.", address: "Place de l'Hôtel de Ville, 75004 Paris", places: 50 },
+            { lat: 48.8014, lon: 2.1301, title: "Piscine Montbauron", description: "Piscine et gymnase.", address: "Rue des Réservoirs, 78000 Versailles", places: 40 },
+            { lat: 48.8978, lon: 2.2526, title: "UrbanSoccer", description: "Centre de football indoor.", address: "Esplanade de la Défense, 92400 Courbevoie", places: 35 },
+            { lat: 48.8456, lon: 2.3749, title: "Accor Arena Fitness", description: "Salle de fitness premium.", address: "12 Boulevard de Bercy, 75012 Paris", places: 45 },
+            { lat: 48.7864, lon: 2.4192, title: "Stade Duvauchelle", description: "Complexe sportif pour tous.", address: "Rue Jean Gabin, 94000 Créteil", places: 60 },
+            { lat: 48.9087, lon: 2.3511, title: "Gymnase Anatole France", description: "Installations sportives polyvalentes.", address: "Rue Anatole France, 93300 Aubervilliers", places: 25 },
+            { lat: 48.8422, lon: 2.2528, title: "Stade Roland Garros", description: "Centre de tennis.", address: "Boulevard d'Auteuil, 75016 Paris", places: 80 },
+            { lat: 48.8675, lon: 2.3414, title: "Fitness Park Opéra", description: "Salle de sport ouverte 24h/24.", address: "Boulevard des Italiens, 75009 Paris", places: 70 },
+            { lat: 48.7816, lon: 2.2996, title: "Forest Hill Meudon", description: "Centre sportif et aquatique.", address: "Rue de la Plaine, 92190 Meudon", places: 100 },
+            { lat: 48.9128, lon: 2.2446, title: "Parc des Sports de Colombes", description: "Terrain et gymnase.", address: "Rue du Stade, 92700 Colombes", places: 90 },
+            { lat: 48.7581, lon: 2.3045, title: "Stade Georges Suant", description: "Terrain de football et rugby.", address: "Rue de la Ferme, 91300 Massy", places: 30 },
+            { lat: 48.8219, lon: 2.2944, title: "Complexe sportif Châtillon", description: "Installations pour divers sports.", address: "Rue de Malabry, 92320 Châtillon", places: 50 },
+            { lat: 48.8575, lon: 2.2846, title: "Gymnase Porte de Saint-Cloud", description: "Salle de sport bien équipée.", address: "Rue de Versailles, 75016 Paris", places: 40 },
+            { lat: 48.8712, lon: 2.3556, title: "Gymnase Duperré", description: "Fameux terrain de basket.", address: "Rue Duperré, 75009 Paris", places: 15 },
+            { lat: 48.9085, lon: 2.4653, title: "Piscine Rosa Parks", description: "Piscine publique moderne.", address: "Rue Gaston Tessier, 75019 Paris", places: 50 }
+        ];
+
+        var locationsContainer = document.getElementById('locations');
+
+        locations.forEach(function(location) {
+            var marker = L.marker([location.lat, location.lon]).addTo(map)
+                .bindPopup(`<b>${location.title}</b><br>${location.description}<br>Adresse: ${location.address}<br>Places disponibles: ${location.places}`);
+
+            var locationDiv = document.createElement('div');
+            locationDiv.className = 'location-item';
+            locationDiv.innerHTML = `
+                <b>${location.title}</b><br>
+                Adresse: ${location.address}<br>
+                ${location.description}<br>
+                <b>Places disponibles:</b> ${location.places}
+            `;
+            locationDiv.onclick = function() {
+                map.setView([location.lat, location.lon], 14);
+                marker.openPopup();
+            };
+            locationsContainer.appendChild(locationDiv);
+        });
+    </script>
+<footer>
+    <div class="footer-container">
+      <div class="footer-column">
+        <h3>Nos Services</h3>
+        <ul>
+          <li><a href="#"> Service clientèle </a></li>
+          <li><a href="#"> Réglement intérieur </a></li>
+          <li><a href="#"> Heure d'ouverture </a></li>
+        </ul>
+      </div>
+      <div class="footer-column">
+        <h3>À propos</h3>
+        <ul>
+          <li><a href="#"> Notre Histoire </a></li>
+          <li><a href="../Mentionslégales/MentionsLégales.html"> Mentions Légales </a></li>
+        </ul>
+      </div>
+      <div class="footer-column">
+        <h3>Nos Lieux</h3>
+        <ul>
+            <li><a href="../Carte/Carte.html"> Aubervilliers </a></li>
+            <li><a href="../Carte/Carte.html"> Boulogne-Billancourt </a></li>
+            <li><a href="../Carte/Carte.html"> Châtillon </a></li>
+            <li><a href="../Carte/Carte.html"> Colombes </a></li>
+            <li><a href="../Carte/Carte.html"> Courbevoie </a></li>
+            <li><a href="../Carte/Carte.html"> Créteil </a></li>
+            <li><a href="../Carte/Carte.html"> Issy-les-Moulineaux </a></li>
+            <li><a href="../Carte/Carte.html"> Massy </a></li>
+            <li><a href="../Carte/Carte.html"> Meudon </a></li>
+            <li><a href="../Carte/Carte.html"> Paris </a></li>
+            <li><a href="../Carte/Carte.html"> Versailles </a></li>
+        </ul>
+      </div>
+      <div class="footer-column">
+        <h3>Nous Contacter</h3>
+        <ul>
+          <li> support@coachus.com </li>
+          <li><a href="../FAQ/FAQ.html"> FAQ </a></li>
+        </ul>
+      </div>
+    </div>
+  
+    <div class="footer-bottom">
+      <p>&copy; 2024 COACHUS. Tous droits réservés.</p>
+    </div>
+</footer>
+</body>
+</html>

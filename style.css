@@ -112,6 +112,10 @@ button a {
 p a {
     text-decoration: none;
 }
+
+
+/* A partir d'ici le CSS pour l'accueil */
+
 body {
     display: flex;
     flex-direction: column;
@@ -329,6 +333,7 @@ input[type="text"] {
     background-color: #529DBE;
 }
 
+
 /* CSS Pour le profil du coach */
 
 .profilc{
@@ -347,11 +352,7 @@ input[type="text"] {
     background-color: #f9f9f9
 }
 
-<<<<<<< Updated upstream
-
-=======
-  
- .messaging-container {
+.messaging-container {
     width: 400px;
     background-color: #fff;
     border: 1px solid #ddd;
@@ -423,4 +424,3 @@ input[type="text"] {
     background-color: #005fcc;
   }
   
->>>>>>> Stashed changes
