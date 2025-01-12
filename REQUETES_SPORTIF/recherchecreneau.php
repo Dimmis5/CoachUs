@@ -1,12 +1,10 @@
 <?php
 require '../BDD/connexion.php';
 
-// Récupérer et sécuriser les valeurs provenant de POST
 $id_sport = isset($_POST['id_sport']) ? $conn->real_escape_string($_POST['id_sport']) : '';
 $id_coach = isset($_POST['id_coach']) ? $conn->real_escape_string($_POST['id_coach']) : '';
 $id_lieu = isset($_POST['id_lieu']) ? $conn->real_escape_string($_POST['id_lieu']) : '';
 
-// Récupérer la liste des sports
 $sports = [];
 $sqlSports = "SELECT id_sport, nom FROM sport";
 $resultSports = $conn->query($sqlSports);
@@ -16,7 +14,6 @@ if ($resultSports->num_rows > 0) {
     }
 }
 
-// Récupérer les coaches si un sport est sélectionné
 $coaches = [];
 if (!empty($id_sport)) {
     $sqlCoaches = "
@@ -34,7 +31,6 @@ if (!empty($id_sport)) {
     }
 }
 
-// Récupérer les lieux si un sport et un coach sont sélectionnés
 $lieux = [];
 if (!empty($id_sport) && !empty($id_coach)) {
     $sqlLieux = "
@@ -52,7 +48,6 @@ if (!empty($id_sport) && !empty($id_coach)) {
     }
 }
 
-// Récupérer les disponibilités si un sport, un coach et un lieu sont sélectionnés
 $disponibilitesParJour = [];
 if (!empty($id_sport) && !empty($id_coach) && !empty($id_lieu)) {
     $sqlDisponibilites = "
