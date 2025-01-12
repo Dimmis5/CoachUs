@@ -62,7 +62,7 @@ CREATE TABLE `disponibilite` (
   `id_disponibilite` int(11) NOT NULL,
   `date` date NOT NULL,
   `heure_debut` time NOT NULL,
-  `heure_fin` float NOT NULL,
+  `heure_fin` time NOT NULL,
   `id_coach` int(11) NOT NULL,
   `id_lieu` int(11) NOT NULL,
   `id_sport` int(11) NOT NULL
@@ -102,7 +102,9 @@ CREATE TABLE `lieu` (
   `id_lieu` int(11) NOT NULL,
   `nom` varchar(100) NOT NULL,
   `adresse` varchar(500) NOT NULL,
-  `nombre_places_disponibles` int(11) DEFAULT NULL
+  `nombre_places_disponibles` int(11) DEFAULT NULL,
+  `longitude` varchar(500) NOT NULL,
+  `latitude` varchar(500) NOT NULL,
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -147,7 +149,9 @@ CREATE TABLE `reservation` (
   `commentaire` varchar(1000) NOT NULL,
   `id_disponibilite` int(11) NOT NULL,
   `id_sport` int(11) NOT NULL,
-  `id_sportif` int(11) NOT NULL
+  `id_sportif` int(11) NOT NULL,
+  `id_coach` int(11) NOT NULL,
+  `id_lieu` int(11) NOT NULL,
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
