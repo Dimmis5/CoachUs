@@ -1,58 +1,74 @@
 <?php
 session_start();
-require 'bdd.php';  // Connexion à la base de données
+require 'bdd.php'; // Connexion à la base de données
 
 // Vérifier si l'utilisateur est connecté
-if (!isset($_SESSION['pseudo'])) {
-    header('Location: connexion.php');  // Rediriger si non connecté
+if (!isset($_SESSION['role']) || (!isset($_SESSION['id_coach']) && !isset($_SESSION['id_sportif']))) {
+    header('Location: ../index.php');
     exit;
 }
 
-$pseudo = $_SESSION['pseudo'];
+// Identifier le rôle de l'utilisateur connecté
+$role = $_SESSION['role'];
+$id = $role === 'coach' ? $_SESSION['id_coach'] : $_SESSION['id_sportif'];
 
-// Récupérer les informations de l'utilisateur connecté
-$currentUserQuery = $bdd->prepare('SELECT * FROM users WHERE pseudo = ?');
-$currentUserQuery->execute([$pseudo]);
-$user = $currentUserQuery->fetch();
-
-if (!$user) {
-    echo "Erreur : utilisateur introuvable.";
-    exit;
-}
-
-// Récupérer les coachs ou sportifs associés selon le rôle
-if ($user['role'] === 'coach') {
+// Récupérer les utilisateurs associés
+if ($role === 'coach') {
+    // Un coach voit les sportifs associés
     $query = $bdd->prepare('
-        SELECT u.* FROM users u
-        JOIN coach_sportif cs ON u.id = cs.sportif_id
-        WHERE cs.coach_id = ?
+        SELECT s.id_sportif AS id, s.identifiant AS pseudo
+        FROM sportif s
+        JOIN coach_sportif cs ON s.id_sportif = cs.id_sportif
+        WHERE cs.id_coach = ?
     ');
-    $query->execute([$user['id']]);
+    $query->execute([$id]);
 } else {
+    // Un sportif voit les coachs associés
     $query = $bdd->prepare('
-        SELECT u.* FROM users u
-        JOIN coach_sportif cs ON u.id = cs.coach_id
-        WHERE cs.sportif_id = ?
+        SELECT c.id_coach AS id, c.identifiant AS pseudo
+        FROM coach c
+        JOIN coach_sportif cs ON c.id_coach = cs.id_coach
+        WHERE cs.id_sportif = ?
     ');
-    $query->execute([$user['id']]);
+    $query->execute([$id]);
 }
 $usersList = $query->fetchAll();
 
-// Gestion de l'envoi d'un message
-if (isset($_POST['envoyer'])) {
-    $to_user_id = $_POST['to_user_id'];
-    $message = htmlspecialchars(trim($_POST['message']));
+// Gestion des messages avec un utilisateur sélectionné
+if (isset($_GET['recipient'])) {
+    $recipientId = intval($_GET['recipient']);
+    $recipientRole = $role === 'coach' ? 'sportif' : 'coach';
 
-    // Vérifier si le destinataire est valide
-    $recipientQuery = $bdd->prepare('SELECT * FROM users WHERE id = ?');
-    $recipientQuery->execute([$to_user_id]);
-    $recipient = $recipientQuery->fetch();
+    // Récupérer les messages échangés
+    $messagesQuery = $bdd->prepare('
+        SELECT * FROM messages
+        WHERE (from_user_id = :current AND to_user_id = :recipient AND from_user_type = :current_type AND to_user_type = :recipient_type)
+           OR (from_user_id = :recipient AND to_user_id = :current AND from_user_type = :recipient_type AND to_user_type = :current_type)
+        ORDER BY created_at
+    ');
+    $messagesQuery->execute([
+        'current' => $id,
+        'recipient' => $recipientId,
+        'current_type' => $role,
+        'recipient_type' => $recipientRole,
+    ]);
+    $messages = $messagesQuery->fetchAll();
+}
 
-    if ($recipient && !empty($message)) {
-        $insertMessage = $bdd->prepare('INSERT INTO messages (from_user_id, to_user_id, content) VALUES (?, ?, ?)');
-        $insertMessage->execute([$user['id'], $to_user_id, $message]);
-    } else {
-        echo "Erreur : message invalide ou destinataire introuvable.";
+// Gestion de l'envoi de messages
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['message'], $_POST['recipient_id'])) {
+    $recipientId = intval($_POST['recipient_id']);
+    $content = htmlspecialchars(trim($_POST['message']));
+    $recipientRole = $role === 'coach' ? 'sportif' : 'coach';
+
+    if (!empty($content)) {
+        $insertMessage = $bdd->prepare('
+            INSERT INTO messages (from_user_id, to_user_id, from_user_type, to_user_type, content)
+            VALUES (?, ?, ?, ?, ?)
+        ');
+        $insertMessage->execute([$id, $recipientId, $role, $recipientRole, $content]);
+        header("Location: messagerie.php?recipient=$recipientId");
+        exit;
     }
 }
 ?>
@@ -61,69 +77,35 @@ if (isset($_POST['envoyer'])) {
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="stylem.css">
     <title>Messagerie</title>
 </head>
 <body>
-    <h2>Messagerie</h2>
+    <h2>Messagerie Privée</h2>
 
-    <!-- Liste des utilisateurs associés -->
-    <h3>Choisissez un utilisateur pour discuter :</h3>
+    <h3>Liste des utilisateurs associés :</h3>
     <ul>
-        <?php foreach ($usersList as $recipient) { ?>
+        <?php foreach ($usersList as $user) { ?>
             <li>
-                <a href="messagerie.php?recipient=<?php echo htmlspecialchars($recipient['id']); ?>">
-                    <?php echo htmlspecialchars($recipient['pseudo']); ?>
+                <a href="messagerie.php?recipient=<?php echo $user['id']; ?>">
+                    <?php echo htmlspecialchars($user['pseudo']); ?>
                 </a>
             </li>
         <?php } ?>
     </ul>
 
-    <?php
-    // Afficher les messages avec le destinataire sélectionné
-    if (isset($_GET['recipient'])) {
-        $recipient_id = intval($_GET['recipient']);
-
-        // Vérifier si le destinataire existe
-        $recipientQuery = $bdd->prepare('SELECT * FROM users WHERE id = ?');
-        $recipientQuery->execute([$recipient_id]);
-        $recipient = $recipientQuery->fetch();
-
-        if ($recipient) {
-            // Récupérer les messages échangés avec cet utilisateur
-            $messagesQuery = $bdd->prepare('
-                SELECT * FROM messages 
-                WHERE (from_user_id = :current AND to_user_id = :recipient) 
-                   OR (from_user_id = :recipient AND to_user_id = :current)
-                ORDER BY created_at DESC
-            ');
-            $messagesQuery->execute(['current' => $user['id'], 'recipient' => $recipient_id]);
-            $messages = $messagesQuery->fetchAll();
-    ?>
-            <h3>Messages avec <?php echo htmlspecialchars($recipient['pseudo']); ?></h3>
-            <div class="messages">
-                <?php foreach ($messages as $msg) { ?>
-                    <div>
-                        <strong><?php echo htmlspecialchars($msg['from_user_id'] == $user['id'] ? $user['pseudo'] : $recipient['pseudo']); ?>:</strong>
-                        <p><?php echo htmlspecialchars($msg['content']); ?></p>
-                    </div>
-                <?php } ?>
-            </div>
-                    
-            <!-- Formulaire d'envoi de message -->
-            <form method="POST">
-                <input type="hidden" name="to_user_id" value="<?php echo $recipient_id; ?>">
-                <textarea name="message" placeholder="Votre message..." required></textarea>
-                <button type="submit" name="envoyer">Envoyer</button>
-            </form>
-    <?php
-        } else {
-            echo "<p>Erreur : utilisateur non trouvé.</p>";
-        }
-    }
-    ?>
-
-    <a href="deconnexion.php">Déconnexion</a>
+    <?php if (isset($messages)) { ?>
+        <h3>Messages échangés :</h3>
+        <div>
+            <?php foreach ($messages as $message) { ?>
+                <p><strong><?php echo $message['from_user_type'] === $role ? 'Vous' : 'Lui'; ?>:</strong>
+                <?php echo htmlspecialchars($message['content']); ?></p>
+            <?php } ?>
+        </div>
+        <form method="POST">
+            <textarea name="message" placeholder="Écrivez votre message..." required></textarea>
+            <input type="hidden" name="recipient_id" value="<?php echo $recipientId; ?>">
+            <button type="submit">Envoyer</button>
+        </form>
+    <?php } ?>
 </body>
 </html>
