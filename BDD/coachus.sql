@@ -151,7 +151,7 @@ CREATE TABLE `reservation` (
   `id_sport` int(11) NOT NULL,
   `id_sportif` int(11) NOT NULL,
   `id_coach` int(11) NOT NULL,
-  `id_lieu` int(11) NOT NULL,
+  `id_lieu` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
