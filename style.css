@@ -1,426 +1,219 @@
 body {
-    display: flex;
-    flex-direction: column;
-    align-items: stretch;
-    padding: 10px;
-    font-family: Arial, sans-serif;
+    font-family: 'Arial', sans-serif;
+    color: #333;
+    line-height: 1.6;
+    background: linear-gradient(to bottom, #B8C5D6, #FFDFA7);
+    width: 100%;
 }
-.header-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 20px;
-}
-button {
-    border-radius: 12px;
-    padding: 10px 20px;
-    border: none;
-    margin-left: 10px;
-} 
-.text-container {
-    text-align: left;
-    margin-top: 20px;
-} 
-.search-container {
-    position: relative;
-    display: flex;
-    justify-content: left;
-    margin-top: 20px
-}
-input[type="text"] {
-    border-radius: 20px;
-    padding: 10px;
-    width: 300px;
-    padding-right: 100px;
-}
-.search-button {
-    position: flex;
-    right: 320px;
-    top: 50%;
-    transform: translateY(-50%);
-    border-radius: 20px;
-    padding: 10px 20px;
-    border: none;
-    background-color: #b9d5e1;
-    color: white;
-}
-.sport-button {
-    display: flex;
-    flex-direction: column;
-    align-items: left;
-    justify-content: left;
-    padding: 10px;
-    margin-top: 20px;
-    border-radius: 12px;
-}
-.sport-logo {
-    width: 30px;
-    height: 20px;
-    margin-right: 5px;
-}
+
+/* Conteneur principal */
 .container {
-    display: flex; 
-    justify-content: space-between; 
-    margin: 20px;
-}
-.encadrer {
-    border: 2px solid #000;
-    border-radius: 20px;
-    padding: 20px;
-    margin: 20px;
-    background-color: #f9f9f9
-}
-.encadrer-connexion {
-    font-size: 16px;
-    height: 20px;
-    padding: 7px 5px;
-    border-radius: 20px;
-    border: 2px solid #000
-}
-.rectangle {
-    height: 5px;
-    margin: 40px;
-    width: 350px;
-    background-color:#000;
-    border: 2px solid #000;
-    border-radius: 20px;
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-.cercle {
-    width: 30px;
-    height: 30px;
-    background-color: #529DBE;
-    border-radius: 50%;
-    position: absolute;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: black;
-}
-input[type="password"] {
-    border-radius: 20px;
-    padding: 10px;
-    width: 300px;
-    padding-right: 100px;
-}
-button a {
-    text-decoration: none;
-}
-p a {
-    text-decoration: none;
-}
-
-
-/* A partir d'ici le CSS pour l'accueil */
-
-body {
-    display: flex;
-    flex-direction: column;
-    align-items: stretch;
-    padding: 10px;
-    font-family: Arial, sans-serif;
-}
-.header-container {
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    padding: 20px;
+    width: 100%;
+    max-width: 1600px;
+    margin: 0 auto;
+    gap: 20px;
+}
+
+/* Menu gauche */
+.menu-gauche {
+    position: sticky;
+    top: 0;
+    width: 25%; /* Le menu gauche prend 20% de la largeur de l'écran */
+    background-color: #5c708b;
+    padding: 20px;
+    border-right: 2px solid #ccc;
+    height: 80vh;
+    box-shadow: 2px 0px 5px rgba(0, 0, 0, 0.1); 
+}
+
+.menu-gauche h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.menu-gauche ul {
+    list-style: none;
+}
+
+.menu-gauche ul li {
+    margin: 15px 0;
+}
+
+.menu-gauche ul li a {
+    text-decoration: none;
+    color: white;
+    font-size: 18px;
+    padding: 10px;
+    display: block;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.menu-gauche ul li a:hover {
+    background-color: #3c4e65;
+}
+
+/* Contenu principal */
+.contenu-principal {
+    flex-grow: 1; /* Occupe tout l'espace restant */
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Menu droit */
+.menu-droit {
+    width: 40%; /* Le menu droit prend également 20% de la largeur de l'écran */
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    height: 80vh; /* Hauteur égale à celle du menu gauche */
+}
+
+/* Sections et titres */
+section {
+    margin-bottom: 40px;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+h1, h2 {
+    color: #2d3e50;
     margin-bottom: 20px;
 }
-button {
-    border-radius: 12px;
-    padding: 10px 20px;
-    border: none;
-    margin-left: 10px;
+
+h3 {
+    color: #2d3e50;
+    text-align: center;
 }
-.text-container {
-    padding: 5px;
-    width: 200px;
-    margin-left: 150px;
-    border-radius: 30%;
-}
-.search-container {
-    position: relative;
-    display: flex;
-    justify-content: left;
-    margin-top: 20px;
-    padding-left: 50px;
-}
-input[type="text"] {
-    border-radius: 20px;
-    padding: 10px;
-    width: 300px;
-    padding-right: 100px;
-}
-.search-button {
-    position: absolute;
-    right: 782px;
-    top: 50%;
-    transform: translateY(-50%);
-    border-radius: 20px;
-    padding: 10px 20px;
-    border: none;
-    background-color: #529DBE;
-    color: white;
-}
-.sport-button {
-    display: flex;
-    flex-direction: column; 
-    align-items: left;
-    justify-content: left;
+
+/* Formulaires */
+.encadrer {
     padding: 20px;
-    margin-top: 20px;
-    border-radius: 500px;
-    border: 1px solid #ddd;
-    width: 500px;
     background-color: #f9f9f9;
-    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
-.sport-logo {
-    width: 30px;
-    height: 20px;
-    margin-right: 25px;
+
+label {
+    font-size: 16px;
+    margin-bottom: 8px;
+    display: block;
+    color: #555;
 }
-.personnage {
-    position: absolute;
-    margin-right: 1px;
-    margin-left: 800px;
-    bottom: 0;
-    margin-bottom: 100px;
-}
-.Coach {
-    display: flex;
-    justify-content: left;
-    padding: 20px;
-}
-.Coach p {
-    margin: 25px;
-    padding-right: 200px;
-}
-.profil, .profil2 {
-    display: flex;
-    justify-content: left;
-    padding: 0px;
-    margin: 0px;
-    width: 90px;
-    height: 150px;
-    gap: 155px;
-}
-.avis, .avis2 {
-    display: flex;
-    padding-left: 80px;
-    gap: 300px;
-}
-.tarif, .tarif2 {
-    display: flex;
-    gap: 320px;
-}
-.temps, .temps2 {
-    display: flex;
-    gap: 220px;
-}
-.contact-créneaux, .contact-créneaux2 {
-    display: flex;
-    justify-content: left;
-    gap: 92px;
-}
-.contact, .créneaux, .contact2, .créneaux2 {
+
+input, select, button {
+    width: 100%;
     padding: 10px;
-    margin: 0px;
-    border-radius: 500px;
-    border: 1px solid #ddd;
-    width: 80px;
-    background-color: #529DBE;
-    color: white;
-    text-align: center;
-}
-.payage {
-    display: flex;
-    justify-content: left;
-    width: 0px;
-    height: 400px;
-    padding-left: 220px;
-}
-
-.overlay-container {
-    position: relative;
-    display: inline-block;
-}
-.overlay-text {
-    position: absolute;
-    top: 100%;
-    left: 70%;
-    transform: translate(-50%, -50%);
-    color: white;
-    font-size: 25px;
-    font-weight: bold;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
-}
-.ville-c{
-    padding-left: 200px;
-    display: flex;
-    justify-content: left;
-    gap :220px;
-}
-.ville, .ville1, .ville2 {
-    font-size: 30px;
-    width: 150px;
-}
-
-.CGU-T{
-   font-size: 50px;
-   display: flex;
-   justify-content: center;
-   align-items: center;
-}
-.pied{
-    padding-top: 40px;
-    display: inline-block;
-    position: absolute;
-    display: flex;
-    gap: 250px;
-}
-.barre hr {
-    border: none;
-    border-top: 1px solid black; 
-    width: 2%; 
-    margin-left: 250px;  
-    display: flex;
-    margin-top: 80px;
-
-}
-.barre1 hr {
-    border: none;
-    border-top: 1px solid black; 
-    width: 2%; 
-    margin-left: 665px;  
-    display: flex;
-    margin-top: -8px;
-
-}
-.barre2 hr {
-    border: none;
-    border-top: 1px solid black; 
-    width: 2%; 
-    margin-left: 1083px;  
-    display: flex;
-    margin-top: -8px;
-
-}
-.client{
-    font-size: 13px;
-    margin-left: 250px;
-}
-.client1{
-    font-size: 13px ;
-    margin-left: 665px;
-    position: relative;
-    margin-top: -140px;
-}
-.client2{
-    font-size: 13px ;
-    margin-left: 1083px;
-    position: relative;
-    margin-top: -45px;
-}
-.Bas{
-    margin-top: 1px;
-    width: 1520px;
-    height: 340px;
-    margin-left: -20px;
-    background-color: #529DBE;
-}
-
-
-/* CSS Pour le profil du coach */
-
-.profilc{
-    padding-top: 100px;
-    display: flex;
-}
-
-
-.encadrer1 {
-    border: 2px solid #000;
-    border-radius: 20px;
-    padding: 50px;
-    margin-top: -420px;
-    margin-left: 350px;
-    width: 850px;
-    background-color: #f9f9f9
-}
-
-.messaging-container {
-    width: 400px;
-    background-color: #fff;
-    border: 1px solid #ddd;
-    border-radius: 10px;
-    display: flex;
-    flex-direction: column;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  }
-  
-  .chat-header {
-    background-color: #0078ff;
-    color: #fff;
-    text-align: center;
-    padding: 10px;
-    font-size: 1.2rem;
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
-  }
-  
-  .chat-messages {
-    flex: 1;
-    padding: 10px;
-    overflow-y: auto;
-    background-color: #f0f0f0;
-  }
-  
-  .chat-messages div {
-    margin-bottom: 10px;
-    padding: 10px;
-    background-color: #e1f5fe;
-    border-radius: 5px;
-    width: fit-content;
-    max-width: 70%;
-  }
-  
-  .chat-messages .user-message {
-    background-color: #d1e7dd;
-    align-self: flex-end;
-  }
-  
-  .chat-input {
-    display: flex;
-    padding: 10px;
-    border-top: 1px solid #ddd;
-    background-color: #fff;
-  }
-  
-  .chat-input input {
-    flex: 1;
+    margin-bottom: 15px;
     border: 1px solid #ddd;
     border-radius: 5px;
+    font-size: 16px;
+    transition: all 0.3s ease;
+}
+
+input:focus, select:focus {
+    border-color: #2d3e50;
+}
+
+button[type="submit"] {
+    background-color: #2d3e50;
+    color: white;
+    cursor: pointer;
+    font-size: 18px;
+}
+
+button[type="submit"]:hover {
+    background-color: #3c4e65;
+}
+
+/* Tableaux */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    font-size: 16px;
+}
+
+table th, table td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+table th {
+    background-color: #2d3e50;
+    color: white;
+}
+
+table td {
+    background-color: #f9f9f9;
+}
+
+table tr:hover td {
+    background-color: #e0e0e0;
+}
+
+/* Messages d'erreur */
+.errors {
+    background-color: #ffe6e6;
     padding: 10px;
-    font-size: 1rem;
-  }
-  
-  .chat-input button {
-    background-color: #0078ff;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    color: #d9534f;
+    border: 1px solid #d9534f;
+}
+
+.errors li {
+    list-style: none;
+}
+
+
+.jour-disponibilites {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 10px;
+}
+
+.jour-disponibilites h3 {
+    margin: 10px 0;
+    font-size: 1.5em;
+    color: #444;
+    text-transform: capitalize;
+}
+
+.heures {
+    display: flex;
+    flex-wrap: wrap; /* Permet de placer plusieurs boutons par ligne */
+    gap: 60px; /* Espace entre les boutons */
+    margin-top: 10px;
+}
+
+.btn-disponibilite {
+    flex: 1 1 calc(10% - 10px); /* Chaque bouton prend 20% de la largeur, moins les marges */
+    min-width: 120px; /* Largeur minimale pour les petits écrans */
+    max-width: 200px;
+    padding: 10px;
+    font-size: 1em;
+    text-align: center;
     color: #fff;
+    background-color: #2d3e50;
     border: none;
-    padding: 10px 15px;
-    font-size: 1rem;
-    margin-left: 10px;
     border-radius: 5px;
     cursor: pointer;
-    transition: background-color 0.3s;
-  }
-  
-  .chat-input button:hover {
-    background-color: #005fcc;
-  }
-  
+    transition: background-color 0.3s ease;
+}
+
+.btn-disponibilite:hover {
+    background-color: #e0e0e0;
+}
+
