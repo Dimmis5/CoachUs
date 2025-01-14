@@ -104,7 +104,7 @@ CREATE TABLE `lieu` (
   `adresse` varchar(500) NOT NULL,
   `nombre_places_disponibles` int(11) DEFAULT NULL,
   `longitude` varchar(500) NOT NULL,
-  `latitude` varchar(500) NOT NULL,
+  `latitude` varchar(500) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
