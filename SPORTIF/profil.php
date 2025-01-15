@@ -9,7 +9,7 @@ include('../BDD/connexion.php');
 include('../REQUETES_SPORTIF/informations.php');
 include('../REQUETES_SPORTIF/modifier_informations.php');
 include('../REQUETES_SPORTIF/recherchecreneau.php');
-include('../REQUETES_SPORTIF/messagerie.php'); // Inclure le fichier pour récupérer les messages
+
 ?>
 
 <!DOCTYPE html>
@@ -28,7 +28,7 @@ include('../REQUETES_SPORTIF/messagerie.php'); // Inclure le fichier pour récup
                 <li><a href="#modifier-infos">MODIFIER MES INFORMATIONS</a></li>
                 <li><a href="#reserver-creneau"> RESERVER UN CRENEAU </a></li>
                 <li><a href="#reservations"> MES RESERVATIONS </a></li>
-                <li><a href="#messagerie">MESSAGERIE</a></li>
+                <li><a href="../messagerie/messagerieSportif.php">MESSAGERIE</a></li>
                 <form method="post" action="../SPORTIF/deconnexion.php">
                     <button type="submit" name="logout"> SE DECONNECTER </button>
                 </form>
@@ -123,7 +123,6 @@ include('../REQUETES_SPORTIF/messagerie.php'); // Inclure le fichier pour récup
                                         data-idcoach="<?= $disponibilite['id_coach'] ?>"
                                         data-idlieu="<?= $disponibilite['id_lieu'] ?>"
                                         data-idsport="<?= $disponibilite['id_sport'] ?>"
-                                        data-disportif="<?= $id_sportif ?>"
                                         class="btn-disponibilite" 
                                         onclick="details(this)">
                                         <?= $disponibilite['heure_debut'] ?>
@@ -136,43 +135,7 @@ include('../REQUETES_SPORTIF/messagerie.php'); // Inclure le fichier pour récup
             </section>
         </div>
     </div>
-    
-    <script src="../REQUETES_SPORTIF/creneau.js"></script>
 
-            <!-- Section Messagerie -->
-            <section id="messagerie">
-                <div class="encadrer encadrer-modification">
-                    <h2>MESSAGERIE</h2>
-                    <form method="POST" action="../SPORTIF/envoyer_message.php">
-                        <label for="destinataire">Destinataire :</label>
-                        <select name="destinataire" id="destinataire">
-                            <option value="" disabled selected>Sélectionnez un utilisateur</option>
-                            <?php foreach ($utilisateurs as $utilisateur): ?>
-                                <option value="<?= $utilisateur['id'] ?>">
-                                    <?= htmlspecialchars($utilisateur['prenom']) . ' ' . htmlspecialchars($utilisateur['nom']) ?>
-                                </option>
-                            <?php endforeach; ?>
-                        </select>
-
-                        <label for="message">Message :</label>
-                        <textarea id="message" name="message" rows="4" cols="50" placeholder="Écrivez votre message..."></textarea>
-
-                        <button type="submit">Envoyer</button>
-                    </form>
-
-                    <h3>Messages reçus :</h3>
-                    <ul class="messages-list">
-                        <?php foreach ($messagesRecus as $message): ?>
-                            <li>
-                                <strong><?= htmlspecialchars($message['expediteur_nom']) ?> :</strong>
-                                <?= htmlspecialchars($message['contenu']) ?>
-                                <em>(<?= $message['date_envoi'] ?>)</em>
-                            </li>
-                        <?php endforeach; ?>
-                    </ul>
-                </div>
-            </section>
-        </div>
-    </div>
+    <script src="../REQUETES_SPORTIF/creneau2.js"></script>
 </body>
 </html>

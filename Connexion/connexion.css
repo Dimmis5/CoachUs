@@ -165,10 +165,6 @@ footer {
 }
 
 @media (max-width: 768px) {
-
-    body{
-        background: black;
-    }
     .footer-container {
         grid-template-columns: 1fr;
         text-align: center;

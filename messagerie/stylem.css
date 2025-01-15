@@ -1,0 +1,129 @@
+/* Zone des messages */
+.messages {
+    border: 1px solid #ddd;
+    padding: 20px;
+    margin-top: 20px;
+    border-radius: 8px;
+    background-color: #f7f7f7;
+    max-height: 400px; /* Limite la hauteur pour éviter le débordement */
+    overflow-y: auto; /* Ajoute un défilement si nécessaire */
+}
+
+.messages div {
+    margin-bottom: 15px;
+    display: flex;
+    flex-direction: column;
+}
+
+.messages div strong {
+    color: #007bff;
+    margin-bottom: 5px;
+}
+
+.messages div p {
+    margin: 5px 0;
+    font-size: 1em;
+    color: #333;
+}
+
+.messages div em {
+    font-size: 0.8em;
+    color: #999;
+    align-self: flex-end;
+}
+
+/* Style des messages envoyés et reçus */
+.messages div.sent {
+    align-items: flex-end; /* Messages alignés à droite */
+    text-align: right;
+    background-color: #e1f5fe;
+    border-radius: 10px;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.messages div.received {
+    align-items: flex-start; /* Messages alignés à gauche */
+    text-align: left;
+    background-color: #f1f1f1;
+    border-radius: 10px;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+/* Formulaire d'envoi de message */
+textarea[name="message"] {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    resize: none; /* Empêche le redimensionnement manuel */
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+    margin-bottom: 10px;
+}
+
+button[type="submit"] {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1em;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button[type="submit"]:hover {
+    background-color: #0056b3;
+}
+
+/* Barre de recherche pour les utilisateurs */
+.search-container {
+    position: relative;
+    margin-bottom: 20px;
+    width: 100%;
+    max-width: 400px;
+}
+
+#user-search {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    font-size: 16px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+#user-list {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #fff;
+    appearance: none; /* Supprime le style natif des sélecteurs */
+    cursor: pointer;
+}
+
+#user-list option {
+    padding: 10px;
+    font-size: 16px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .messages {
+        max-height: 300px; /* Ajuste la hauteur sur les petits écrans */
+    }
+
+    textarea[name="message"] {
+        font-size: 14px;
+    }
+
+    button[type="submit"] {
+        font-size: 14px;
+        padding: 8px 16px;
+    }
+}

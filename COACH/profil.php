@@ -38,8 +38,11 @@ include('../REQUETES_COACH/avis.php');
                 <li><a href="#lieux-choisis">MES LIEUX</a></li>
                 <li><a href="#creneaux-reserves"> RESERVATIONS </a></li>
                 <li><a href="#avis"> AVIS </a></li>
+                <li><a href="../messagerie/messagerieCoach.php">MESSAGERIE</a></li>
+
                 <form method="post" action="../COACH/deconnexion.php">
-                    <button type="submit" name="logout"> SE DECONNECTER </button>
+                    <button type="submit" name="logout">
+                         SE DECONNECTER </button>
                 </form>
             </ul>
         </div>

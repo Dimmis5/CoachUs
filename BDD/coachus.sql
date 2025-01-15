@@ -104,7 +104,7 @@ CREATE TABLE `lieu` (
   `adresse` varchar(500) NOT NULL,
   `nombre_places_disponibles` int(11) DEFAULT NULL,
   `longitude` varchar(500) NOT NULL,
-  `latitude` varchar(500) NOT NULL
+  `latitude` varchar(500) NOT NULL,
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -151,7 +151,7 @@ CREATE TABLE `reservation` (
   `id_sport` int(11) NOT NULL,
   `id_sportif` int(11) NOT NULL,
   `id_coach` int(11) NOT NULL,
-  `id_lieu` int(11) NOT NULL
+  `id_lieu` int(11) NOT NULL,
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
