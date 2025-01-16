@@ -49,6 +49,15 @@ if (!empty($id_sport) && !empty($id_coach)) {
 }
 
 $disponibilitesParJour = [];
+$reservedSlots = [];
+$sqlReservedSlots = "SELECT id_disponibilite FROM reservation";
+$resultReservedSlots = $conn->query($sqlReservedSlots);
+if ($resultReservedSlots->num_rows > 0) {
+    while ($row = $resultReservedSlots->fetch_assoc()) {
+        $reservedSlots[] = $row['id_disponibilite'];
+    }
+}
+
 if (!empty($id_sport) && !empty($id_coach) && !empty($id_lieu)) {
     $sqlDisponibilites = "
         SELECT 
@@ -70,6 +79,7 @@ if (!empty($id_sport) && !empty($id_coach) && !empty($id_lieu)) {
         WHERE D.id_sport = $id_sport 
             AND D.id_coach = $id_coach 
             AND D.id_lieu = $id_lieu
+            AND D.date >= CURDATE()
         ORDER BY D.date, D.heure_debut
     ";
 
@@ -78,9 +88,13 @@ if (!empty($id_sport) && !empty($id_coach) && !empty($id_lieu)) {
         while ($row = $resultDisponibilites->fetch_assoc()) {
             setlocale(LC_TIME, 'fr_FR.UTF-8', 'fr_FR', 'fr', 'français');
             $jour = strtoupper(strftime("%A %d %B %Y", strtotime($row['date'])));
+
             if (!isset($disponibilitesParJour[$jour])) {
                 $disponibilitesParJour[$jour] = [];
             }
+
+            $isReserved = in_array($row['id_disponibilite'], $reservedSlots);
+
             $disponibilitesParJour[$jour][] = [
                 'id_disponibilite' => $row['id_disponibilite'],
                 'date' => $row['date'],
@@ -93,10 +107,12 @@ if (!empty($id_sport) && !empty($id_coach) && !empty($id_lieu)) {
                 'nom_lieu' => $row['nom_lieu'],
                 'id_sport' => $row['id_sport'],
                 'nom_sport' => $row['nom_sport'],
+                'reserved' => $isReserved,
             ];
         }
     }
 }
+
 
 ?>
 

@@ -9,7 +9,7 @@ include('../BDD/connexion.php');
 include('../REQUETES_SPORTIF/informations.php');
 include('../REQUETES_SPORTIF/modifier_informations.php');
 include('../REQUETES_SPORTIF/recherchecreneau.php');
-
+include('../REQUETES_SPORTIF/mesreservations.php');
 ?>
 
 <!DOCTYPE html>
@@ -18,7 +18,7 @@ include('../REQUETES_SPORTIF/recherchecreneau.php');
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Profil Sportif</title>
-    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="../style2.css">
 </head>
 <body>
     <div class="container">
@@ -28,6 +28,7 @@ include('../REQUETES_SPORTIF/recherchecreneau.php');
                 <li><a href="#modifier-infos">MODIFIER MES INFORMATIONS</a></li>
                 <li><a href="#reserver-creneau"> RESERVER UN CRENEAU </a></li>
                 <li><a href="#reservations"> MES RESERVATIONS </a></li>
+                <li><a href="../SPORTIF/avis.php"> DEPOSER UN AVIS </a></li>
                 <li><a href="../messagerie/messagerieSportif.php">MESSAGERIE</a></li>
                 <form method="post" action="../SPORTIF/deconnexion.php">
                     <button type="submit" name="logout"> SE DECONNECTER </button>
@@ -118,25 +119,91 @@ include('../REQUETES_SPORTIF/recherchecreneau.php');
                                         data-heurefin="<?= $disponibilite['heure_fin'] ?>"
                                         data-coachnom="<?= $disponibilite['nom_coach'] ?>"
                                         data-coachprenom="<?= $disponibilite['prenom_coach'] ?>"
-                                        data-lieu="<?= $disponibilite['nom_lieu'] ?>"
-                                        data-sport="<?= $disponibilite['nom_sport'] ?>"
                                         data-idcoach="<?= $disponibilite['id_coach'] ?>"
+                                        data-lieu="<?= $disponibilite['nom_lieu'] ?>"
                                         data-idlieu="<?= $disponibilite['id_lieu'] ?>"
+                                        data-sport="<?= $disponibilite['nom_sport'] ?>"
                                         data-idsport="<?= $disponibilite['id_sport'] ?>"
-                                        class="btn-disponibilite" 
-                                        onclick="details(this)">
+                                        data-idsportif="<?= $_SESSION['sportif_id'] ?>"
+                                        class="btn-disponibilite <?= $disponibilite['reserved'] ? 'grisé' : '' ?>"
+                                        <?= $disponibilite['reserved'] ? 'disabled' : '' ?>
+                                            onclick="<?= $disponibilite['reserved'] ? '' : 'details(this)' ?>">
                                         <?= $disponibilite['heure_debut'] ?>
                                     </button>
                                 <?php endforeach; ?>
                             </div>
                         </div>
-                    <?php endforeach; ?>
+                    <?php endforeach; ?>  
+                </div>
+            </section>
+
+            <section id="reservations">
+                <div class="encadrer encadrer-modification">
+                    <h2> MES RESERVATIONS </h2>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Date</th>
+                                <th>Heure de début</th>
+                                <th>Heure de fin</th>
+                                <th>Lieu</th>
+                                <th>Sport</th>
+                                <th>Coach</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php
+                            if ($result_dispos->num_rows > 0) {
+                                setlocale(LC_TIME, 'fr_FR.UTF-8', 'fr_FR', 'fr', 'français');
+                                
+                                while ($dispo = $result_dispos->fetch_assoc()) {
+                                    $sql_lieu = "SELECT nom FROM lieu WHERE id_lieu = ?";
+                                    $stmt_lieu = $conn->prepare($sql_lieu);
+                                    $stmt_lieu->bind_param("i", $dispo['id_lieu']);
+                                    $stmt_lieu->execute();
+                                    $result_lieu = $stmt_lieu->get_result();
+                                    $lieu = $result_lieu->fetch_assoc();
+
+                                    $sql_sport = "SELECT nom FROM sport WHERE id_sport = ?";
+                                    $stmt_sport = $conn->prepare($sql_sport);
+                                    $stmt_sport->bind_param("i", $dispo['id_sport']);
+                                    $stmt_sport->execute();
+                                    $result_sport = $stmt_sport->get_result();
+                                    $sport = $result_sport->fetch_assoc();
+
+                                    $sql_coach = "SELECT nom, prenom FROM coach WHERE id_coach = ?";
+                                    $stmt_coach = $conn->prepare($sql_coach);
+                                    $stmt_coach->bind_param("i", $dispo['id_coach']);
+                                    $stmt_coach->execute();
+                                    $result_coach = $stmt_coach->get_result();
+                                    $coach = $result_coach->fetch_assoc();
+
+                                    $formatted_date = strftime("%A %d %B %Y", strtotime($dispo['date']));
+
+                                    $formatted_heure_debut = date("H:i", strtotime($dispo['heure_debut']));
+                                    $formatted_heure_fin = date("H:i", strtotime($dispo['heure_fin']));
+
+                                    echo "<tr>";
+                                    echo "<td>" . htmlspecialchars($formatted_date) . "</td>";
+                                    echo "<td>" . htmlspecialchars($formatted_heure_debut) . "</td>";
+                                    echo "<td>" . htmlspecialchars($formatted_heure_fin) . "</td>";
+                                    echo "<td>" . htmlspecialchars($lieu['nom']) . "</td>";
+                                    echo "<td>" . htmlspecialchars($sport['nom']) . "</td>";
+                                    echo "<td>" . htmlspecialchars($coach['nom']) . " " . htmlspecialchars($coach['prenom']) . "</td>";
+                                    echo "</tr>";
+                                }
+                            } else {
+                                echo "<tr><td colspan='5'>Aucun créneau de disponibilité.</td></tr>";
+                            }
+                            ?>
+                        </tbody>
+                    </table>
                 </div>
             </section>
         </div>
     </div>
 
-    <script src="../REQUETES_SPORTIF/creneau2.js"></script>
+    <script src="../REQUETES_SPORTIF/creneau1.js"></script>
 
     <footer>
         <div class="footer-container">
