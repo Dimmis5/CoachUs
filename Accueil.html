@@ -6,7 +6,7 @@
         <style>
              body {
                 margin: 0;
-                min-height: 300vh; /* Augmentez la hauteur pour permettre le défilement */
+                min-height: 300vh;
             }
             #gradient {
                 position: fixed;
@@ -15,8 +15,8 @@
                 width: 100%;
                 height: 1000%;
                 background: linear-gradient(to bottom, #BFE4EE, #FFFFFF, #FFFFFF, #FFFFFF, #FFFFFF);
-                background-size: 100% 300%; /* Étend le dégradé sur 300% de la hauteur */
-                z-index: -1; /* Place le dégradé en arrière-plan */
+                background-size: 100% 300%; 
+                z-index: -1;
             }
         </style>
     </head>
@@ -27,10 +27,10 @@
 
             const gradient = document.getElementById('gradient');
             window.addEventListener('scroll', () => {
-                const scrollTop = window.scrollY; // Position de défilement
-                const scrollHeight = document.documentElement.scrollHeight - window.innerHeight; // Hauteur totale défilable
-                const scrollPercentage = scrollTop / scrollHeight; // Pourcentage de défilement
-                gradient.style.backgroundPosition = `0 ${scrollPercentage * 100}%`; // Ajuste la position verticale du dégradé
+                const scrollTop = window.scrollY;
+                const scrollHeight = document.documentElement.scrollHeight - window.innerHeight; 
+                const scrollPercentage = scrollTop / scrollHeight; 
+                gradient.style.backgroundPosition = `0 ${scrollPercentage * 100}%`;
             });
 
         </script>

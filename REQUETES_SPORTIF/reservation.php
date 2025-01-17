@@ -1,10 +1,8 @@
 <?php
 include('../BDD/connexion.php');
 
-// Initialiser un tableau pour les champs manquants
 $missing_fields = [];
 
-// Vérifier chaque champ
 if (!isset($_POST['id_disponibilite'])) {
     $missing_fields[] = 'id_disponibilite';
 }
