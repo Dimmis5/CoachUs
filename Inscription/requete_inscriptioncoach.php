@@ -11,8 +11,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $adresse_mail = trim($_POST['adresse_mail']);
     $identifiant = trim($_POST['identifiant']);
     $mot_de_passe = trim($_POST['mot_de_passe']);
-    
-    // Validation des champs
+ 
     if (empty($nom)) {
         $erreurs[] = "Le nom est requis.";
     }
@@ -36,18 +35,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     if (empty($erreurs)) {
-        // Hachage du mot de passe
+       
         $mot_de_passe_hash = password_hash($mot_de_passe, PASSWORD_DEFAULT);
 
-        // Insérer le coach dans la table `coach`
         $stmt = $conn->prepare("INSERT INTO coach (nom, prenom, adresse, numero_de_telephone, adresse_mail, identifiant, mot_de_passe) VALUES (?, ?, ?, ?, ?, ?, ?)");
         $stmt->bind_param("sssssss", $nom, $prenom, $adresse, $numero_de_telephone, $adresse_mail, $identifiant, $mot_de_passe_hash);
 
         if ($stmt->execute()) {
-            // Récupérer l'ID du coach nouvellement ajouté
+           
             $coachId = $conn->insert_id;
 
-            // Insérer le coach dans la table `users`
             $pseudo = $prenom . " " . $nom;
             $role = 'coach';
             $stmtUsers = $conn->prepare("INSERT INTO users (id, pseudo, role, password) VALUES (?, ?, ?, ?)");

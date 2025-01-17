@@ -7,10 +7,10 @@ if (!isset($_SESSION['coach_id'])) {
 
 include('../BDD/connexion.php');
 
-// Récupérer l'ID du coach connecté
+
 $coachId = $_SESSION['coach_id'];
 
-// Récupérer le nombre de messages non lus
+
 $unreadMessagesQuery = $conn->prepare('
     SELECT COUNT(*) AS unread_count 
     FROM messages 
@@ -21,7 +21,7 @@ $unreadMessagesQuery->execute();
 $unreadMessagesResult = $unreadMessagesQuery->get_result()->fetch_assoc();
 $unreadCount = $unreadMessagesResult['unread_count'];
 
-// Récupérer la liste des sportifs associés avec leurs messages non lus
+
 $unreadSportifsQuery = $conn->prepare('
     SELECT s.id_sportif AS id, s.prenom, s.nom, COUNT(m.id) AS unread_count 
     FROM sportif s
@@ -33,43 +33,42 @@ $unreadSportifsQuery->bind_param('i', $coachId);
 $unreadSportifsQuery->execute();
 $unreadSportifs = $unreadSportifsQuery->get_result()->fetch_all(MYSQLI_ASSOC);
 
-// Récupérer la liste des sportifs disponibles
 $usersQuery = $conn->prepare('SELECT id_sportif AS id, prenom, nom FROM sportif');
 $usersQuery->execute();
 $sportifsList = $usersQuery->get_result()->fetch_all(MYSQLI_ASSOC);
 
-// Ajouter une connexion entre le coach et un sportif
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['sportif_id'])) {
     $sportifId = intval($_POST['sportif_id']);
 
-    // Vérifier si la connexion existe déjà
+   
     $checkConnectionQuery = $conn->prepare('SELECT * FROM coach_sportif WHERE coach_id = ? AND sportif_id = ?');
     $checkConnectionQuery->bind_param('ii', $coachId, $sportifId);
     $checkConnectionQuery->execute();
     $connectionExists = $checkConnectionQuery->get_result()->num_rows > 0;
 
     if (!$connectionExists) {
-        // Créer la connexion entre le coach et le sportif
+        
         $insertConnectionQuery = $conn->prepare('INSERT INTO coach_sportif (coach_id, sportif_id) VALUES (?, ?)');
         $insertConnectionQuery->bind_param('ii', $coachId, $sportifId);
         $insertConnectionQuery->execute();
     }
 }
 
-// Gestion des messages échangés
+
 $messages = [];
 $recipient = null;
 if (isset($_GET['recipient'])) {
     $recipientId = intval($_GET['recipient']);
 
-    // Vérifier que le sportif est associé au coach
+    
     $checkRecipientQuery = $conn->prepare('SELECT prenom, nom FROM sportif WHERE id_sportif = ?');
     $checkRecipientQuery->bind_param('i', $recipientId);
     $checkRecipientQuery->execute();
     $recipient = $checkRecipientQuery->get_result()->fetch_assoc();
 
     if ($recipient) {
-        // Récupérer les messages échangés
+        
         $messagesQuery = $conn->prepare('
             SELECT from_user_id, to_user_id, content, created_at 
             FROM messages 
@@ -81,7 +80,7 @@ if (isset($_GET['recipient'])) {
         $messagesQuery->execute();
         $messages = $messagesQuery->get_result()->fetch_all(MYSQLI_ASSOC);
 
-        // Marquer les messages comme lus
+        
         $markAsReadQuery = $conn->prepare('
             UPDATE messages 
             SET is_read = TRUE 
@@ -92,7 +91,6 @@ if (isset($_GET['recipient'])) {
     }
 }
 
-// Envoyer un message
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['to_user_id'], $_POST['message'])) {
     $toUserId = intval($_POST['to_user_id']);
     $content = htmlspecialchars(trim($_POST['message']));
@@ -120,7 +118,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['to_user_id'], $_POST[
 <body>
     <h1>Messagerie Coach</h1>
 
-    <!-- Notification pop-up -->
+ 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const unreadCount = <?php echo $unreadCount; ?>;
@@ -133,7 +131,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['to_user_id'], $_POST[
         });
     </script>
 
-    <!-- Ajouter une connexion avec un sportif -->
+    
     <section>
         <h2>Ajouter une connexion avec un sportif</h2>
         <form method="POST" action="">
@@ -150,7 +148,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['to_user_id'], $_POST[
         </form>
     </section>
 
-    <!-- Liste des sportifs avec des messages non lus -->
+
     <section id="unread-messages">
         <h2>Sportifs avec des messages non lus</h2>
         <?php if (!empty($unreadSportifs)): ?>
@@ -168,7 +166,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['to_user_id'], $_POST[
         <?php endif; ?>
     </section>
 
-    <!-- Discussion avec un sportif -->
+   
     <?php if ($recipient): ?>
         <section>
             <h2>Messages avec <?php echo htmlspecialchars($recipient['prenom'] . ' ' . $recipient['nom']); ?></h2>

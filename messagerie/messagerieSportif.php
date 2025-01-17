@@ -7,33 +7,33 @@ if (!isset($_SESSION['sportif_id'])) {
 
 include('../BDD/connexion.php');
 
-// Récupérer l'ID du sportif connecté
+
 $sportifId = $_SESSION['sportif_id'];
 
-// Récupérer la liste des coachs disponibles
+
 $coachsQuery = $conn->prepare('SELECT id_coach AS id, prenom, nom FROM coach');
 $coachsQuery->execute();
 $coachsList = $coachsQuery->get_result()->fetch_all(MYSQLI_ASSOC);
 
-// Ajouter une connexion entre le sportif et un coach
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['coach_id'])) {
     $coachId = intval($_POST['coach_id']);
 
-    // Vérifier si la connexion existe déjà
+    
     $checkConnectionQuery = $conn->prepare('SELECT * FROM coach_sportif WHERE coach_id = ? AND sportif_id = ?');
     $checkConnectionQuery->bind_param('ii', $coachId, $sportifId);
     $checkConnectionQuery->execute();
     $connectionExists = $checkConnectionQuery->get_result()->num_rows > 0;
 
     if (!$connectionExists) {
-        // Créer la connexion entre le sportif et le coach
+        
         $insertConnectionQuery = $conn->prepare('INSERT INTO coach_sportif (coach_id, sportif_id) VALUES (?, ?)');
         $insertConnectionQuery->bind_param('ii', $coachId, $sportifId);
         $insertConnectionQuery->execute();
     }
 }
 
-// Récupérer la liste des coachs associés au sportif
+
 $associatedQuery = $conn->prepare('
     SELECT c.id_coach AS id, c.prenom, c.nom 
     FROM coach c
@@ -44,20 +44,20 @@ $associatedQuery->bind_param('i', $sportifId);
 $associatedQuery->execute();
 $associatedCoachs = $associatedQuery->get_result()->fetch_all(MYSQLI_ASSOC);
 
-// Gestion des messages échangés
+
 $messages = [];
 $recipient = null;
 if (isset($_GET['recipient'])) {
     $recipientId = intval($_GET['recipient']);
 
-    // Vérifier que le coach est associé au sportif
+    
     $checkRecipientQuery = $conn->prepare('SELECT prenom, nom FROM coach WHERE id_coach = ?');
     $checkRecipientQuery->bind_param('i', $recipientId);
     $checkRecipientQuery->execute();
     $recipient = $checkRecipientQuery->get_result()->fetch_assoc();
 
     if ($recipient) {
-        // Récupérer les messages échangés
+        
         $messagesQuery = $conn->prepare('
             SELECT from_user_id, to_user_id, content, created_at 
             FROM messages 
@@ -71,7 +71,7 @@ if (isset($_GET['recipient'])) {
     }
 }
 
-// Envoyer un message
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['to_user_id'], $_POST['message'])) {
     $toUserId = intval($_POST['to_user_id']);
     $content = htmlspecialchars(trim($_POST['message']));
@@ -97,7 +97,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['to_user_id'], $_POST[
 <body>
     <h1>Messagerie Sportif</h1>
 
-    <!-- Ajouter une connexion avec un coach -->
+    
     <section>
         <h2>Ajouter une connexion avec un coach</h2>
         <form method="POST" action="">
@@ -114,7 +114,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['to_user_id'], $_POST[
         </form>
     </section>
 
-    <!-- Liste des coachs associés -->
+    
     <section>
         <h2>Coachs associés</h2>
         <?php if (!empty($associatedCoachs)): ?>
@@ -131,7 +131,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['to_user_id'], $_POST[
         <?php endif; ?>
     </section>
 
-    <!-- Discussion avec un coach -->
+    
     <?php if ($recipient): ?>
         <section>
             <h2>Messages avec <?php echo htmlspecialchars($recipient['prenom'] . ' ' . $recipient['nom']); ?></h2>
