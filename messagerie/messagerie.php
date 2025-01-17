@@ -2,19 +2,19 @@
 session_start();
 require 'bdd.php'; // Connexion à la base de données
 
-// Vérifier si l'utilisateur est connecté
+
 if (!isset($_SESSION['role']) || (!isset($_SESSION['id_coach']) && !isset($_SESSION['id_sportif']))) {
     header('Location: ../index.php');
     exit;
 }
 
-// Identifier le rôle de l'utilisateur connecté
+
 $role = $_SESSION['role'];
 $id = $role === 'coach' ? $_SESSION['id_coach'] : $_SESSION['id_sportif'];
 
-// Récupérer les utilisateurs associés
+
 if ($role === 'coach') {
-    // Un coach voit les sportifs associés
+
     $query = $bdd->prepare('
         SELECT s.id_sportif AS id, s.identifiant AS pseudo
         FROM sportif s
@@ -23,7 +23,7 @@ if ($role === 'coach') {
     ');
     $query->execute([$id]);
 } else {
-    // Un sportif voit les coachs associés
+
     $query = $bdd->prepare('
         SELECT c.id_coach AS id, c.identifiant AS pseudo
         FROM coach c
@@ -34,12 +34,10 @@ if ($role === 'coach') {
 }
 $usersList = $query->fetchAll();
 
-// Gestion des messages avec un utilisateur sélectionné
 if (isset($_GET['recipient'])) {
     $recipientId = intval($_GET['recipient']);
     $recipientRole = $role === 'coach' ? 'sportif' : 'coach';
 
-    // Récupérer les messages échangés
     $messagesQuery = $bdd->prepare('
         SELECT * FROM messages
         WHERE (from_user_id = :current AND to_user_id = :recipient AND from_user_type = :current_type AND to_user_type = :recipient_type)
@@ -55,7 +53,6 @@ if (isset($_GET['recipient'])) {
     $messages = $messagesQuery->fetchAll();
 }
 
-// Gestion de l'envoi de messages
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['message'], $_POST['recipient_id'])) {
     $recipientId = intval($_POST['recipient_id']);
     $content = htmlspecialchars(trim($_POST['message']));

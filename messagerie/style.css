@@ -1,11 +1,11 @@
-/* Styles généraux */
+
 body {
     font-family: 'Arial', sans-serif;
     background-color: #f7f7f7;
     margin: 0;
     padding: 20px;
     color: #333;
-    max-width: 600px;  /* Réduction de la largeur de la page */
+    max-width: 600px;  
     margin-left: auto;
     margin-right: auto;
 }
@@ -22,7 +22,7 @@ h3 {
     margin: 5px 0;
 }
 
-/* Liste des utilisateurs (coach ou sportif) */
+
 ul {
     list-style-type: none;
     padding: 0;
@@ -47,7 +47,7 @@ ul li a:hover {
     color: #0056b3;
 }
 
-/* Zone des messages */
+
 .messages {
     background-color: #fff;
     border-radius: 6px;
@@ -67,7 +67,7 @@ ul li a:hover {
     margin: 3px 0;
 }
 
-/* Formulaire d'envoi de message */
+
 textarea {
     width: 100%;
     height: 70px;
