@@ -1,9 +1,7 @@
 <?php
-// Activer les erreurs pour débogage
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
-// Vérifier les données POST
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['creneau'])) {
     $creneau = htmlspecialchars($_POST['creneau']);
 } else {

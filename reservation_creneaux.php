@@ -1,5 +1,4 @@
 <?php
-// Connexion à la base de données
 $host = 'localhost';
 $user = 'root';
 $password = '';
@@ -10,7 +9,6 @@ if ($conn->connect_error) {
     die("Erreur de connexion : " . $conn->connect_error);
 }
 
-// Récupérer les créneaux réservés
 $reserved_slots = [];
 $result = $conn->query("SELECT creneau FROM reservations_new");
 if ($result && $result->num_rows > 0) {
@@ -19,7 +17,6 @@ if ($result && $result->num_rows > 0) {
     }
 }
 
-// Créneaux disponibles
 $creneaux = ['07:30', '10:00', '14:00', '15:00', '16:00', '18:00'];
 ?>
 

@@ -21,7 +21,7 @@ body {
 .menu-gauche {
     position: sticky;
     top: 0;
-    width: 25%; 
+    width: 20%;
     background-color: #5c708b;
     padding: 20px;
     border-right: 2px solid #ccc;
@@ -57,23 +57,26 @@ body {
     background-color: #3c4e65;
 }
 
+/* Contenu principal */
 .contenu-principal {
-    flex-grow: 1; /* Occupe tout l'espace restant */
+    flex-grow: 1;
     padding: 20px;
     background-color: #ffffff;
     border-radius: 8px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
+/* Menu droit */
 .menu-droit {
-    width: 40%;
+    width: 20%;
     padding: 20px;
     background-color: #ffffff;
     border-radius: 8px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    height: 80vh;
+    height: 80vh; 
 }
 
+/* Sections et titres */
 section {
     margin-bottom: 40px;
     background-color: #fff;
@@ -92,6 +95,7 @@ h3 {
     text-align: center;
 }
 
+/* Formulaires */
 .encadrer {
     padding: 20px;
     background-color: #f9f9f9;
@@ -158,6 +162,7 @@ table tr:hover td {
     background-color: #e0e0e0;
 }
 
+/* Messages d'erreur */
 .errors {
     background-color: #ffe6e6;
     padding: 10px;
@@ -188,7 +193,7 @@ table tr:hover td {
 
 .heures {
     display: flex;
-    flex-wrap: wrap; 
+    flex-wrap: wrap;
     gap: 60px; 
     margin-top: 10px;
 }
@@ -212,3 +217,9 @@ table tr:hover td {
     background-color: #e0e0e0;
 }
 
+button.grisé {
+    background-color: #cccccc;
+    color: #666666;
+    cursor: not-allowed;
+    border: 1px solid #999999;
+}

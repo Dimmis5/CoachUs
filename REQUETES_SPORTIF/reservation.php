@@ -19,7 +19,6 @@ if (!isset($_POST['id_sportif'])) {
     $missing_fields[] = 'id_sportif';
 }
 
-
 if (empty($missing_fields)) {
     $id_disponibilite = $conn->real_escape_string($_POST['id_disponibilite']);
     $id_sport = $conn->real_escape_string($_POST['id_sport']);
@@ -35,8 +34,6 @@ if (empty($missing_fields)) {
     } else {
         echo "error: " . $conn->error;
     }
-} else {
-    echo "error: Données manquantes - " . implode(', ', $missing_fields);
 }
 
 $conn->close();

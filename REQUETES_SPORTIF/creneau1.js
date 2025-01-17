@@ -10,7 +10,9 @@ function details(buttonElement) {
     const idcoach = buttonElement.getAttribute('data-idcoach');
     const idsport = buttonElement.getAttribute('data-idsport');
     const idlieu = buttonElement.getAttribute('data-idlieu');
+    const idsportif = buttonElement.getAttribute('data-idsportif');
 
+    // Message de confirmation
     const message = `Vous avez sélectionné le créneau suivant : \n\n`
         + `Date : ${date}\n`
         + `De : ${heuredebut}\n`
@@ -28,8 +30,9 @@ function details(buttonElement) {
         formData.append('id_sport', idsport);
         formData.append('id_coach', idcoach);
         formData.append('id_lieu', idlieu);
+        formData.append('id_sportif', idsportif);
 
-        fetch('reservation.php', {
+        fetch('../REQUETES_SPORTIF/reservation.php', {
             method: 'POST',
             body: formData
         })

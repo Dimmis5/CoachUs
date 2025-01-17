@@ -1,5 +1,4 @@
 <?php
-// Vérifier si un créneau est passé dans l'URL
 if (isset($_GET['creneau'])) {
     $creneau = htmlspecialchars($_GET['creneau']);
 } else {
