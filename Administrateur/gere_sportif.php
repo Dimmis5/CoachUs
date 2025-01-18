@@ -1,21 +1,21 @@
 <?php
-include('../BDD/connexion.php'); // Connexion à la base de données
+include('../BDD/connexion.php'); 
 
 try {
-    // Requête pour récupérer la liste des sportifs
+  
     $query_sportifs = "SELECT * FROM sportif";
     $stmt_sportifs = $connexion->prepare($query_sportifs);
     $stmt_sportifs->execute();
     $sportifs = $stmt_sportifs->fetchAll(PDO::FETCH_ASSOC);
 
-    // Suppression d'un sportif
+  
     if (isset($_GET['supprimer_id'])) {
         $id_sportif = $_GET['supprimer_id'];
         $delete_query = "DELETE FROM sportif WHERE id_sportif = :id_sportif";
         $stmt_delete = $connexion->prepare($delete_query);
         $stmt_delete->bindParam(':id_sportif', $id_sportif);
         $stmt_delete->execute();
-        header("Location: gerer_sportif.php"); // Rediriger après suppression
+        header("Location: gerer_sportif.php"); 
         exit;
     }
 } catch (PDOException $e) {

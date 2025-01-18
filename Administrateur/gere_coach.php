@@ -29,5 +29,5 @@ if (count($resultats) > 0) {
     echo "Aucun sportif trouvé.";
 }
 
-$stmt->close(); // Fermer la requête
+$stmt->close(); 
 ?>
