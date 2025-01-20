@@ -4,13 +4,13 @@ include('../BDD/connexion.php'); // Connexion à la base de données
 try {
    
     $query_sportifs = "SELECT COUNT(*) AS total_sportifs FROM sportif";
-    $stmt_sportifs = $conn->prepare($query_sportifs);
+    $stmt_sportifs = $connexion->prepare($query_sportifs);
     $stmt_sportifs->execute();
     $total_sportifs = $stmt_sportifs->fetch(PDO::FETCH_ASSOC)['total_sportifs'];
 
     
     $query_coachs = "SELECT COUNT(*) AS total_coachs FROM coach";
-    $stmt_coachs = $conn->prepare($query_coachs);
+    $stmt_coachs = $connexion->prepare($query_coachs);
     $stmt_coachs->execute();
     $total_coachs = $stmt_coachs->fetch(PDO::FETCH_ASSOC)['total_coachs'];
 
@@ -46,12 +46,14 @@ try {
             
             <h2>Gestion des utilisateurs</h2>
             <ul>
-                <li><a href="../Administrateur/gere_sportif.php">Gérer les sportifs</a></li>
-                <li><a href="../Administrateur/gere_sportif.php">Gérer les coachs</a></li>
-                <li><a href="../Administrateur/ajouter_utilisateur.php?type=sportif">Ajouter un sportif</a></li>
-                <li><a href="../Administrateur/ajouter_utilisateur.php?type=coach">Ajouter un coach</a></li>
-                <li><a href="../Administrateur/Supprimer_utilisateur.php?type=sportif">Supprimer un sportif</a></li>
-                <li><a href="../Administrateur/Supprimer_utilisateur.php?type=coach">Supprimer un coach</a></li>
+                <li><a href="../Administrateur/gere_sportif.php?type=sportif">Gérer les sportifs</a></li>
+                <li><a href="../Administrateur/gere_coach.php?type=coach">Gérer les coachs</a></li>
+                <li><a href="../Inscription/inscriptionsportif.php">Ajouter un sportif</a></li>
+                <li><a href="../Inscription/inscriptioncoach.php">Ajouter un coach</a></li>
+            </ul>
+            <h2> Gestion des lieux </h2>
+            <ul>
+                <li><a href="../Carte/Carte.html">Gérer la carte</a></li>
             </ul>
         </div>
     </div>

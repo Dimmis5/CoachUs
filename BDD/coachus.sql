@@ -184,6 +184,19 @@ CREATE TABLE `sportif` (
   `numero_de_telephone` varchar(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+-- Création de la table `images` pour stocker le chemin des images
+CREATE TABLE `images` (
+  `id_image` int(11) NOT NULL,
+  `id_coach` int(11) NOT NULL,  -- Lien avec le coach
+  `nom_image` varchar(255) NOT NULL,  -- Nom de l'image
+  `chemin_image` varchar(500) NOT NULL,  -- Chemin de l'image
+  `date_ajout` datetime NOT NULL,  -- Date d'ajout de l'image
+  PRIMARY KEY (`id_image`),
+  FOREIGN KEY (`id_coach`) REFERENCES `coach`(`id_coach`) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+
+
 --
 -- Index pour les tables déchargées
 --
