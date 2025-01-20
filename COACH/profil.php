@@ -22,22 +22,10 @@ include('../REQUETES_COACH/avis.php');
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Profil Coach</title>
-    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="../style2.css">
 </head>
 
 <body>
-        <div class="header-container">
-            <div align="left">
-                <img src="../LOGO/LOGO.png" alt="logo" width="50" height="75" />
-                <img src="../LOGO/CoachUS.png" class="logo" alt="logo" width="250" height="70" />
-            </div>
-            <div align="right" class="button-container">
-                <button> <a href="../FAQ/FAQ.php"> ?</a>  </button>
-                <button> <a href="../SPORTIF/profil.php">JE VEUX UN COACH </a> </button>
-                <button> <a href="../COACH/profil.php">JE SUIS COACH  </a></button>
-            </div>
-        </div>
-    <?php include('../PRESENTATION/haut_de_page.php') ?>
     <div class="container">
         <div class="menu-gauche">
             <h2>MENU</h2>
@@ -49,11 +37,8 @@ include('../REQUETES_COACH/avis.php');
                 <li><a href="#lieux-choisis">MES LIEUX</a></li>
                 <li><a href="#creneaux-reserves"> RESERVATIONS </a></li>
                 <li><a href="#avis"> AVIS </a></li>
-                <li><a href="../messagerie/messagerieCoach.php">MESSAGERIE</a></li>
-
                 <form method="post" action="../COACH/deconnexion.php">
-                    <button type="submit" name="logout">
-                         SE DECONNECTER </button>
+                    <button type="submit" name="logout"> SE DECONNECTER </button>
                 </form>
             </ul>
         </div>
@@ -240,174 +225,138 @@ include('../REQUETES_COACH/avis.php');
                     </ul>
             </section>
 
-            <section id="creneaux-reserves">
+            <section id="reservations">
                 <div class="encadrer encadrer-modification">
-                    <h2> RESERVATIONS </h2>
-                    <ul>
-                        <?php
-                        if ($result_reservations->num_rows > 0) {
-                            while ($row = $result_reservations->fetch_assoc()) {
-                                echo "<li>Réservation: " . htmlspecialchars($row['date']) . " " . htmlspecialchars($row['heure_debut']) . " - " . htmlspecialchars($row['heure_fin']) . "</li>";
+                    <h2> MES RESERVATIONS </h2>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Date</th>
+                                <th>Heure de début</th>
+                                <th>Heure de fin</th>
+                                <th>Lieu</th>
+                                <th>Sport</th>
+                                <th>Coach</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php
+                            if ($result_dispos->num_rows > 0) {
+                                setlocale(LC_TIME, 'fr_FR.UTF-8', 'fr_FR', 'fr', 'français');
+                                
+                                while ($dispo = $result_dispos->fetch_assoc()) {
+                                    $sql_lieu = "SELECT nom FROM lieu WHERE id_lieu = ?";
+                                    $stmt_lieu = $conn->prepare($sql_lieu);
+                                    $stmt_lieu->bind_param("i", $dispo['id_lieu']);
+                                    $stmt_lieu->execute();
+                                    $result_lieu = $stmt_lieu->get_result();
+                                    $lieu = $result_lieu->fetch_assoc();
+
+                                    $sql_sport = "SELECT nom FROM sport WHERE id_sport = ?";
+                                    $stmt_sport = $conn->prepare($sql_sport);
+                                    $stmt_sport->bind_param("i", $dispo['id_sport']);
+                                    $stmt_sport->execute();
+                                    $result_sport = $stmt_sport->get_result();
+                                    $sport = $result_sport->fetch_assoc();
+
+                                    $sql_sportif = "SELECT nom, prenom FROM sportif WHERE id_sportif = ?";
+                                    $stmt_sportif = $conn->prepare($sql_sportif);
+                                    $stmt_sportif->bind_param("i", $dispo['id_sportif']);
+                                    $stmt_sportif->execute();
+                                    $result_sportif = $stmt_sportif->get_result();
+                                    $sportif = $result_sportif->fetch_assoc();
+
+                                    $formatted_date = strftime("%A %d %B %Y", strtotime($dispo['date']));
+
+                                    $formatted_heure_debut = date("H:i", strtotime($dispo['heure_debut']));
+                                    $formatted_heure_fin = date("H:i", strtotime($dispo['heure_fin']));
+
+                                    echo "<tr>";
+                                    echo "<td>" . htmlspecialchars($formatted_date) . "</td>";
+                                    echo "<td>" . htmlspecialchars($formatted_heure_debut) . "</td>";
+                                    echo "<td>" . htmlspecialchars($formatted_heure_fin) . "</td>";
+                                    echo "<td>" . htmlspecialchars($lieu['nom']) . "</td>";
+                                    echo "<td>" . htmlspecialchars($sport['nom']) . "</td>";
+                                    echo "<td>" . htmlspecialchars($sportif['nom']) . " " . htmlspecialchars($sportif['prenom']) . "</td>";
+                                    echo "</tr>";
+                                }
+                            } else {
+                                echo "<tr><td colspan='5'>Aucune disponibilité.</td></tr>";
                             }
-                        } else {
-                            echo "<li>Aucune réservation.</li>";
-                        }
-                        ?>
-                    </ul>
+                            ?>
+                        </tbody>
+                    </table>
                 </div>
             </section>
 
+                   
             <section id="avis">
                 <div class="encadrer encadrer-modification">
                     <h2> AVIS </h2>
-                    <ul>
-                        <?php
-                        if ($result_avis->num_rows > 0) {
-                            while ($row = $ravis->fetch_assoc()) {
-                                echo "<li>Avis: " . htmlspecialchars($row['note']) . " " . htmlspecialchars($row['commentaire']) . "  </li>";
-                            }
-                        } else {
-                            echo "<li>Aucun avis.</li>";
-                        }
-                        ?>
-                    </ul>
-                </div>
-            </section>
-        </div>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Date</th>
+                                <th>Heure de début</th>
+                                <th>Heure de fin</th>
+                                <th>Lieu</th>
+                                <th>Sport</th>
+                                <th>Coach</th>
+                                <th>Note</th>
+                                <th>Commentaire</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php
+                            if ($result_avis->num_rows > 0) {
+                                setlocale(LC_TIME, 'fr_FR.UTF-8', 'fr_FR', 'fr', 'français');
+                                
+                                while ($avis = $result_avis->fetch_assoc()) {
+                                    $sql_lieu = "SELECT nom FROM lieu WHERE id_lieu = ?";
+                                    $stmt_lieu = $conn->prepare($sql_lieu);
+                                    $stmt_lieu->bind_param("i", $avis['id_lieu']);
+                                    $stmt_lieu->execute();
+                                    $result_lieu = $stmt_lieu->get_result();
+                                    $lieu = $result_lieu->fetch_assoc();
 
-        <div class="menu-droit">
-            <h1> NOUVEAUTES </h1>
-            <section id="derniers creneaux">
-                <div class="encadrer encadrer-modification">
-                    <h2> DERNIERES RESERVATIONS </h2>
-                    <ul>
-                        <?php
-                        $current_week_start = date('Y-m-d', strtotime('monday this week'));
-                        $current_week_end = date('Y-m-d', strtotime('sunday this week'));
+                                    $sql_sport = "SELECT nom FROM sport WHERE id_sport = ?";
+                                    $stmt_sport = $conn->prepare($sql_sport);
+                                    $stmt_sport->bind_param("i", $avis['id_sport']);
+                                    $stmt_sport->execute();
+                                    $result_sport = $stmt_sport->get_result();
+                                    $sport = $result_sport->fetch_assoc();
 
-                        $sql_reservations_week = "
-                            SELECT d.date, d.heure_debut, d.heure_fin, d.id_lieu, d.id_sport, r.id_reservation 
-                            FROM disponibilite d 
-                            INNER JOIN reservation r 
-                            ON d.id_disponibilite = r.id_disponibilite
-                            WHERE d.id_coach = ? AND d.date BETWEEN ? AND ?
-                            ORDER BY d.date, d.heure_debut";
+                                    $sql_sportif = "SELECT nom, prenom FROM sportif WHERE id_sportif = ?";
+                                    $stmt_sportif = $conn->prepare($sql_sportif);
+                                    $stmt_sportif->bind_param("i", $avis['id_sportif']);
+                                    $stmt_sportif->execute();
+                                    $result_sportif = $stmt_sportif->get_result();
+                                    $sportif = $result_sportif->fetch_assoc();
 
-                        $stmt_reservations_week = $conn->prepare($sql_reservations_week);
-                        $stmt_reservations_week->bind_param("iss", $_SESSION['coach_id'], $current_week_start, $current_week_end);
-                        $stmt_reservations_week->execute();
-                        $result_reservations_week = $stmt_reservations_week->get_result();
+                                    $formatted_date = strftime("%A %d %B %Y", strtotime($avis['date']));
+                                    $formatted_heure_debut = date("H:i", strtotime($avis['heure_debut']));
+                                    $formatted_heure_fin = date("H:i", strtotime($avis['heure_fin']));
 
-                        if ($result_reservations_week->num_rows > 0) {
-                            while ($reservation = $result_reservations_week->fetch_assoc()) {
-                                $formatted_date = strftime("%A %d %B %Y", strtotime($reservation['date']));
-                                $formatted_start = date("H:i", strtotime($reservation['heure_debut']));
-                                $formatted_end = date("H:i", strtotime($reservation['heure_fin']));
-                                echo "<li>$formatted_date : $formatted_start - $formatted_end</li>";
-                            }
-                        } else {
-                            echo "<li>Aucun créneau réservé cette semaine.</li>";
-                        }
-                        ?>
-                    </ul>
-                </div>
-            </section>
-                    
-            <section id="derniers avis">
-                <div class="encadrer encadrer-modification">
-                    <h2> DERNIERS AVIS </h2>
-                    <ul>
-                        <?php
-                            $query = "SELECT 
-                                r.commentaire AS avis, 
-                                r.note, 
-                                d.date, 
-                                d.heure_debut, 
-                                d.heure_fin, 
-                                c.nom AS coach_nom, 
-                                l.nom AS lieu_nom, 
-                                s.nom AS sport_nom 
-                                FROM 
-                                    reservation r
-                                INNER JOIN 
-                                    disponibilite d ON r.id_disponibilite = d.id_disponibilite
-                                INNER JOIN 
-                                    coach c ON r.id_coach = c.id_coach
-                                INNER JOIN 
-                                    lieu l ON d.id_lieu = l.id_lieu
-                                INNER JOIN 
-                                    sport s ON d.id_sport = s.id_sport
-                                WHERE 
-                                    r.commentaire IS NOT NULL 
-                                ORDER BY 
-                                    r.id_reservation DESC 
-                                LIMIT 5";
-
-                            $result = $conn->query($query);
-
-                            if ($result->num_rows > 0) {
-                                while ($row = $result->fetch_assoc()) {
-                                    echo "<li>";
-                                    echo "<strong>{$row['avis']}</strong> - Note : {$row['note']}<br>";
-                                    echo "Coach : {$row['coach_nom']}, Lieu : {$row['lieu_nom']}, Sport : {$row['sport_nom']}<br>";
-                                    echo "Le : {$row['date']} de {$row['heure_debut']} à {$row['heure_fin']}";
-                                    echo "</li>";
+                                    echo "<tr>";
+                                    echo "<td>" . htmlspecialchars($formatted_date) . "</td>";
+                                    echo "<td>" . htmlspecialchars($formatted_heure_debut) . "</td>";
+                                    echo "<td>" . htmlspecialchars($formatted_heure_fin) . "</td>";
+                                    echo "<td>" . htmlspecialchars($lieu['nom']) . "</td>";
+                                    echo "<td>" . htmlspecialchars($sport['nom']) . "</td>";
+                                    echo "<td>" . htmlspecialchars($sportif['nom']) . " " . htmlspecialchars($sportif['prenom']) . "</td>";
+                                    echo "<td>" . htmlspecialchars($avis['note']) . "/5</td>";
+                                    echo "<td>" . htmlspecialchars($avis['commentaire']) . "</td>";
+                                    echo "</tr>";
                                 }
                             } else {
-                                echo "<li>Aucun avis publié pour le moment.</li>";
+                                echo "<tr><td colspan='8'>Aucune réservation avec avis.</td></tr>";
                             }
-                        ?>
-                    </ul>
+                            ?>
+                        </tbody>
+                    </table>
                 </div>
             </section>
         </div>
     </div>
-
-    <footer>
-            <div class="footer-container">
-              <div class="footer-column">
-                <h3>Nos Services</h3>
-                <ul>
-                  <li><a href="#"> Service clientèle </a></li>
-                  <li><a href="#"> Réglement intérieur </a></li>
-                  <li><a href="#"> Heure d'ouverture </a></li>
-                </ul>
-              </div>
-              <div class="footer-column">
-                <h3>À propos</h3>
-                <ul>
-                  <li><a href="#"> Notre Histoire </a></li>
-                  <li><a href="../Mentionslégales/MentionsLégales.html"> Mentions Légales </a></li>
-                </ul>
-              </div>
-              <div class="footer-column">
-                <h3>Nos Lieux</h3>
-                <ul>
-                    <li><a href="../Carte/Carte.html"> Aubervilliers </a></li>
-                    <li><a href="../Carte/Carte.html"> Boulogne-Billancourt </a></li>
-                    <li><a href="../Carte/Carte.html"> Châtillon </a></li>
-                    <li><a href="../Carte/Carte.html"> Colombes </a></li>
-                    <li><a href="../Carte/Carte.html"> Courbevoie </a></li>
-                    <li><a href="../Carte/Carte.html"> Créteil </a></li>
-                    <li><a href="../Carte/Carte.html"> Issy-les-Moulineaux </a></li>
-                    <li><a href="../Carte/Carte.html"> Massy </a></li>
-                    <li><a href="../Carte/Carte.html"> Meudon </a></li>
-                    <li><a href="../Carte/Carte.html"> Paris </a></li>
-                    <li><a href="../Carte/Carte.html"> Versailles </a></li>
-                </ul>
-              </div>
-              <div class="footer-column">
-                <h3>Nous Contacter</h3>
-                <ul>
-                  <li> support@coachus.com </li>
-                  <li><a href="../FAQ/FAQ.html"> FAQ </a></li>
-                </ul>
-              </div>
-            </div>
-          
-            <div class="footer-bottom">
-              <p>&copy; 2024 COACHUS. Tous droits réservés.</p>
-            </div>
-        </footer>
 </body>
 </html>

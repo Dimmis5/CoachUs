@@ -49,6 +49,7 @@ if (!empty($id_sport) && !empty($id_coach)) {
 }
 
 $disponibilitesParJour = [];
+// Récupérer les créneaux réservés
 $reservedSlots = [];
 $sqlReservedSlots = "SELECT id_disponibilite FROM reservation";
 $resultReservedSlots = $conn->query($sqlReservedSlots);
@@ -58,6 +59,7 @@ if ($resultReservedSlots->num_rows > 0) {
     }
 }
 
+// Dans la boucle des disponibilités
 if (!empty($id_sport) && !empty($id_coach) && !empty($id_lieu)) {
     $sqlDisponibilites = "
         SELECT 
@@ -93,6 +95,7 @@ if (!empty($id_sport) && !empty($id_coach) && !empty($id_lieu)) {
                 $disponibilitesParJour[$jour] = [];
             }
 
+            // Ajouter une clé "reserved" pour indiquer si le créneau est réservé
             $isReserved = in_array($row['id_disponibilite'], $reservedSlots);
 
             $disponibilitesParJour[$jour][] = [
@@ -107,7 +110,7 @@ if (!empty($id_sport) && !empty($id_coach) && !empty($id_lieu)) {
                 'nom_lieu' => $row['nom_lieu'],
                 'id_sport' => $row['id_sport'],
                 'nom_sport' => $row['nom_sport'],
-                'reserved' => $isReserved,
+                'reserved' => $isReserved, // Ajouter cette information
             ];
         }
     }
