@@ -25,6 +25,7 @@ function details(buttonElement) {
     if (window.confirm(message)) {
         console.log("Confirmation reçue pour ID :", idDisponibilite);
 
+        // Créer un objet FormData pour envoyer les données comme un formulaire classique
         const formData = new FormData();
         formData.append('id_disponibilite', idDisponibilite);
         formData.append('id_sport', idsport);
@@ -32,11 +33,13 @@ function details(buttonElement) {
         formData.append('id_lieu', idlieu);
         formData.append('id_sportif', idsportif);
 
+
+        // Envoyer les données via fetch
         fetch('../REQUETES_SPORTIF/reservation.php', {
             method: 'POST',
             body: formData
         })
-        .then(response => response.text())
+        .then(response => response.text())  // Récupérer la réponse texte
         .then(data => {
             if (data.includes('success')) {
                 alert("Réservation réussie !");

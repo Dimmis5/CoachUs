@@ -10,17 +10,17 @@
     ?>
 
 
-    <div class="header-container">
-        <div align="left">
-        <img src="LOGO2.png" alt="logo" width="50" height="75" />
-        <img src="CoachUs Text copie.png" alt="logo" width="250" height="70" />
+        <div class="header-container">
+            <div align="left">
+                <img src="../LOGO/LOGO.png" alt="logo" width="50" height="75" />
+                <img src="../LOGO/CoachUS.png" class="logo" alt="logo" width="250" height="70" />
+            </div>
+            <div align="right" class="button-container">
+                <button> <a href="../FAQ/FAQ.php"> ?</a>  </button>
+                <button> <a href="../SPORTIF/profil.php">JE VEUX UN COACH </a> </button>
+                <button> <a href="../COACH/profil.php">JE SUIS COACH  </a></button>
+            </div>
         </div>
-        <div align="right" class="button-container">
-            <button> <a href="FAQ.html"> ?</a> </button>
-            <button> <a href="connexionsportif.html">JE VEUX UN COACH </a> </button>
-            <button> <a href="connexioncoach.html">JE SUIS COACH  </a></button>
-        </div>
-    </div>
 
     <div class="profilc">
         <a href="Profil du coach.php"><img src="../Images/Didier desdeschamps.jpg" width="150" height="200" /></a>

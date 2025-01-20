@@ -2,7 +2,7 @@ body {
     flex-direction: column;
     padding: 10px;
     font-family: 'Poppins', sans-serif;
-    background: linear-gradient(to bottom, #E6E6E8, #EE8C3D);
+    background: linear-gradient(to bottom, #B8C5D6, #FFDFA7);
     color: #333;
     margin: 0;
 }
@@ -163,4 +163,40 @@ footer {
     .footer-column ul {
         grid-template-columns: 1fr;
     }
+}
+
+.add-location-btn {
+    background-color: #2d3e50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+.add-location-form {
+    display: none;
+    margin-top: 20px;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+}
+
+.add-location-form input {
+    padding: 10px;
+    margin-bottom: 10px;
+    width: 100%;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.add-location-form button {
+    background-color: #2d3e50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
 }

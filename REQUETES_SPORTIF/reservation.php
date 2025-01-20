@@ -1,8 +1,10 @@
 <?php
 include('../BDD/connexion.php');
 
+// Initialiser un tableau pour les champs manquants
 $missing_fields = [];
 
+// Vérifier chaque champ
 if (!isset($_POST['id_disponibilite'])) {
     $missing_fields[] = 'id_disponibilite';
 }
@@ -18,6 +20,7 @@ if (!isset($_POST['id_lieu'])) {
 if (!isset($_POST['id_sportif'])) {
     $missing_fields[] = 'id_sportif';
 }
+
 
 if (empty($missing_fields)) {
     $id_disponibilite = $conn->real_escape_string($_POST['id_disponibilite']);
