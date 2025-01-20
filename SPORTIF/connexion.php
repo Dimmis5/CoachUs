@@ -9,6 +9,17 @@ session_start();
     <link rel="stylesheet" href="../SPORTIF/connexion.css">
 </head>
 <body>
+        <div class="header-container">
+            <div align="left">
+                <img src="../LOGO/LOGO.png" alt="logo" width="50" height="75" />
+                <img src="../LOGO/CoachUS.png" class="logo" alt="logo" width="250" height="70" />
+            </div>
+            <div align="right" class="button-container">
+                <button> <a href="../FAQ/FAQ.php"> ?</a>  </button>
+                <button> <a href="../SPORTIF/profil.php">JE VEUX UN COACH </a> </button>
+                <button> <a href="../COACH/profil.php">JE SUIS COACH  </a></button>
+            </div>
+        </div>
     <div class='container'>
         <div class="encadrer">
             <h1> PARTAGEZ VOTRE EXPERTISE, VIVEZ DE VOTRE PASSION ! </h1>
