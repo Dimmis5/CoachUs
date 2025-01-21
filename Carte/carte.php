@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Carte Interactive - Lieux de Sport en Île-de-France</title>
     <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
-    <link rel="stylesheet" href="carte.css" />
+    <link rel="stylesheet" href="carte1.css" />
 </head>
 <body>
     <h1>CARTES DES LIEUX A VOTRE DISPOSITION</h1>
@@ -17,7 +17,7 @@
 
     <div class="add-location-form" id="add-location-form">
         <h3>Ajouter un nouveau lieu</h3>
-        <form id="location-form">
+        <form id="location-form" method="POST" action="../CARTE/lieu_attente.php">
             <label for="location-name">Nom du lieu:</label><br>
             <input type="text" id="location-name" name="location-name" required><br>
             
@@ -65,33 +65,6 @@
                 });
             })
             .catch(error => console.error('Erreur lors de la récupération des lieux:', error));
-
-        document.getElementById('location-form').addEventListener('submit', function(event) {
-            event.preventDefault();
-
-            var name = document.getElementById('location-name').value;
-            var address = document.getElementById('location-address').value;
-
-            fetch('../CARTE/ajoutLieux.php', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded'
-                },
-                body: `nom=${encodeURIComponent(name)}&adresse=${encodeURIComponent(address)}`
-            })
-            .then(response => response.json())
-            .then(data => {
-                if (data.success) {
-                    alert('Lieu ajouté avec succès');
-                    location.reload();
-                } else {
-                    alert('Erreur lors de l\'ajout du lieu');
-                }
-            })
-            .catch(error => {
-                console.error('Erreur lors de l\'ajout du lieu:', error);
-            });
-        });
     </script>
 </body>
 </html>

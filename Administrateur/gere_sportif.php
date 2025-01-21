@@ -19,22 +19,22 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     try {
         $query = "DELETE FROM $type WHERE id_" . $type . " = :id";
-        $stmt = $connexion->prepare($query);
+        $stmt = $conn->prepare($query);
         $stmt->bindParam(':id', $id);
         $stmt->execute();
 
         echo ucfirst($type) . " supprimé avec succès.";
-    } catch (PDOException $e) {
+    } catch (mysqliException $e) {
         die("Erreur lors de la suppression : " . $e->getMessage());
     }
 }
 
 try {
     $query = "SELECT id_" . $type . ", nom, prenom FROM $type";
-    $stmt = $connexion->prepare($query);
+    $stmt = $conn->prepare($query);
     $stmt->execute();
     $utilisateurs = $stmt->fetchAll(PDO::FETCH_ASSOC);
-} catch (PDOException $e) {
+} catch (mysqliException $e) {
     die("Erreur lors de la récupération des données : " . $e->getMessage());
 }
 ?>
