@@ -30,26 +30,38 @@
 
     <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
     <script>
-        document.getElementById('add-location-btn').addEventListener('click', function() {
-            var form = document.getElementById('add-location-form');
-            form.style.display = (form.style.display === 'none' || form.style.display === '') ? 'block' : 'none';
-        });
+        const urlParams = new URLSearchParams(window.location.search);
+        const lieuRecherche = urlParams.get('lieu');
+        const latitudeRecherche = parseFloat(urlParams.get('lat'));
+        const longitudeRecherche = parseFloat(urlParams.get('lng'));
+        const adresseLieu = urlParams.get('adresse');  
+
+        var map = L.map('map').setView([48.8566, 2.3522], 10); 
+
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+    
+        if (lieuRecherche && !isNaN(latitudeRecherche) && !isNaN(longitudeRecherche)) {     
+            map.setView([latitudeRecherche, longitudeRecherche], 14);   
+            var marker = L.marker([latitudeRecherche, longitudeRecherche]).addTo(map)
+                .bindPopup(`<b>${lieuRecherche}</b><br>Adresse: ${adresseLieu}`);
+
+            marker.openPopup();
+        }
+
 
         fetch('../CARTE/lieux.php')
             .then(response => response.json())
             .then(locations => {
-                var map = L.map('map').setView([48.8566, 2.3522], 10);
-
-                L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-                }).addTo(map);
-
                 var locationsContainer = document.getElementById('locations');
-
                 locations.forEach(function(location) {
+                
                     var marker = L.marker([location.latitude, location.longitude]).addTo(map)
                         .bindPopup(`<b>${location.nom}</b><br>Adresse: ${location.adresse}<br>Places disponibles: ${location.nombre_places_disponibles}`);
 
+                    
                     var locationDiv = document.createElement('div');
                     locationDiv.className = 'location-item';
                     locationDiv.innerHTML = `
