@@ -1,0 +1,95 @@
+body {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    background: linear-gradient(to bottom, #B8C5D6, #FFDFA7);
+    font-family: 'Arial', sans-serif;
+    color: #333;
+    margin: 0;
+    min-height: 100vh;
+}
+
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+button {
+    border-radius: 25px;
+    padding: 8px 15px;
+    border: none;
+    background-color: #ff7f50;
+    color: white;
+    font-size: 1rem;
+    font-family: 'Arial', sans-serif;
+    transition: background-color 0.3s;
+}
+
+button a {
+    text-decoration: none;
+    color: white;
+}
+
+button:hover {
+    background-color: #ff6347;
+}
+
+h1 {
+    font-family: 'Arial', sans-serif;
+    text-align: center;
+    margin-bottom: 20px;
+    padding: 20px;
+}
+
+.container {
+    display: flex; 
+    justify-content: center; 
+    margin: 20px;
+    font-family: 'Arial', sans-serif;
+    padding: 20px;
+}
+
+.encadrer {
+    border: 2px solid #000;
+    border-radius: 20px;
+    padding: 20px;
+    margin: 20px;
+    background-color: #f9f9f9;
+    font-family: 'Arial', sans-serif;
+}
+
+.rectangle {
+    height: 5px;
+    margin: 40px;
+    width: 350px;
+    background-color:#000;
+    border: 2px solid #000;
+    border-radius: 20px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.cercle {
+    width: 30px;
+    height: 30px;
+    background-color: #ff7f50;
+    border-radius: 50%;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: black;
+}
+
+input[type="text"],input[type="password"] {
+    border-radius: 20px;
+    padding: 10px;
+    width: 300px;
+    margin: 5px;
+    padding-right: 100px;
+}
