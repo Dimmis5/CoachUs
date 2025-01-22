@@ -240,3 +240,87 @@ footer {
         grid-template-columns: 1fr;
     }
 }
+
+
+.flex{
+    display: flex;
+}
+.encadrer {
+    border-radius: 20px;
+    margin: 10px;
+    width: 300px;
+    margin-left: 170px;
+    padding-left: 40px;
+    padding-right: 40px;
+    background:  #ead3ad;
+}
+
+.encadrer2 {
+    border-radius: 20px;
+    margin: 10px;
+    width: 300px;
+    margin-left: 015px;
+    padding-left: 50px;
+    padding-right: 50px;
+    background:  #ead3ad;
+}
+
+.encadrer3 {
+
+    border-radius: 20px;
+    margin: 10px;
+    width: 300px;
+    margin-left: 15px;
+    padding-left: 50px;
+    padding-right: 50px;
+    background: #ead3ad;
+}
+
+/* Style de la boîte contenant les avis */
+.enca {
+    border-radius: 20px;
+    margin: 10px auto; /* Centrer le bloc */
+    width: 80%; /* Ajustez selon la largeur désirée */
+    padding: 20px;
+    background: #ead3ad;
+    display: flex;
+    flex-direction: column;
+    gap: 10px; /* Espacement entre les bulles */
+}
+
+/* Style de chaque avis */
+.user-reviews {
+    display: flex;
+    flex-direction: column;
+    gap: 10px; /* Espacement vertical */
+}
+
+/* Style individuel des bulles d'avis */
+.review {
+    border-radius: 15px;
+    padding: 15px;
+    background: #fff; /* Fond blanc pour chaque bulle */
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Ombre légère */
+    word-wrap: break-word; /* Gestion du texte long */
+}
+
+/* Style des paragraphes à l'intérieur des avis */
+.review p {
+    margin: 5px 0; /* Espacement interne */
+}
+
+/* Animation d'entrée pour chaque bulle */
+.review {
+    animation: fadeIn 0.5s ease-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
