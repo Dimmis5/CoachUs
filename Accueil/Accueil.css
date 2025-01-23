@@ -8,11 +8,30 @@ body {
 }
  
 
+h1{
+    font-family: 'Poppins',sans-serif;
+    color: black;
+    text-align: center;
+    margin-bottom: 20px;  
+    font-size: 70px;
+}
 .search-container {
     position: relative;
     display: flex;
     justify-content: center;
     margin-top: 20px;
+}
+.search-button {
+    position: absolute;
+    right: 470px;
+    top: 50%;
+    transform: translateY(-50%);
+    border-radius: 20px;
+    padding: 10px 20px;
+    border: none;
+    background-color: #ff6347;
+    color: white ;
+ 
 }
 input[type="text"] {
     border-radius: 70px;
