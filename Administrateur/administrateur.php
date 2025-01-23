@@ -4,9 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title> Administrateur </title>
-    <link rel="stylesheet" href="../style2.css">
+    <link rel="stylesheet" href="../Administrateur/Profiladm.css">
 </head>
 <body>
+<?php include('../PRESENTATION/haut_de_page.php');?>
     <div class="container">
         <div class="menu-gauche">
             <h2>MENU</h2>
@@ -18,5 +19,6 @@
             </ul>
         </div>
     </div>
+    <?php include('../PRESENTATION/bas_de_page.php');?>
 </body>
 </html>

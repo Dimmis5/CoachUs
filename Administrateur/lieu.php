@@ -98,6 +98,7 @@ if ($result_lieu && $result_lieu->num_rows > 0) {
     </script>
 </head>
 <body>
+<?php include('../PRESENTATION/haut_de_page.php');?>
     <div class="container">
         <div class="menu-gauche">
             <h2>MENU</h2>
@@ -209,5 +210,6 @@ if ($result_lieu && $result_lieu->num_rows > 0) {
             </section>
         </div>
     </div>
+    <?php include('../PRESENTATION/bas_de_page.php');?>
 </body>
 </html>
