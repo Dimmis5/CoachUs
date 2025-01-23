@@ -7,7 +7,7 @@
         </a>
     </div>
     <div class="button-container_haut">
-        <button class="haut"><a href="../FAQ/FAQ.html"> ?</a></button>
+        <button class="haut"><a href="../FAQ/FAQ.php"> ?</a></button>
         <button class="haut"><a href="../SPORTIF/connexion.php"> JE VEUX UN COACH </a></button>
         <button class="haut"><a href="../COACH/connexion.php"> JE SUIS COACH </a></button>
     </div>
