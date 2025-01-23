@@ -51,5 +51,6 @@ session_start();
             </div>
         </form>
     </div>
+    <?php include('../PRESENTATION/bas_de_page.php');?>
 </body>
 </html>

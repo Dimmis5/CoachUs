@@ -2,9 +2,9 @@ body {
     display: flex;
     flex-direction: column;
     padding: 10px;
-    font-family: 'Poppins', sans-serif;
     color: #333;
     margin: 0;
+    font-family: 'Poppins', sans-serif;
 }
  
 .header-container {
@@ -21,9 +21,8 @@ button {
     border: none;
     background-color: #ff7f50;
     color: white;
-    font-size: 1rem;
-    font-family: 'Poppins', sans-serif;
     transition: background-color 0.3s;
+    font-family: 'Poppins', sans-serif;
 }
  
 button a {
@@ -35,7 +34,6 @@ button:hover {
     background-color: #ff6347;
 }
 h1{
-    font-family: 'Poppins',sans-serif;
     color: black;
     text-align: center;
     margin-bottom: 20px;  
@@ -66,43 +64,6 @@ input[type="text"] {
  
 }
  
-.sport-button {
-    display: flex;
-    margin: auto ;
-    padding: 20px;
-    border: 1px solid #ddd;
-    width: 500px;
-    background-color: #ed886397;
-    border-radius: 500px;
-    margin-top: 10px;
-}
-.sport{
-    display: flex;
-    justify-content: left;
-    margin-left: 5px;
-    gap: 40px;
-}
- 
-.stext {
-    display: flex;
-    position: absolute;
-    font-size: 10px;
-    margin-top: 37px;
-    justify-content: flex-start;
-}
- 
-.stext p {
-    width: 60px;
-    text-align: justify;
-    margin: 0;
-    padding: 0;
-    font-size: 10px;
-}
- 
-.stext p span {
-    visibility: hidden;
-}
- 
 body, html {
     margin: 0;
     padding: 0;
@@ -117,40 +78,7 @@ body, html {
    
 }
  
-.personnage {
-    display: flex;
-    justify-content: center;
-    gap: 155px;
-}
- 
-.prénom{
-    display: flex;
-    margin-left: 305px;
-    gap: 260px;
-}
-.avis{
-    display: flex;
-    margin-left: 305px;
-    gap: 320px;
-}
- 
-.tarif{
-    display: flex;
-    margin-left: 305px;
-    gap: 315px;
-}
-.temps{
-    display: flex;
-    margin-left: 305px;
-    gap : 215px;
-}
- 
-.créneaux-contact{
-    display: flex;
-    margin-left: 380px;
-    gap: 50px;
-}
- 
+
  
 footer {
     background-color: #333;
@@ -276,40 +204,37 @@ footer {
     background: #ead3ad;
 }
 
-/* Style de la boîte contenant les avis */
 .enca {
     border-radius: 20px;
-    margin: 10px auto; /* Centrer le bloc */
-    width: 80%; /* Ajustez selon la largeur désirée */
+    margin: 10px auto; 
+    width: 80%; 
     padding: 20px;
     background: #ead3ad;
     display: flex;
     flex-direction: column;
-    gap: 10px; /* Espacement entre les bulles */
+    gap: 10px; 
 }
 
-/* Style de chaque avis */
 .user-reviews {
     display: flex;
     flex-direction: column;
-    gap: 10px; /* Espacement vertical */
+    gap: 10px; 
 }
 
-/* Style individuel des bulles d'avis */
+
 .review {
     border-radius: 15px;
     padding: 15px;
-    background: #fff; /* Fond blanc pour chaque bulle */
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Ombre légère */
-    word-wrap: break-word; /* Gestion du texte long */
+    background: #fff; 
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); 
+    word-wrap: break-word;
 }
 
-/* Style des paragraphes à l'intérieur des avis */
+
 .review p {
-    margin: 5px 0; /* Espacement interne */
+    margin: 5px 0; 
 }
 
-/* Animation d'entrée pour chaque bulle */
 .review {
     animation: fadeIn 0.5s ease-out;
 }
@@ -323,4 +248,22 @@ footer {
         opacity: 1;
         transform: translateY(0);
     }
+}
+ 
+.enca3 {
+    border-radius: 20px;
+    margin: 10px auto; 
+    width: 80%; 
+    padding: 20px;
+    background: #ead3ad;
+    display: flex;
+    flex-direction: column;
+    border-radius: 15px;
+}
+.enca3 p{
+    border-radius: 15px;
+    padding: 15px;
+    background: #fff;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); 
+    word-wrap: break-word; 
 }

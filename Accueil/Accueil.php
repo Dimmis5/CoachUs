@@ -1,5 +1,5 @@
 <?php
-// Connexion à la base de données
+
 include('../BDD/connexion.php');
 ?>
 
@@ -7,26 +7,7 @@ include('../BDD/connexion.php');
 <html>
     <head>
         <title>CoachUs</title>
-        <link rel="stylesheet" href="../Accueil/Accueill.css">
-        <style>
-        .enca3 {
-            border-radius: 20px;
-            margin: 10px auto; 
-            width: 80%; 
-            padding: 20px;
-            background: #ead3ad;
-            display: flex;
-            flex-direction: column;
-            border-radius: 15px;
-        }
-        .enca3 p{
-            border-radius: 15px;
-            padding: 15px;
-            background: #fff;
-            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); 
-            word-wrap: break-word; 
-        }
-    </style>
+        <link rel="stylesheet" href="../Accueil/Accueil.css">
     </head>
 
     <body>
@@ -139,17 +120,17 @@ include('../BDD/connexion.php');
                 <div class="footer-column">
                     <h3>Nos Lieux</h3>
                     <ul>
-                        <li><a href="../Carte/Carte.html">Aubervilliers</a></li>
-                        <li><a href="../Carte/Carte.html">Boulogne-Billancourt</a></li>
-                        <li><a href="../Carte/Carte.html">Châtillon</a></li>
-                        <li><a href="../Carte/Carte.html">Colombes</a></li>
-                        <li><a href="../Carte/Carte.html">Courbevoie</a></li>
-                        <li><a href="../Carte/Carte.html">Créteil</a></li>
-                        <li><a href="../Carte/Carte.html">Issy-les-Moulineaux</a></li>
-                        <li><a href="../Carte/Carte.html">Massy</a></li>
-                        <li><a href="../Carte/Carte.html">Meudon</a></li>
-                        <li><a href="../Carte/Carte.html">Paris</a></li>
-                        <li><a href="../Carte/Carte.html">Versailles</a></li>
+                        <li><a href="../Carte/Carte.php">Aubervilliers</a></li>
+                        <li><a href="../Carte/Carte.php">Boulogne-Billancourt</a></li>
+                        <li><a href="../Carte/Carte.php">Châtillon</a></li>
+                        <li><a href="../Carte/Carte.php">Colombes</a></li>
+                        <li><a href="../Carte/Carte.php">Courbevoie</a></li>
+                        <li><a href="../Carte/Carte.php">Créteil</a></li>
+                        <li><a href="../Carte/Carte.php">Issy-les-Moulineaux</a></li>
+                        <li><a href="../Carte/Carte.php">Massy</a></li>
+                        <li><a href="../Carte/Carte.php">Meudon</a></li>
+                        <li><a href="../Carte/Carte.php">Paris</a></li>
+                        <li><a href="../Carte/Carte.php">Versailles</a></li>
                     </ul>
                 </div>
                 <div class="footer-column">

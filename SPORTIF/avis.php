@@ -18,6 +18,7 @@ include('../REQUETES_SPORTIF/deposeravis.php');
     <link rel="stylesheet" href="../style2.css">
 </head>
 <body>
+<?php include('../PRESENTATION/haut_de_page.php');?>
     <div class="container">
         <div class="menu-gauche">
             <h2>MENU</h2>
@@ -119,6 +120,8 @@ include('../REQUETES_SPORTIF/deposeravis.php');
     </div>
 
     <script src="../REQUETES_SPORTIF/creneau1.js"></script>
+
+    <?php include('../PRESENTATION/bas_de_page.php');?>
 
 </body>
 </html>

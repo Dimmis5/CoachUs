@@ -9,6 +9,7 @@ session_start();
     <link rel="stylesheet" href="connexion.css">
 </head>
 <body>
+<?php include('../PRESENTATION/haut_de_page.php');?>
     <div class='container'>
         <div class="encadrer">
             <h1>PARTAGEZ VOTRE EXPERTISE, VIVEZ DE VOTRE PASSION !</h1>
@@ -56,5 +57,6 @@ session_start();
             </div>
         </form>
     </div>
+    <?php include('../PRESENTATION/bas_de_page.php');?>
 </body>
 </html>

@@ -9,6 +9,7 @@ session_start();
     <link rel="stylesheet" href="../SPORTIF/inscription.css">
 </head>
 <body>
+<?php include('../PRESENTATION//haut_de_page.php');?>
     <div class='container'>
         <div class="encadrer">
         </div>
@@ -51,5 +52,6 @@ session_start();
             </div>
         </form>
     </div>
+    <?php include('../PRESENTATION/bas_de_page.php');?>
 </body>
 </html>
