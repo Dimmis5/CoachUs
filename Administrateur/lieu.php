@@ -12,29 +12,20 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $stmt->bind_param("i", $lieu_temp_id);
             $stmt->execute();
             $stmt->close();
-        } elseif ($action === 'ajouter_lieu' && isset($_POST['lieu-temp-id'], $_POST['nombre-places'], $_POST['latitude'], $_POST['longitude'])) {
+        } elseif ($action === 'ajouter_lieu' && isset($_POST['nouveau-nom'],$_POST['nouvelle-adresse'], $_POST['lieu-temp-id'], $_POST['nombre-places'], $_POST['latitude'], $_POST['longitude'])) {
+            $nouveau_nom = $_POST['nouveau-nom'];
+            $nouvelle_adresse = $_POST['nouvelle-adresse'];
             $lieu_temp_id = $_POST['lieu-temp-id'];
             $nombre_places = $_POST['nombre-places'];
             $latitude = $_POST['latitude'];
             $longitude = $_POST['longitude'];
 
-            // Récupérer les informations du lieu temporaire
-            $query = "SELECT nom, adresse FROM lieux_temp WHERE id = ?";
-            $stmt = $conn->prepare($query);
-            $stmt->bind_param("i", $lieu_temp_id);
-            $stmt->execute();
-            $stmt->bind_result($nom, $adresse);
-            $stmt->fetch();
-            $stmt->close();
-
-            // Insérer dans la table lieu
             $query = "INSERT INTO lieu (nom, adresse, nombre_places_disponibles, latitude, longitude) VALUES (?, ?, ?, ?, ?)";
             $stmt = $conn->prepare($query);
-            $stmt->bind_param("ssidd", $nom, $adresse, $nombre_places, $latitude, $longitude);
+            $stmt->bind_param("ssidd", $nouveau_nom, $nouvelle_adresse, $nombre_places, $latitude, $longitude);
             $stmt->execute();
             $stmt->close();
 
-            // Supprimer le lieu temporaire
             $query = "DELETE FROM lieux_temp WHERE id = ?";
             $stmt = $conn->prepare($query);
             $stmt->bind_param("i", $lieu_temp_id);
@@ -79,7 +70,7 @@ if ($result_lieu && $result_lieu->num_rows > 0) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Administrateur</title>
-    <link rel="stylesheet" href="../style2.css">
+    <link rel="stylesheet" href="../style.css">
     <script>
         function filterTable(input, columnIndex) {
             const filter = input.value.toLowerCase();
@@ -98,15 +89,20 @@ if ($result_lieu && $result_lieu->num_rows > 0) {
     </script>
 </head>
 <body>
-<?php include('../PRESENTATION/haut_de_page.php');?>
     <div class="container">
-        <div class="menu-gauche">
+    <div class="menu-gauche">
             <h2>MENU</h2>
             <ul>
                 <li><a href="../Administrateur/administrateur.php"> TABLEAU DE BORD</a></li>
                 <li><a href="../Administrateur/coach.php"> COACH </a></li>
                 <li><a href="../Administrateur/sportif.php"> SPORTIF </a></li>
                 <li><a href="../Administrateur/lieu.php"> LIEU </a></li>
+                <li><a href="../Administrateur/gestion_FAQ.php"> FAQ </a></li>
+                <li><a href="../Administrateur/inscription_coach/coach_attente.php"> INSCRIPTION COACH </a></li>
+                <li><a href="../Administrateur/inscription_sportif/sportif_attente.php"> INSCRIPTION SPORTIF </a></li>
+                <form method="post" action="../Administrateur/deconnexion.php">
+                    <button type="submit" name="logout"> SE DECONNECTER </button>
+                </form>
             </ul>
         </div>
         
@@ -210,6 +206,5 @@ if ($result_lieu && $result_lieu->num_rows > 0) {
             </section>
         </div>
     </div>
-    <?php include('../PRESENTATION/bas_de_page.php');?>
 </body>
 </html>

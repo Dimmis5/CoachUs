@@ -20,7 +20,7 @@ if ($result_sportifs && $result_sportifs->num_rows > 0) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Administrateur</title>
-    <link rel="stylesheet" href="../style2.css">
+    <link rel="stylesheet" href="../style.css">
     <script>
         function filterTable(input, columnIndex) {
             const filter = input.value.toLowerCase();
@@ -39,7 +39,6 @@ if ($result_sportifs && $result_sportifs->num_rows > 0) {
     </script>
 </head>
 <body>
-<?php include('../PRESENTATION/haut_de_page.php');?>
     <div class="container">
         <div class="menu-gauche">
             <h2>MENU</h2>
@@ -48,6 +47,12 @@ if ($result_sportifs && $result_sportifs->num_rows > 0) {
                 <li><a href="../Administrateur/coach.php"> COACH </a></li>
                 <li><a href="../Administrateur/sportif.php"> SPORTIF </a></li>
                 <li><a href="../Administrateur/lieu.php"> LIEU </a></li>
+                <li><a href="../Administrateur/gestion_FAQ.php"> FAQ </a></li>
+                <li><a href="../Administrateur/inscription_coach/coach_attente.php"> INSCRIPTION COACH </a></li>
+                <li><a href="../Administrateur/inscription_sportif/sportif_attente.php"> INSCRIPTION SPORTIF </a></li>
+                <form method="post" action="../Administrateur/deconnexion.php">
+                    <button type="submit" name="logout"> SE DECONNECTER </button>
+                </form>
             </ul>
         </div>
         
@@ -96,6 +101,5 @@ if ($result_sportifs && $result_sportifs->num_rows > 0) {
             </section>
         </div>
     </div>
-    <?php include('../PRESENTATION/bas_de_page.php');?>
 </body>                
 </html>
