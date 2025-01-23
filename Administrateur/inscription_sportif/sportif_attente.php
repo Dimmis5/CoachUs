@@ -14,7 +14,7 @@ $result = $conn->query($sql);
     <link rel="stylesheet" href="../../style.css">
 </head>
 <body>
-<?php include('../PRESENTATION/haut_de_page.php');?>
+<?php include('../../PRESENTATION/haut_de_page.php');?>
     <div class="container">
         <div class="menu-gauche">
             <h2>MENU</h2>
@@ -64,6 +64,6 @@ $result = $conn->query($sql);
             </table>
         </div>
     </div>
-    <?php include('../PRESENTATION/bas_de_page.php');?>
+    <?php include('../../PRESENTATION/bas_de_page.php');?>
 </body>
 </html>

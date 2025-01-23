@@ -212,3 +212,24 @@ table tr:hover td {
     background-color: #e0e0e0;
 }
 
+.aligner {
+    display: flex;
+    padding: 10px;
+}
+
+button_admin {
+    margin-left: 10px;
+    width : 300px;
+    font-size: 1em;
+    text-align: center;
+    background-color: #2d3e50;
+    border: 1px solid #2d3e50;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button_admin a {
+    text-decoration: none;
+    color: white;
+}
