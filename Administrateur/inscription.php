@@ -52,6 +52,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <link rel="stylesheet" href="../Administrateur/inscription.css">
 </head>
 <body>
+<?php include('../PRESENTATION/haut_de_page.php');?>
     <div class='container'>
         <div class="encadrer">
         </div>
@@ -85,5 +86,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             </div>
         </form>
     </div>
+    <?php include('../PRESENTATION/bas_de_page.php');?>
 </body>
 </html>

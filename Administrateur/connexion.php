@@ -46,6 +46,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     </script>
 </head>
 <body>
+<?php include('../PRESENTATION/haut_de_page.php');?>
     <div class='container'>
         <form method="POST">
             <div class="encadrer">
@@ -75,5 +76,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         unset($_SESSION['error_message']);
     }
     ?>
+        <?php include('../PRESENTATION/bas_de_page.php');?>
 </body>
 </html>

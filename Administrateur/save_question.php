@@ -96,7 +96,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     </style>
 </head>
 <body>
-    <!-- Pop-up -->
+<?php include('../PRESENTATION/haut_de_page.php');?>
     <div class="popup-overlay" id="popupOverlay"></div>
     <div class="popup" id="popup">
         <p id="popupMessage"></p>
@@ -121,5 +121,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             showPopup("<?= htmlspecialchars($successMessage) ?>");
         <?php endif; ?>
     </script>
+        <?php include('../PRESENTATION/bas_de_page.php');?>
 </body>
 </html>
