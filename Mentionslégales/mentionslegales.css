@@ -5,6 +5,7 @@ body {
     background-color: #f0e7d1;
     color: #333;
     margin: 0;
+    background: linear-gradient(to bottom, #B8C5D6, #FFDFA7);
 }
 
 .header-container {

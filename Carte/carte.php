@@ -30,6 +30,7 @@
             <button type="submit">Ajouter le lieu</button>
         </form>
     </div>
+    <br><br>
 
     <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
     <script>

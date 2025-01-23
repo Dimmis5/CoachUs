@@ -42,6 +42,7 @@ session_start();
                     <input type="password" name="mot_de_passe" placeholder="MOT DE PASSE"/>
                 </div><br>
                 <button type="submit"> CONNEXION </button>
+
                 <div class="rectangle">
                     <div class="cercle"> 
                         <span> OU </span>
